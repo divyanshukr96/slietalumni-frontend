@@ -125,12 +125,12 @@ class AlumniDataViewForm extends Component {
                             </Select>
                         } {...props}/>
                         <EditableCell edit={edit} name="passing" label="Passing Year" inputProps={
-                            <Select placeholder="Select passing year" showSearch>
-                                <Select.Option key="passing" value={null}>None</Select.Option>
-                                {_.range(new Date().getFullYear(), 1985).map(row =>
-                                    <Select.Option key={row} value={row}>{row}</Select.Option>)}
-                            </Select>
-                        } {...props}/>
+                        <Select placeholder="Select passing year" showSearch>
+                            <Select.Option key="passing" value={null}>None</Select.Option>
+                            {_.range(new Date().getFullYear(), 1985).map(row =>
+                                <Select.Option key={row} value={row}>{row}</Select.Option>)}
+                        </Select>
+                    } {...props}/>
                         <EditableCell edit={edit} name="organisation" label="Organisation"
                                       placeholder="Enter current organisation" {...props}/>
                     </Form>

@@ -86,6 +86,13 @@ class AdminNavBar extends Component {
                             <span className="nav-text">nav 4</span>
                         </Menu.Item>
 
+                        <Menu.Item key="sac/users">
+                            <Link to={'/sac/users'}>
+                                <Icon type="user"/>
+                                <span className="nav-text">Users</span>
+                            </Link>
+                        </Menu.Item>
+
                         <Menu.SubMenu
                             key="role-permission"
                             title={<span><Icon type="laptop"/>Role & Permission</span>}

@@ -60,7 +60,7 @@ export const fetchRolesPermissions = () => async dispatch => {
             payload: data.data
         });
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
         })
@@ -72,7 +72,7 @@ export const fetchRolesPermissions = () => async dispatch => {
             payload: data.data
         });
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
         })

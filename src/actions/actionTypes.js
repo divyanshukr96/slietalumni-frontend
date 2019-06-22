@@ -29,3 +29,10 @@ export const ROLE_EDIT = "ROLE_EDIT";
 export const ROLE_UPDATE = "ROLE_UPDATE";
 export const ROLE_LIST_ADD = "ROLE_LIST_ADD";
 export const PERMISSION_LIST = "PERMISSION_LIST";
+
+export const USER_LOADING = "USER_LOADING";
+export const USER_LIST = "USER_LIST";
+export const USER_ADD = "USER_ADD";
+export const USER_EDIT = "USER_EDIT";
+export const USER_UPDATE = "USER_UPDATE";
+export const USER_DELETE = "USER_DELETE";

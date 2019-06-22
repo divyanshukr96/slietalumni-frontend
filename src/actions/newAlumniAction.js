@@ -9,7 +9,7 @@ export const alumniDataList = () => async dispatch => {
             payload: data.data
         });
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
         })
@@ -21,7 +21,6 @@ export const registration = formData => async dispatch => {
         let form = new FormData();
         for (const field in formData) form.append(field, formData[field]);
         const {data} = await axios.post('/api/alumni/register', form);
-        console.log(data);
         dispatch({
             type: type.LOGIN_SUCCESS,
             payload: data

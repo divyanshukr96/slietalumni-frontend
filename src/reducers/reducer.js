@@ -5,6 +5,7 @@ import auth from './authReducer'
 import alumniDatabase from './alumniDatabaseReducer'
 import newAlumni from './newAlumniReducer'
 import roles from './roleReducer'
+import users from './userReducer'
 
 export default (history) => combineReducers({
     router: connectRouter(history),
@@ -12,5 +13,6 @@ export default (history) => combineReducers({
     newAlumni,
     errors,
     roles,
+    users,
     auth,
 })

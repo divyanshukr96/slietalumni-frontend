@@ -25,7 +25,7 @@ export const alumniDataList = () => async dispatch => {
             payload: data
         });
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
         })
@@ -49,7 +49,7 @@ export const alumniDataUpdate = (id, formData) => async (dispatch, getState) => 
         });
         return true;
     } catch ({response}) {
-        await dispatch({
+        response && await dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
         });

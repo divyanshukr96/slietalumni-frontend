@@ -7,6 +7,7 @@ import AlumniData from "../components/Alumni Database/AlumniData";
 import AlumniDataTest from "../Tests/AlumniDataTest";
 import RegistrationData from "components/Alumni Registration/RegistrationData";
 import {Permission, Role} from "components/RolePermission";
+import Users from "components/Users/Users";
 
 const AuthRoutes = (props) => {
     return (
@@ -16,6 +17,7 @@ const AuthRoutes = (props) => {
                 <Route exact path="/sac/alumni-database" component={AlumniData}/>
                 <Route exact path="/sac/new-registration" component={RegistrationData}/>
 
+                <Route exact path="/sac/users" component={Users}/>
                 <Route exact path="/sac/roles" component={Role}/>
                 <Route exact path="/sac/permissions" component={Permission}/>
 
