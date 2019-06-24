@@ -86,9 +86,90 @@ class AdminNavBar extends Component {
                             <span className="nav-text">nav 4</span>
                         </Menu.Item>
 
+
+                        <Menu.SubMenu
+                            key="news"
+                            title={<span><Icon type="calendar"/>News</span>}
+                        >
+                            <Menu.Item key="sac/news">
+                                <Link to={'/sac/news'}>
+                                    <span className="nav-text">All News</span>
+                                </Link>
+                            </Menu.Item>
+
+                            <Menu.Item key="sac/news/published">
+                                <Link to={'/sac/news/published'}>
+                                    <span className="nav-text">Published News</span>
+                                </Link>
+                            </Menu.Item>
+
+                            <Menu.Item key="sac/news/unpublished">
+                                <Link to={'/sac/news/unpublished'}>
+                                    <span className="nav-text">Un-Published News</span>
+                                </Link>
+                            </Menu.Item>
+
+                            <Menu.Item key="sac/news/create">
+                                <Link to={'/sac/news/create'}>
+                                    <span className="nav-text">Add New News</span>
+                                </Link>
+                            </Menu.Item>
+                        </Menu.SubMenu>
+
+
+                        {/*<Menu.Item key="sac/news">*/}
+                        {/*    <Link to={'/sac/news'}>*/}
+                        {/*        <Icon type="calendar"/>*/}
+                        {/*        <span className="nav-text">News</span>*/}
+                        {/*    </Link>*/}
+                        {/*</Menu.Item>*/}
+
+                        {/*<Menu.Item key="sac/events">*/}
+                        {/*    <Link to={'/sac/events'}>*/}
+                        {/*        <Icon type="schedule"/>*/}
+                        {/*        <span className="nav-text">Events</span>*/}
+                        {/*    </Link>*/}
+                        {/*</Menu.Item>*/}
+
+                        <Menu.SubMenu
+                            key="events"
+                            title={<span><Icon type="schedule"/>Events</span>}
+                        >
+                            <Menu.Item key="sac/events">
+                                <Link to={'/sac/events'}>
+                                    <span className="nav-text">All Event</span>
+                                </Link>
+                            </Menu.Item>
+
+                            <Menu.Item key="sac/events/published">
+                                <Link to={'/sac/events/published'}>
+                                    <span className="nav-text">Published Event</span>
+                                </Link>
+                            </Menu.Item>
+
+                            <Menu.Item key="sac/events/unpublished">
+                                <Link to={'/sac/events/unpublished'}>
+                                    <span className="nav-text">Un-Published Event</span>
+                                </Link>
+                            </Menu.Item>
+
+                            <Menu.Item key="sac/events/create">
+                                <Link to={'/sac/events/create'}>
+                                    <span className="nav-text">Add New Event</span>
+                                </Link>
+                            </Menu.Item>
+
+                            <Menu.Item key="sac/event-type">
+                                <Link to={'/sac/event-type'}>
+                                    <span className="nav-text">Event Types</span>
+                                </Link>
+                            </Menu.Item>
+                        </Menu.SubMenu>
+
+
                         <Menu.Item key="sac/users">
                             <Link to={'/sac/users'}>
-                                <Icon type="user"/>
+                                <Icon type="team"/>
                                 <span className="nav-text">Users</span>
                             </Link>
                         </Menu.Item>
@@ -130,7 +211,7 @@ class AdminNavBar extends Component {
                         </div>
                     </Header>
                     <Content style={{margin: '24px 16px 0'}}>
-                        <div style={{padding: 24, background: '#fff', minHeight: 360}}>
+                        <div style={{padding: `24px 8px`, background: '#fff', minHeight: 360}}>
                             {children}
                         </div>
                     </Content>

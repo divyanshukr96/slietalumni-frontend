@@ -119,9 +119,8 @@ class RegisterForm extends Component {
                                 labelCol: {span: 4},
                                 wrapperCol: {span: 20},
                             }}
-                            decoratorProps={{
-                                rules: [{required: true, message: 'Please select your photo!'}],
-                            }}
+                            decoratorProps={{rules: [{required: true, message: 'Please select your photo!'}]}}
+                            uploadProps={{accept: 'image/*'}}
                             style={{marginBottom: 8}}
                         >
                             <Button><Icon type="user"/> Select photo</Button>

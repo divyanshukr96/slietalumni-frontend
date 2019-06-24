@@ -111,7 +111,7 @@ class NewAlumniDataForm extends Component {
 }
 
 
-export const CollectionCreateForm = Form.create({name: 'form_in_modal'})(NewAlumniDataForm);
+const CollectionCreateForm = Form.create({name: 'new_alumni'})(NewAlumniDataForm);
 
 class NewAlumniData extends Component {
     state = {

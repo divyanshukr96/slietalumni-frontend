@@ -8,6 +8,13 @@ import AlumniDataTest from "../Tests/AlumniDataTest";
 import RegistrationData from "components/Alumni Registration/RegistrationData";
 import {Permission, Role} from "components/RolePermission";
 import Users from "components/Users/Users";
+import Events from "components/Events/Events";
+import News from "components/News/News";
+import NewsCreate from "components/News/NewsCreate";
+import NewsView from "components/News/NewsView";
+import EventTypes from "components/Events/EventTypes";
+import EventAdd from "components/Events/EventAdd";
+import EventView from "components/Events/EventView";
 
 const AuthRoutes = (props) => {
     return (
@@ -17,11 +24,20 @@ const AuthRoutes = (props) => {
                 <Route exact path="/sac/alumni-database" component={AlumniData}/>
                 <Route exact path="/sac/new-registration" component={RegistrationData}/>
 
+                <Route exact path="/sac/news" component={News}/>
+                <Route exact path="/sac/news/create" component={NewsCreate}/>
+                <Route exact path="/sac/news/:news" component={NewsView}/>
+
+                <Route exact path="/sac/event-type" component={EventTypes}/>
+                <Route exact path="/sac/events" component={Events}/>
+                <Route exact path="/sac/events/create" component={EventAdd}/>
+                <Route exact path="/sac/events/:event" component={EventView}/>
+
                 <Route exact path="/sac/users" component={Users}/>
                 <Route exact path="/sac/roles" component={Role}/>
                 <Route exact path="/sac/permissions" component={Permission}/>
 
-                <Route exact path="/sac/hello" component={() => 'componenet auth'}/>
+                <Route exact path="/sac/hello" component={() => 'component auth'}/>
                 <Route exact path="/sac/test" component={AlumniDataTest}/>
                 <Route path={'*'} component={NotFound}/>
             </Switch>

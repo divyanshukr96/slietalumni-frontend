@@ -36,3 +36,29 @@ export const USER_ADD = "USER_ADD";
 export const USER_EDIT = "USER_EDIT";
 export const USER_UPDATE = "USER_UPDATE";
 export const USER_DELETE = "USER_DELETE";
+
+
+export const NEWS_LOADING = "NEWS_LOADING";
+export const NEWS_LIST = "NEWS_LIST";
+export const NEWS_ADD = "NEWS_ADD";
+export const NEWS_EDIT = "NEWS_EDIT";
+export const NEWS_UPDATE = "NEWS_UPDATE";
+export const NEWS_DELETE = "NEWS_DELETE";
+
+
+export const EVENT_TYPE_LOADING = "EVENT_TYPE_LOADING";
+export const EVENT_TYPE_LIST = "EVENT_TYPE_LIST";
+export const EVENT_TYPE_ADD = "EVENT_TYPE_ADD";
+export const EVENT_TYPE_EDIT = "EVENT_TYPE_EDIT";
+export const EVENT_TYPE_UPDATE = "EVENT_TYPE_UPDATE";
+export const EVENT_TYPE_DELETE = "EVENT_TYPE_DELETE";
+
+
+export const EVENT_LOADING = "EVENT_LOADING";
+export const EVENT_LIST = "EVENT_LIST";
+export const EVENT_ADD = "EVENT_ADD";
+export const EVENT_EDIT = "EVENT_EDIT";
+export const EVENT_UPDATE = "EVENT_UPDATE";
+export const EVENT_PUBLISH = "EVENT_PUBLISH";
+export const EVENT_DELETE = "EVENT_DELETE";
+
