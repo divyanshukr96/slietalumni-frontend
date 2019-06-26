@@ -88,7 +88,8 @@ class AlumniDataViewForm extends Component {
                 bodyStyle={{paddingBottom: 8}}
             >
 
-                <a href={`/sac/alumni-database/${props.data.id}`} style={{position: "absolute", right: 24, marginTop: -16}}>
+                <a href={`/sac/alumni-database/${props.data.id}`}
+                   style={{position: "absolute", right: 24, marginTop: -16}}>
                     <Icon type="fullscreen" style={{fontSize: '1.2rem'}}/>
                 </a>
 
@@ -98,11 +99,14 @@ class AlumniDataViewForm extends Component {
                         <EditableCell edit={edit} name="name" label="Name" options={{
                             rules: [{required: true, message: 'Alumni name field is required!'}],
                         }} placeholder="Enter full name" {...props}/>
+
                         <EditableCell edit={edit} name="email" label="E-mail" options={{
                             rules: [{type: 'email', message: 'The input is not valid E-mail!'}]
                         }} placeholder="Enter Alumni e-mail id" {...props}/>
+
                         <EditableCell edit={edit} name="mobile" label="Mobile"
                                       placeholder="Enter mobile number" {...props}/>
+
                         <EditableCell edit={edit} name="programme" label="Programme" inputProps={
                             <Select placeholder="Select programme">
                                 <Select.Option key="programme" value={null}>None</Select.Option>
@@ -110,6 +114,7 @@ class AlumniDataViewForm extends Component {
                                     <Select.Option key={row.value} value={row.value}>{row.text}</Select.Option>)}
                             </Select>
                         } {...props}/>
+
                         <EditableCell edit={edit} name="branch" label="Branch" inputProps={
                             <Select placeholder="Select branch">
                                 <Select.Option key="branch" value={null}>None</Select.Option>
@@ -117,6 +122,7 @@ class AlumniDataViewForm extends Component {
                                     <Select.Option key={row.value} value={row.value}>{row.text}</Select.Option>)}
                             </Select>
                         } {...props}/>
+
                         <EditableCell edit={edit} name="batch" label="Batch" inputProps={
                             <Select placeholder="Select batch" showSearch>
                                 <Select.Option key="batch" value={null}>None</Select.Option>
@@ -124,15 +130,21 @@ class AlumniDataViewForm extends Component {
                                     <Select.Option key={row} value={row}>{row}</Select.Option>)}
                             </Select>
                         } {...props}/>
+
                         <EditableCell edit={edit} name="passing" label="Passing Year" inputProps={
-                        <Select placeholder="Select passing year" showSearch>
-                            <Select.Option key="passing" value={null}>None</Select.Option>
-                            {_.range(new Date().getFullYear(), 1985).map(row =>
-                                <Select.Option key={row} value={row}>{row}</Select.Option>)}
-                        </Select>
-                    } {...props}/>
+                            <Select placeholder="Select passing year" showSearch>
+                                <Select.Option key="passing" value={null}>None</Select.Option>
+                                {_.range(new Date().getFullYear(), 1985).map(row =>
+                                    <Select.Option key={row} value={row}>{row}</Select.Option>)}
+                            </Select>
+                        } {...props}/>
+
                         <EditableCell edit={edit} name="organisation" label="Organisation"
                                       placeholder="Enter current organisation" {...props}/>
+
+                        <EditableCell edit={edit} name="designation" label="Designation"
+                                      placeholder="Enter current designation" {...props}/>
+
                     </Form>
                 </EditableContext.Provider>
                 <div style={{textAlign: 'right'}}>

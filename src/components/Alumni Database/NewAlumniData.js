@@ -97,6 +97,10 @@ class NewAlumniDataForm extends Component {
                         {getFieldDecorator('organisation')(<Input placeholder="Enter current organisation"/>)}
                     </Form.Item>
 
+                    <Form.Item label="Designation" style={{marginBottom: 8}}>
+                        {getFieldDecorator('designation')(<Input placeholder="Enter current designation"/>)}
+                    </Form.Item>
+
                     <Form.Item {...formTailLayout} style={{marginBottom: 8}}>
                         {getFieldDecorator('accept', {
                             valuePropName: 'checked', initialValue: false,

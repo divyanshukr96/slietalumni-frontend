@@ -15,6 +15,7 @@ import NewsView from "components/News/NewsView";
 import EventTypes from "components/Events/EventTypes";
 import EventAdd from "components/Events/EventAdd";
 import EventView from "components/Events/EventView";
+import FeaturedAlumni from "components/FeaturedAlumni/FeaturedAlumni";
 
 const AuthRoutes = (props) => {
     return (
@@ -32,6 +33,8 @@ const AuthRoutes = (props) => {
                 <Route exact path="/sac/events" component={Events}/>
                 <Route exact path="/sac/events/create" component={EventAdd}/>
                 <Route exact path="/sac/events/:event" component={EventView}/>
+
+                <Route exact path="/sac/featured-alumni" component={FeaturedAlumni}/>
 
                 <Route exact path="/sac/users" component={Users}/>
                 <Route exact path="/sac/roles" component={Role}/>

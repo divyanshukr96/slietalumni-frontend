@@ -86,6 +86,12 @@ class AdminNavBar extends Component {
                             <span className="nav-text">nav 4</span>
                         </Menu.Item>
 
+                        <Menu.Item key="sac/featured-alumni">
+                            <Link to={'/sac/featured-alumni'}>
+                                <Icon type="user"/>
+                                <span className="nav-text">Featured Alumni</span>
+                            </Link>
+                        </Menu.Item>
 
                         <Menu.SubMenu
                             key="news"

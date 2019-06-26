@@ -120,6 +120,7 @@ class PublicNavBarTest extends Component {
                                 overflowedIndicator={
                                     <Icon
                                         style={{padding: 0, fontSize: 24, lineHeight: '64px'}}
+                                        className=""
                                         type={collapsed ? 'menu-unfold' : 'menu-fold'}
                                     />
                                 }
@@ -168,12 +169,6 @@ class PublicNavBarTest extends Component {
                                     </Menu.Item>
                                 </Menu.SubMenu>
 
-                                <Menu.Item key="gallery">
-                                    <Link to={'/gallery'}>
-                                        Gallery
-                                    </Link>
-                                </Menu.Item>
-
                                 <Menu.Item key="contact">
                                     <Link to={'/contact'}>
                                         Contact Us
@@ -213,3 +208,4 @@ class PublicNavBarTest extends Component {
 }
 
 export default withStyles(styles)(withRouter(PublicNavBarTest));
+
