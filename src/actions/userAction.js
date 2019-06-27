@@ -52,12 +52,12 @@ export const userUpdate = (id, formData) => async dispatch => {
 export const userDelete = () => async (dispatch, getState) => {
     const {users: {data: {id}}} = getState();
     try {
-        const {data} = await axios.delete('/api/users/' + id);
-        data.data && dispatch({
+        await axios.delete('/api/users/' + id);
+        dispatch({
             type: type.USER_DELETE,
             payload: id
         });
-        return data;
+        return id;
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
 import {Drawer, Layout, Menu, Icon} from 'antd';
 import {Link, withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
@@ -34,7 +35,7 @@ class PublicNavBarTest extends Component {
             collapsed: true,
             breakPoint: false,
             selected: null,
-            auth: true,
+            auth: false,
         }
     }
 
@@ -55,7 +56,7 @@ class PublicNavBarTest extends Component {
     toggle = () => this.setState({collapsed: !this.state.collapsed});
 
     loginLogout = () => {
-        const {auth} = this.state;
+        const {auth} = this.props;
         return auth ? <Menu.Item key="38">Profile</Menu.Item> : <Menu.Item key="login"><Link to={'/login'}>
             Login
         </Link></Menu.Item>;
@@ -212,4 +213,7 @@ class PublicNavBarTest extends Component {
     }
 }
 
-export default withStyles(styles)(withRouter(PublicNavBarTest));
+const mapStateToProps = ({auth}) => ({
+    auth: auth.isAuthenticated
+});
+export default connect(mapStateToProps)(withStyles(styles)(withRouter(PublicNavBarTest)));

@@ -7,11 +7,19 @@ import NetworkService from "./utils/networkService"
 import configureStore, {history} from "./stores/configureStore";
 import routes from "./routes";
 import './index.css';
+import SetAuthorizationToken from "utils/setAuthorizationToken";
+import {setCurrentUser} from "actions/authAction";
 
 
 const store = configureStore();
 
 NetworkService.setupInterceptors(store, history);
+
+const token = localStorage.token;
+SetAuthorizationToken(token);
+if (token) {
+    store.dispatch(setCurrentUser(token))
+}
 
 ReactDOM.render(<Provider store={store}>
     <ConnectedRouter history={history} children={routes}/>

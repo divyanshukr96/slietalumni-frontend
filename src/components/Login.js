@@ -3,6 +3,7 @@ import {Paper, withStyles} from "@material-ui/core";
 import LoginForm from "./LoginForm";
 import {Typography} from "antd";
 import SAALogo from './SAA-logo-color.png'
+
 const {Title} = Typography;
 
 const styles = theme => ({
@@ -23,7 +24,7 @@ const styles = theme => ({
 
 class Login extends Component {
     render() {
-        const {classes} = this.props;
+        const {classes, ...rest} = this.props;
         return (
             <Paper className={classes.main}>
                 <div style={{textAlign: 'center'}}>
@@ -32,7 +33,7 @@ class Login extends Component {
                         Sign in
                     </Title>
                 </div>
-                <LoginForm/>
+                <LoginForm {...rest}/>
             </Paper>
         );
     }
