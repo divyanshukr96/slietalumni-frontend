@@ -19,22 +19,22 @@ export default (state = initialState, action) => {
             return {...state, featured: [action.payload, ...state.featured]};
 
 
-        case type.ALUMNI_DATA_VIEW:
-            return {...state, alumni: state.data.filter(alumni => alumni.id === action.payload)[0]};
-        case type.ALUMNI_DATA_EDIT:
-            return {...state, editingKey: action.payload};
-        case type.ALUMNI_DATA_EDIT_CANCEL:
-            return {...state, editingKey: action.payload};
-        case type.ALUMNI_DATA_SEARCH:
-            return {...state, data: dataFilter(state, action.payload)};
-        case type.ALUMNI_DATA_UPDATE:
-            return {...state, dataList: dataUpdate(state.dataList, action), data: dataUpdate(state.data, action)};
-        case type.ALUMNI_DATA_DELETE:
-            return {
-                ...state,
-                dataList: state.data.filter(alumni => alumni.id !== action.payload),
-                data: state.data.filter(alumni => alumni.id !== action.payload)
-            };
+        // case type.ALUMNI_DATA_VIEW:
+        //     return {...state, alumni: state.data.filter(alumni => alumni.id === action.payload)[0]};
+        // case type.ALUMNI_DATA_EDIT:
+        //     return {...state, editingKey: action.payload};
+        // case type.ALUMNI_DATA_EDIT_CANCEL:
+        //     return {...state, editingKey: action.payload};
+        // case type.ALUMNI_DATA_SEARCH:
+        //     return {...state, data: dataFilter(state, action.payload)};
+        // case type.ALUMNI_DATA_UPDATE:
+        //     return {...state, dataList: dataUpdate(state.dataList, action), data: dataUpdate(state.data, action)};
+        // case type.ALUMNI_DATA_DELETE:
+        //     return {
+        //         ...state,
+        //         dataList: state.data.filter(alumni => alumni.id !== action.payload),
+        //         data: state.data.filter(alumni => alumni.id !== action.payload)
+        //     };
         default:
             return state;
     }

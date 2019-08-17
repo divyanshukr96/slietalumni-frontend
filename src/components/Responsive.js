@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Layout, Menu, Icon} from 'antd';
-import Logo from '../saa-logo.png'
+import Logo from 'assets/saa-logo.png'
 import {Link} from "react-router-dom";
 
 const {Header, Content, Footer, Sider} = Layout;

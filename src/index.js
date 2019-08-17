@@ -8,7 +8,7 @@ import configureStore, {history} from "./stores/configureStore";
 import routes from "./routes";
 import './index.css';
 import SetAuthorizationToken from "utils/setAuthorizationToken";
-import {setCurrentUser} from "actions/authAction";
+import {setCurrentUser, authCheck} from "actions/authAction";
 
 
 const store = configureStore();
@@ -18,6 +18,7 @@ NetworkService.setupInterceptors(store, history);
 const token = localStorage.token;
 SetAuthorizationToken(token);
 if (token) {
+    store.dispatch(authCheck());
     store.dispatch(setCurrentUser(token))
 }
 

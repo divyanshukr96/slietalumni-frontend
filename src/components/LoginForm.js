@@ -26,7 +26,7 @@ class NormalLoginForm extends React.Component {
         return (
             <Form onSubmit={this.handleSubmit} className="login-form" style={{maxWidth: 800}}>
                 <FormError form={form}/>
-                <Form.Item>
+                <Form.Item style={{marginBottom: 8}}>
                     {getFieldDecorator('username', {
                         rules: [{required: true, message: 'Please enter your email / username!'}],
                     })(
@@ -43,7 +43,7 @@ class NormalLoginForm extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item>
-                    {getFieldDecorator('remember', {
+                    {getFieldDecorator('remember_me', {
                         valuePropName: 'checked',
                         initialValue: false,
                     })(
@@ -54,7 +54,7 @@ class NormalLoginForm extends React.Component {
                             style={{width: '100%'}}>
                         Log in
                     </Button>
-                    Or <Link to={'/register'}> register now </Link>
+                    Or <Link to={'/register'}> Register Now </Link>
                 </Form.Item>
             </Form>
         );

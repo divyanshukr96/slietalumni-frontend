@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {Layout, Menu, Icon} from 'antd';
-import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {Layout, Menu, Icon, Divider} from 'antd';
+import {Link, Redirect} from "react-router-dom";
+import {logout} from 'actions/authAction';
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -44,7 +46,8 @@ class AdminNavBar extends Component {
 
     render() {
         const {collapsed, breakPoint, selected} = this.state;
-        const {children} = this.props;
+        const {children, auth, onLogout} = this.props;
+        if (!auth) return <Redirect to={'/login'}/>;
         return (
             <Layout hasSider={true}>
                 <Sider
@@ -85,6 +88,18 @@ class AdminNavBar extends Component {
                             <Icon type="user"/>
                             <span className="nav-text">nav 4</span>
                         </Menu.Item>
+
+                        <Menu.SubMenu
+                            key="images"
+                            title={<span><Icon type="picture"/>Images</span>}
+                        >
+                            <Menu.Item key="sac/images/carousel">
+                                <Link to={'/sac/images/carousel'}>
+                                    <span className="nav-text">Home Carousel</span>
+                                </Link>
+                            </Menu.Item>
+
+                        </Menu.SubMenu>
 
                         <Menu.Item key="sac/featured-alumni">
                             <Link to={'/sac/featured-alumni'}>
@@ -208,6 +223,11 @@ class AdminNavBar extends Component {
                                 <span className="nav-text">Alumni Database</span>
                             </Link>
                         </Menu.Item>
+                        {auth && <Menu.Divider/>}
+                        {auth && <Menu.Item key="logout" onClick={onLogout}>
+                            <Icon type="logout"/>
+                            <span className="nav-text">Logout</span>
+                        </Menu.Item>}
                     </Menu>
                 </Sider>
                 <Layout>
@@ -230,4 +250,12 @@ class AdminNavBar extends Component {
     }
 }
 
-export default AdminNavBar;
+const mapStateToProps = ({auth}) => ({
+    auth: auth.isAuthenticated
+});
+
+const mapDispatchToProps = dispatch => ({
+    onLogout: () => dispatch(logout()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminNavBar);

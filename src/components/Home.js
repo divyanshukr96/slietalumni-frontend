@@ -8,6 +8,7 @@ import UpcomingEvents from "../components/UpcomingEvents";
 import Chapters from "../components/Chapters";
 import Stories from "../components/Stories";
 import FeaturedAlumni from "../components/FeaturedAlumni";
+import HomeCarousel from "components/HomeCarousel";
 
 const styles = theme => ({});
 
@@ -17,6 +18,7 @@ class Home extends Component {
         return (
             <>
                 <div style={{width: 1300, maxWidth: '100%', margin: 'auto'}}>
+                    <HomeCarousel/>
                     <WelcomeMessage/>
                     <Row gutter={8} type={'flex'} style={{flexDirection: 'row-reverse'}}>
                         <Col lg={6} md={10} style={{marginBottom: 8}}>

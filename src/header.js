@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import {Layout, Menu, Breadcrumb} from 'antd';
 
-import Logo from "./saa-logo.png";
+import Logo from "assets/saa-logo.png";
 
 const {Header, Content, Footer} = Layout;
 

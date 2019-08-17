@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import * as PropTypes from 'prop-types';
 import {Paper, withStyles} from "@material-ui/core";
 import AlumniRegistrationForm from "components/Alumni Registration/AlumniRegistrationForm";
-import SAALogo from "components/SAA-logo-color.png";
+import SAALogo from "assets/SAA-logo-color.png";
 import {Typography} from "antd";
 import {Divider} from "antd/es";
 const {Title} = Typography;

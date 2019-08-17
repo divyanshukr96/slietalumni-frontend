@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {Paper, withStyles} from "@material-ui/core";
 import LoginForm from "./LoginForm";
-import {Typography} from "antd";
-import SAALogo from './SAA-logo-color.png'
+import {Button, Divider, Typography} from "antd";
+import SAALogo from 'assets/SAA-logo-color.png'
 
 const {Title} = Typography;
 
 const styles = theme => ({
     main: {
         width: 'auto',
-        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+        padding: `${theme.spacing() * 2}px ${theme.spacing() * 3}px ${theme.spacing() * 3}px`,
+        [theme.breakpoints.up(400 + theme.spacing() * 3 * 2)]: {
             width: 400,
             margin: 'auto',
         },
@@ -19,6 +19,18 @@ const styles = theme => ({
             padding: 0,
         },
     },
+    linkedIn: {
+        width: '100%',
+        background: '#0073b1',
+        '& i': {
+            float: 'left',
+        },
+        '& svg': {
+            width: '1.5rem',
+            height: '1.5rem',
+        }
+
+    }
 });
 
 
@@ -33,6 +45,10 @@ class Login extends Component {
                         Sign in
                     </Title>
                 </div>
+                <Button icon="linkedin" type="primary" size={"large"} className={classes.linkedIn}>
+                    Sign in with LinkedIn
+                </Button>
+                <Divider orientation={"center"} style={{margin: '8px 0'}}>Or</Divider>
                 <LoginForm {...rest}/>
             </Paper>
         );

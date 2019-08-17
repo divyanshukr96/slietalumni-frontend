@@ -12,11 +12,13 @@ import ChairmanMessage from "../components/Message/ChairmanMessage";
 import Association from "../components/About/Association";
 import SAAConstitution from "../components/About/SAAConstitution";
 import PresidentMessage from "../components/Message/PresidentMessage";
-import ProfileDetails from "../components/ProfileDetails";
 import FormLayout from "../components/Form/FormLayout";
-import Donate from "../components/Donate";
+import DonateButton from "components/DonateButton";
 import Register from "components/Alumni Registration/Register";
 import RegisterConfirmation from "components/Alumni Registration/RegisterConfirmation";
+import Profile from "components/Profile";
+import Feeds from "components/Feeds/Feeds";
+import Donate from 'components/Donate'
 
 const Route = ({component: Component, ...rest}) => (
     <RouteComponent
@@ -31,10 +33,12 @@ const Route = ({component: Component, ...rest}) => (
 const PublicRoutes = () => {
     return (
         <>
-            <Donate/>
+            <DonateButton/>
             <PublicNavBar>
                 <Switch>
                     <Route exact path={'/'} component={Home}/>
+
+                    <Route exact path={'/donate'} component={Donate}/>
 
                     <Route exact path={'/form'} component={FormLayout}/>
 
@@ -50,11 +54,13 @@ const PublicRoutes = () => {
                     <Route exact path={'/message/chairman'} component={ChairmanMessage}/>
                     <Route exact path={'/message/president'} component={PresidentMessage}/>
 
-                    <Route exact path="/profile" component={ProfileDetails}/>
+                    <Route exact path="/feeds" component={Feeds}/>
+
+                    <Route exact path="/profile" component={Profile}/>
 
                     <Route exact path={'/login'} component={Login}/>
                     <Route exact path={'/register'} component={Register}/>
-                    <Route exact path={'/register/confirmation'} component={RegisterConfirmation}/>
+                    <Route exact path={'/registration/confirmation'} component={RegisterConfirmation}/>
                     <Route exact path={'/contact'} component={ContactUs}/>
 
                     <Route exact path={'/a'} component={() => 'Compnenet a'}/>

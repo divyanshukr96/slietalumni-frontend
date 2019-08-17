@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
-import {Card, Typography} from "antd";
-import CoverPhoto from "../components/CoverPhoto";
-import ProfilePhoto from "../components/ProfilePhoto";
+import {Button, Card, Icon, Typography} from "antd";
+import CoverPhoto from "components/Profile/CoverPhoto";
+import ProfilePhoto from "components/Profile/ProfilePhoto";
+import About from "components/Profile/About";
 
 const {Title, Paragraph} = Typography;
 const styles = theme => ({
@@ -44,7 +45,6 @@ class ProfileDetails extends Component {
                 <Card
                     bodyStyle={{padding: 0}}
                     cover={<CoverPhoto/>}
-                    // actions={[<Icon type="setting"/>, <Button block>Profile</Button>, <Icon type="ellipsis"/>, <Icon type="edit"/>]}
                 >
                     <div className={classes.container}>
                         <ProfilePhoto/>
@@ -54,6 +54,7 @@ class ProfileDetails extends Component {
                         </div>
                     </div>
                 </Card>
+                <About/>
             </div>
         );
     }

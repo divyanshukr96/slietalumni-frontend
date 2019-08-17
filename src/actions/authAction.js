@@ -2,8 +2,12 @@ import * as type from './actionTypes'
 import axios from 'axios';
 import * as _ from 'lodash'
 
+export const logout = () => dispatch => {
+    dispatch(unauthorized());
+};
+
 export const unauthorized = () => {
-    localStorage.removeItem('token1');
+    localStorage.removeItem('token');
     return {
         type: type.USER_AUTHENTICATED,
         payload: false
@@ -38,6 +42,18 @@ export const login = formData => async dispatch => {
         dispatch({
             type: type.LOGIN_LOADING,
             payload: false
+        });
+    }
+};
+
+export const authCheck = () => async dispatch => {
+    try {
+        const {data} = await axios.get('/api/auth');
+        return data;
+    } catch ({response}) {
+        dispatch({
+            type: type.ERROR_VALIDATION,
+            payload: response.data
         });
     }
 };

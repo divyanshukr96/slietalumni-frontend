@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Drawer, Layout, Menu, Icon} from 'antd';
 import {Link, withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
-import Logo from '../saa-logo.png'
+import Logo from 'assets/saa-logo.png'
 
 const {Header, Content, Footer, Sider} = Layout;
 

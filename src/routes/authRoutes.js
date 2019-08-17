@@ -16,6 +16,7 @@ import EventTypes from "components/Events/EventTypes";
 import EventAdd from "components/Events/EventAdd";
 import EventView from "components/Events/EventView";
 import FeaturedAlumni from "components/FeaturedAlumni/FeaturedAlumni";
+import Image from "components/Images";
 
 const AuthRoutes = (props) => {
     return (
@@ -24,6 +25,8 @@ const AuthRoutes = (props) => {
                 {/*<Route exact path="/sac" component={AdminNavBar}/>*/}
                 <Route exact path="/sac/alumni-database" component={AlumniData}/>
                 <Route exact path="/sac/new-registration" component={RegistrationData}/>
+
+                <Route exact path="/sac/images" component={Image}/>
 
                 <Route exact path="/sac/news" component={News}/>
                 <Route exact path="/sac/news/create" component={NewsCreate}/>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button} from "antd";
 import {withStyles} from "@material-ui/core";
+import {withRouter} from "react-router-dom";
 
 const styles = ({
     root: {
@@ -22,8 +23,16 @@ const styles = ({
     }
 });
 
-const Donate = (props) => <div className={props.classes.root}>
-    <Button type={"danger"} size={"large"} className={props.classes.donate}>Donate</Button>
+const DonateButton = (props) => <div className={props.classes.root}>
+    <Button
+        hidden={props.location.pathname === '/donate'}
+        onClick={() => props.history.push('/donate')}
+        className={props.classes.donate}
+        type={"danger"}
+        size={"large"}
+    >
+        Donate
+    </Button>
 </div>;
 
-export default withStyles(styles)(Donate);
+export default withRouter(withStyles(styles)(DonateButton));

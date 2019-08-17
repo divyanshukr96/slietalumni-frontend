@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 import * as PropTypes from 'prop-types';
 import {Paper, withStyles} from "@material-ui/core";
-import SAALogo from "components/SAA-logo-color.png";
+import SAALogo from "assets/SAA-logo-color.png";
 import {Typography} from "antd";
 import {Divider} from "antd/es";
-import RegisterConfirmationForm from "components/Alumni Registration/RegisterConfirmationForm";
+import RegisterConfirmationForm from "./RegisterConfirmationForm";
+
 const {Title} = Typography;
 
 const styles = theme => ({
     main: {
         width: 'auto',
         maxWidth: '100%',
-        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+        padding: `${theme.spacing() * 2}px ${theme.spacing() * 3}px ${theme.spacing() * 3}px`,
+        [theme.breakpoints.up(400 + theme.spacing() * 3 * 2)]: {
             width: 400,
             margin: 'auto',
         },
