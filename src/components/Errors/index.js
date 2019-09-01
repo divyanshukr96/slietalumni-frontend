@@ -4,7 +4,9 @@ import {connect} from "react-redux";
 import * as PropTypes from 'prop-types';
 
 class FormError extends React.Component {
-    componentWillReceiveProps(nextProps, nextContext) {
+    state = {};
+
+    static getDerivedStateFromProps(nextProps, prevState) {
         const {errors, form: {setFields, getFieldValue}} = nextProps;
         if (!_(errors)) {
             Object.keys(errors).forEach(k => {
@@ -15,9 +17,11 @@ class FormError extends React.Component {
                     }
                 });
             });
-            this.props.onClearError();
+            nextProps.onClearError();
         }
+        return null;
     }
+
 
     render() {
         return null;

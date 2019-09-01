@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import * as PropTypes from 'prop-types';
 import {withStyles} from "@material-ui/core";
-import {Avatar, Card, Col, Divider, Row, Table, Tooltip, Typography} from "antd";
+import {Avatar, Button, Card, Col, Divider, Result, Row, Table, Tooltip, Typography} from "antd";
 import Text from "antd/es/typography/Text";
+import ambulance from 'assets/ambulance.svg'
+import DonationForm from "./DonationForm.js";
 
 const {Title, Paragraph} = Typography;
 
@@ -62,34 +64,49 @@ class Index extends Component {
                         SAA</Tooltip></Title>
                     <Divider style={{marginTop: 0}}/>
 
-                    <Row>
+                    <Card
+                        title={"Account Details"}
+                        bodyStyle={{padding: 0}}
+                        style={{borderBottom: 'none', maxWidth: 600, margin: 'auto', whiteSpace: 'nowrap'}}
+                    >
+                        <Table
+                            columns={columns}
+                            dataSource={data}
+                            showHeader={false}
+                            size={"middle"}
+                            rowKey={({label}) => label}
+                            pagination={false}
+                        />
+                    </Card>
+
+                    <Row style={{marginTop: 16}}>
                         <Col xs={{span: 5, offset: 1}} lg={{span: 6, offset: 2}}>
-                            <Card>
+                            <Card
+                                hoverable
+                                cover={
+                                    <div style={{textAlign: 'center'}}>
+                                        <img alt="example" src={ambulance} style={{width: 120}}/>
+                                    </div>
+                                }
+                                bodyStyle={{paddingTop: 4}}
+                            >
                                 <Card.Meta
-                                    avatar={<Avatar>1</Avatar>}
                                     title="Donate for Ambulance fund"
                                     description="Donate for Ambulance fund"
                                 />
+                                <div style={{textAlign: 'center', marginTop: 16}}>
+                                    <DonationForm donateFor={'Ambulance'}/>
+                                </div>
+
                             </Card>
                         </Col>
                         <Col xs={{span: 11, offset: 1}} lg={{span: 6, offset: 2}}>
-                            <Card title={<span><Avatar>1</Avatar> Donate for Ambulance fund</span>} type={"inner"}>
-                                <Card.Meta
-                                    avatar={<Avatar>1</Avatar>}
-                                    title="Donate for Ambulance fund"
-                                    description="Donate for Ambulance fund"
-                                />
-                            </Card>
+
                         </Col>
                         <Col xs={{span: 5, offset: 1}} lg={{span: 6, offset: 2}}>
-                            Col
+
                         </Col>
                     </Row>
-
-                    <Card title={"Account Details"} bodyStyle={{padding: 0}} style={{borderBottom: 'none', maxWidth: 600, margin: 'auto', whiteSpace: 'nowrap'}}>
-                        <Table columns={columns} dataSource={data} showHeader={false} size={"middle"}
-                               pagination={false}/>
-                    </Card>
 
                 </div>
             </>

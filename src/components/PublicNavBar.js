@@ -19,7 +19,7 @@ const styles = theme => ({
     },
     content: {
         padding: 24,
-        background: '#fff',
+        // background: '#fff',
         minHeight: 360,
         [theme.breakpoints.up('sm')]: {
             margin: '24px 16px 0',
@@ -66,7 +66,7 @@ class PublicNavBarTest extends Component {
         const {collapsed, breakPoint, selected} = this.state;
         const {classes, children} = this.props;
         return (
-            <Layout >
+            <Layout>
                 <Drawer
                     placement="left"
                     closable={false}

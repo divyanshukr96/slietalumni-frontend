@@ -32,37 +32,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backup.enva" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/config-overrides.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/PublicNavBarTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/PublicNavBarTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/authAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/authAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/AlumniRegistrationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Alumni Registration/AlumniRegistrationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Alumni Registration/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/RegisterConfirmation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Alumni Registration/RegisterConfirmation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/RegisterConfirmationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Alumni Registration/RegisterConfirmationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CoverPhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/CoverPhoto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Donate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DonateButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Donate/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Donate/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Errors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Errors/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProfileDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProfilePhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/NewPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/NewPost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PublicNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Responsive.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Responsive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SAA-logo-color.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/SAA-logo-color.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/featuredAlumniReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/featuredAlumniReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/authRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/authReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/publicRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/publicRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/saa-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/saa-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/networkService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/networkService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +69,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/Paid/Amul-India/frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -99,22 +82,22 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="E:\Alumni_Association\alumni-frontend\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
+      <recent name="E:\Alumni_Association\alumni-frontend\public" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Events" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Profile" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Message" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
-      <recent name="E:\Alumni_Association\alumni-frontend\public" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Events" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -187,7 +170,14 @@
       <workItem from="1565206738992" duration="18245000" />
       <workItem from="1565952227461" duration="334000" />
       <workItem from="1565992250103" duration="84000" />
-      <workItem from="1566029283706" duration="669000" />
+      <workItem from="1566029283706" duration="15478000" />
+      <workItem from="1566166077298" duration="1055000" />
+      <workItem from="1566218512514" duration="6774000" />
+      <workItem from="1566903416647" duration="1082000" />
+      <workItem from="1567147381898" duration="7000" />
+      <workItem from="1567244178248" duration="23703000" />
+      <workItem from="1567342745298" duration="48000" />
+      <workItem from="1567342805096" duration="3740000" />
     </task>
     <servers />
   </component>

@@ -21,6 +21,13 @@ export const setCurrentUser = token => {
     }
 };
 
+export const authRequired = (data) => {
+    return {
+        type: type.LOGIN_REQUIRED,
+        payload: _.isBoolean(data) ? data : true
+    }
+};
+
 export const login = formData => async dispatch => {
     try {
         dispatch({
@@ -49,6 +56,22 @@ export const login = formData => async dispatch => {
 export const authCheck = () => async dispatch => {
     try {
         const {data} = await axios.get('/api/auth');
+        return data;
+    } catch ({response}) {
+        dispatch({
+            type: type.ERROR_VALIDATION,
+            payload: response.data
+        });
+    }
+};
+
+export const fetchDetails = () => async dispatch => {
+    try {
+        const {data} = await axios.get('/api/auth');
+        dispatch({
+            type: type.AUTH_USER_DETAIL,
+            payload: data
+        });
         return data;
     } catch ({response}) {
         dispatch({

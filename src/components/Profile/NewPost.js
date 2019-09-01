@@ -1,5 +1,38 @@
 import React, {Component} from 'react';
-import {Button, Form, Icon, Input, Modal, Radio, Upload} from "antd";
+import {Avatar, Button, Card, Col, Form, Icon, Input, Modal, Radio, Row, Switch, Tooltip, Upload} from "antd";
+import {withStyles} from "@material-ui/core";
+
+const styles = theme => ({
+    placeholder: {
+        '&::-webkit-input-placeholder': {
+            // paddingTop: 8,
+            fontSize: 'initial'
+        },
+        '&::-moz-placeholder': {
+            // paddingTop: 8,
+            fontSize: 'initial'
+        },
+        '&:-ms-input-placeholder': {
+            // paddingTop: 8,
+            fontSize: 'initial'
+        },
+        '&:-moz-placeholder': {
+            // paddingTop: 8,
+            fontSize: 'initial'
+        },
+        border: 'unset',
+        padding: '4px',
+        marginBottom: 32,
+
+    },
+    antUploadItem: {
+        '& .ant-upload-list-item': {
+            width: 80,
+            height: 80,
+            padding: 2,
+        }
+    }
+});
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -10,14 +43,14 @@ function getBase64(file) {
     });
 }
 
-const NewPostForm = Form.create({name: 'form_in_modal'})(
+const NewPost = Form.create({name: 'new_post_alumni'})(
     class extends Component {
         state = {
             previewVisible: false,
             previewImage: '',
         };
 
-        handleCancel = () => this.setState({ previewVisible: false });
+        handleCancel = () => this.setState({previewVisible: false});
 
         handlePreview = async file => {
             if (!file.url && !file.preview) {
@@ -31,59 +64,94 @@ const NewPostForm = Form.create({name: 'form_in_modal'})(
         };
 
         render() {
-            const { previewVisible, previewImage} = this.state;
+            const {previewVisible, previewImage} = this.state;
             const {visible, onCancel, onCreate, form} = this.props;
             const {getFieldDecorator} = form;
+            const {classes} = this.props;
             return (
                 <div>
-                    <Modal
-                        visible={visible}
-                        title="Create a new post"
-                        okText="Create"
-                        onCancel={onCancel}
-                        onOk={onCreate}
+
+                    <Card
+                        bodyStyle={{
+                            padding: 8
+                        }}
                     >
-                        <Form layout="vertical">
-                            <Form.Item label="Title">
-                                {getFieldDecorator('title', {
-                                    rules: [{required: true, message: 'Please input the title of collection!'}],
-                                })(<Input/>)}
-                            </Form.Item>
-                            <Form.Item label="Description">
-                                {getFieldDecorator('description')(<Input.TextArea
-                                    placeholder="Autosize height based on content lines" autosize={{minRows: 4}}/>)}
-                            </Form.Item>
+                        <Row>
+                            <Col span={2}>
+                                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
+                            </Col>
+                            <Col span={22}>
+
+                                <Form layout="vertical">
+
+                                    <Form.Item style={{marginBottom: 0}}>
+                                        {getFieldDecorator('description')(
+                                            <Input.TextArea
+                                                className={classes.placeholder}
+                                                placeholder="Write something to SLIET Alumni Association Post . . ."
+                                                style={{margin: '4px 0 16px'}}
+                                                autosize={{minRows: 2}}
+                                            />
+                                        )}
+                                    </Form.Item>
 
 
-                            <Form.Item>
-                                {getFieldDecorator('image', {
-                                    // valuePropName: 'fileList',
-                                    // getValueFromEvent: this.normFile,
-                                })(
-                                    <Upload  listType={"picture-card"} multiple onPreview={this.handlePreview}>
-                                        <div>
-                                            <Icon type="plus" />
-                                            <div className="ant-upload-text">Upload</div>
-                                        </div>
-                                    </Upload>,
-                                )}
-                            </Form.Item>
+                                    <Form.Item style={{marginBottom: 0, display: 'inline-block'}}>
+                                        {getFieldDecorator('image', {
+                                            // valuePropName: 'fileList',
+                                            // getValueFromEvent: this.normFile,
+                                        })(
+                                            <Upload
+                                                className={classes.antUploadItem}
+                                                // listType={"picture-card"}
+                                                multiple
+                                                onPreview={this.handlePreview}>
+                                                <div>
+                                                    <Button shape="circle" icon="camera"/>
+                                                </div>
+                                            </Upload>
+                                        )}
+                                    </Form.Item>
+
+                                    {/*<Tooltip title="Add Image" placement={"right"}>*/}
+                                    {/*    <Button shape="circle" icon="camera"/>*/}
+                                    {/*</Tooltip>*/}
+
+                                    <Button style={{float: 'right'}} type="primary">
+                                        Post
+                                    </Button>
+
+                                    {/*<Switch*/}
+                                    {/*    checkedChildren="Public"*/}
+                                    {/*    unCheckedChildren="Private"*/}
+                                    {/*    defaultChecked*/}
+                                    {/*    size={"small"}*/}
+                                    {/*    style={{float: 'right', margin: 8}}*/}
+                                    {/*/>*/}
+
+                                    <Form.Item style={{float: 'right', marginBottom: 0}}>
+                                        {getFieldDecorator('private', {
+                                            initialValue: true,
+                                            valuePropName: 'checked'
+                                        })(
+                                            <Switch
+                                                checkedChildren="Public"
+                                                unCheckedChildren="Private"
+                                                size={"small"}
+                                                style={{margin: 8}}
+                                            />
+                                        )}
+                                    </Form.Item>
+
+                                </Form>
+
+                            </Col>
+                        </Row>
+                    </Card>
 
 
-                            <Form.Item className="collection-create-form_last-form-item">
-                                {getFieldDecorator('modifier', {
-                                    initialValue: 'public',
-                                })(
-                                    <Radio.Group>
-                                        <Radio value="public">Public</Radio>
-                                        <Radio value="private">Private</Radio>
-                                    </Radio.Group>,
-                                )}
-                            </Form.Item>
-                        </Form>
-                    </Modal>
                     <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-                        <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                        <img alt="example" style={{width: '100%'}} src={previewImage}/>
                     </Modal>
                 </div>
             );
@@ -91,7 +159,7 @@ const NewPostForm = Form.create({name: 'form_in_modal'})(
     }
 );
 
-class NewPost extends Component {
+class NewPostkk extends Component {
     state = {
         visible: true,
     };
@@ -123,18 +191,38 @@ class NewPost extends Component {
 
 
     render() {
+        const {classes} = this.props;
         return (
             <div>
-                <Button icon={'plus'} onClick={this.showModal} type={"primary"}>New Post</Button>
-                <NewPostForm
-                    wrappedComponentRef={this.saveFormRef}
-                    visible={this.state.visible}
-                    onCancel={this.handleCancel}
-                    onCreate={this.handleCreate}
-                />
+                <Card
+                    bodyStyle={{
+                        padding: 8
+                    }}
+                >
+                    <Row>
+                        <Col span={2}>
+                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
+                        </Col>
+                        <Col span={22}>
+                            <Input.TextArea
+                                className={classes.placeholder}
+                                style={{margin: '4px 0'}}
+                                autosize={{minRows: 2}}
+                                placeholder="Write something to SLIET Alumni Association Post . . ."
+                            />
+                            <Tooltip title="Add Image" placement={"right"}>
+                                <Button shape="circle" icon="camera"/>
+                            </Tooltip>
+
+                            <Button style={{float: 'right'}} type="primary">
+                                Post
+                            </Button>
+                        </Col>
+                    </Row>
+                </Card>
             </div>
         );
     }
 }
 
-export default NewPost;
+export default withStyles(styles)(NewPost);

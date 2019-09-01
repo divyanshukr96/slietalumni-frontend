@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
-import {Button, Card, Icon, Typography} from "antd";
-import CoverPhoto from "components/Profile/CoverPhoto";
-import ProfilePhoto from "components/Profile/ProfilePhoto";
-import About from "components/Profile/About";
+import {Button, Card, Divider, Icon, Typography} from "antd";
 
 const {Title, Paragraph} = Typography;
 const styles = theme => ({
@@ -28,34 +25,71 @@ const styles = theme => ({
         position: 'absolute',
         bottom: 0,
         left: 8,
-        [theme.breakpoints.down('480')]:{
+        [theme.breakpoints.down('480')]: {
             flexDirection: 'column',
             alignItems: 'center',
             position: 'unset',
-            marginTop:  -80,
+            marginTop: -80,
         },
     },
+
+    cardMeta: {
+        textAlign: "center",
+        '& div': {
+            marginBottom: '0 !important'
+        }
+    },
+    postsCount: {
+        border: "solid #e8e8e8 1px",
+        borderLeft: 'unset',
+        borderRight: 'unset',
+        padding: '8px',
+        margin: '16px 0',
+        fontWeight: '500'
+    },
+
 });
 
 class ProfileDetails extends Component {
     render() {
         const {classes} = this.props;
         return (
-            <div style={{maxWidth: 1200, margin: 'auto'}}>
-                <Card
-                    bodyStyle={{padding: 0}}
-                    cover={<CoverPhoto/>}
+            <Card
+                hoverable
+                style={{width: '100%', cursor: 'unset'}}
+                cover={<div
+                    style={{
+                        width: 150,
+                        height: 150,
+                        margin: 'auto',
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        marginTop: 16,
+                    }}
                 >
-                    <div className={classes.container}>
-                        <ProfilePhoto/>
-                        <div style={{padding: '0 12px'}}>
-                            <Title level={3} ellipsis style={{margin: 0}}>Divyanshu Kumar</Title>
-                            <Paragraph>Computer Science Engineer</Paragraph>
-                        </div>
-                    </div>
-                </Card>
-                <About/>
-            </div>
+                    <img
+                        alt="example"
+                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                        style={{width: '100%'}}
+                    />
+                </div>}
+                bodyStyle={{
+                    padding: '16px 24px'
+                }}
+            >
+                <Card.Meta title="Divyanshu" description="Student (SLIET, Longowal)"
+                           className={classes.cardMeta}
+                />
+
+                <div className={classes.postsCount}>
+                    97 Posts
+                    <span style={{float: 'right'}}>100 Follows</span>
+                </div>
+
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ducimus eius facilis iste non, nostrum
+                quam velit veniam. Architecto at excepturi iste magnam, modi necessitatibus
+
+            </Card>
         );
     }
 }
