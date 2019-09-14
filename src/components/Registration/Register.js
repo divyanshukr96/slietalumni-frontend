@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import * as PropTypes from 'prop-types';
 import {Paper, withStyles} from "@material-ui/core";
-import AlumniRegistrationForm from "components/Alumni Registration/AlumniRegistrationForm";
+import AlumniRegistrationForm from "components/Registration/RegistrationForm";
 import SAALogo from "assets/SAA-logo-color.png";
 import {Typography} from "antd";
 import {Divider} from "antd/es";
@@ -11,14 +11,14 @@ const styles = theme => ({
     main: {
         width: 'auto',
         maxWidth: '100%',
-        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+        padding: `${theme.spacing() * 2}px ${theme.spacing() * 3}px ${theme.spacing() * 3}px`,
+        [theme.breakpoints.up(400 + theme.spacing() * 3 * 2)]: {
             width: 800,
             margin: 'auto',
         },
         [theme.breakpoints.down('md')]: {
             boxShadow: theme.shadows[0],
-            padding: 0,
+            padding: 8,
         },
     },
 });

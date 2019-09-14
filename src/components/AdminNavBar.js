@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Layout, Menu, Icon, Divider} from 'antd';
+import {Layout, Menu, Icon} from 'antd';
 import {Link, Redirect} from "react-router-dom";
 import {logout} from 'actions/authAction';
+import Logo from "../assets/saa-logo.png";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -34,8 +35,10 @@ class AdminNavBar extends Component {
         this.changeMenuSelection(this.props);
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        this.changeMenuSelection(nextProps);
+    static getDerivedStateFromProps(nextProps, prevState) {
+        let {pathname} = nextProps.location;
+        pathname = pathname === '/' ? '/' : pathname.split('/').filter(x => x).join('/');
+        return {selected: pathname}
     }
 
     toggle = () => {
@@ -63,7 +66,11 @@ class AdminNavBar extends Component {
                     }}
                     collapsed={collapsed}
                 >
-                    <div className="logo"/>
+                    <div className="logo">
+                        <Link to={'/'}>
+                            <img src={Logo} alt="" style={{height: '100%', maxWidth: '100%'}}/>
+                        </Link>
+                    </div>
                     <Icon
                         className="trigger"
                         type={collapsed ? 'menu-unfold' : 'menu-fold'}
@@ -72,26 +79,10 @@ class AdminNavBar extends Component {
                     <Menu theme="dark" mode="inline" selectedKeys={[selected]}
                         // style={{overflow: 'auto', height: '100vh'}}
                     >
-                        <Menu.Item key="1">
-                            <Icon type="user"/>
-                            <span className="nav-text">nav 1</span>
-                        </Menu.Item>
-                        <Menu.Item key="2">
-                            <Icon type="video-camera"/>
-                            <span className="nav-text">nav 2</span>
-                        </Menu.Item>
-                        <Menu.Item key="3">
-                            <Icon type="upload"/>
-                            <span className="nav-text">nav 3</span>
-                        </Menu.Item>
-                        <Menu.Item key="4">
-                            <Icon type="user"/>
-                            <span className="nav-text">nav 4</span>
-                        </Menu.Item>
 
                         <Menu.SubMenu
                             key="images"
-                            title={<span><Icon type="picture"/>Images</span>}
+                            title={<span><Icon type="picture"/><span>Images</span></span>}
                         >
                             <Menu.Item key="sac/images/carousel">
                                 <Link to={'/sac/images/carousel'}>
@@ -110,7 +101,7 @@ class AdminNavBar extends Component {
 
                         <Menu.SubMenu
                             key="news"
-                            title={<span><Icon type="calendar"/>News</span>}
+                            title={<span><Icon type="calendar"/><span>News</span></span>}
                         >
                             <Menu.Item key="sac/news">
                                 <Link to={'/sac/news'}>
@@ -154,7 +145,7 @@ class AdminNavBar extends Component {
 
                         <Menu.SubMenu
                             key="events"
-                            title={<span><Icon type="schedule"/>Events</span>}
+                            title={<span><Icon type="schedule"/><span>Events</span></span>}
                         >
                             <Menu.Item key="sac/events">
                                 <Link to={'/sac/events'}>
@@ -197,7 +188,7 @@ class AdminNavBar extends Component {
 
                         <Menu.SubMenu
                             key="role-permission"
-                            title={<span><Icon type="laptop"/>Role & Permission</span>}
+                            title={<span><Icon type="laptop"/><span>Role & Permission</span></span>}
                         >
                             <Menu.Item key="sac/roles">
                                 <Link to={'/sac/roles'}>

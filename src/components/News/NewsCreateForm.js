@@ -4,14 +4,14 @@ import {Button, Form, Input, Icon} from 'antd';
 import BraftEditor from "braft-editor";
 import 'braft-editor/dist/index.css'
 import FormError from "components/Errors";
-import FileUploadButton from "components/Alumni Registration/FileUploadButton";
+import FileUploadButton from "components/Registration/FileUploadButton";
 
 const autoSave = (props, changedValues, allValues) => {
     if (props.form.isFieldTouched('content')) {
         allValues = {...allValues, content: allValues.content.toHTML()}
     }
     sessionStorage.setItem('newNews', JSON.stringify(allValues))
-}
+};
 
 class NewsCreateForm extends Component {
 

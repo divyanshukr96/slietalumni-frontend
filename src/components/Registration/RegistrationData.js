@@ -8,7 +8,7 @@ import {
     alumniDataSearch,
     confirmRegistration
 } from "actions/newAlumniAction";
-import NewAlumniView from "components/Alumni Registration/NewAlumniView";
+import NewAlumniView from "components/Registration/NewAlumniView";
 
 
 class AlumniData extends Component {
@@ -108,7 +108,7 @@ const mapStateToProps = ({newAlumni}) => ({
 const mapDispatchToProps = (dispatch) => ({
     getDataList: () => dispatch(alumniDataList()),
     startSearch: e => dispatch(alumniDataSearch(e)),
-    onConfirm: () => dispatch(confirmRegistration()),
+    onConfirm: (data) => dispatch(confirmRegistration(data)),
     onView: key => dispatch({type: 'NEW_ALUMNI_VIEW', payload: key}),
 });
 

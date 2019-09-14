@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import {Avatar, Button, Modal, Result} from "antd";
 import logo from 'assets/SAA-logo-color.png'
 
-class RegisterConfirmationMessage extends Component {
+class ConfirmationMessage extends Component {
     render() {
         const {visible} = this.props;
         return (
@@ -25,9 +25,9 @@ class RegisterConfirmationMessage extends Component {
     }
 }
 
-RegisterConfirmationMessage.propTypes = {
+ConfirmationMessage.propTypes = {
     visible: PropTypes.bool.isRequired,
     data: PropTypes.object,
 };
 
-export default RegisterConfirmationMessage;
+export default ConfirmationMessage;

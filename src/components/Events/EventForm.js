@@ -4,7 +4,7 @@ import {Button, Form, Input, Icon, Row, Col, DatePicker, TimePicker, Select} fro
 import BraftEditor from "braft-editor";
 import 'braft-editor/dist/index.css'
 import FormError from "components/Errors";
-import FileUploadButton from "components/Alumni Registration/FileUploadButton";
+import FileUploadButton from "components/Registration/FileUploadButton";
 import moment from "moment";
 
 const autoSave = (props, changedValues, allValues) => {

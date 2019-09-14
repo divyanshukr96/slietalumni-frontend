@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {withStyles} from "@material-ui/core";
-import {Link} from "react-router-dom";
 import {Card, Icon, List, Typography} from "antd";
 import axios from "axios";
 
@@ -17,6 +16,11 @@ const styles = theme => ({
             marginTop: 0,
         },
     },
+    itemCss: { // delete if image is not shown
+        '& > :last-child': {
+            margin: 'auto',
+        },
+    },
     meta: {
         marginBottom: `4px !important`,
         '& h4': {
@@ -28,20 +32,20 @@ const styles = theme => ({
     }
 });
 
-const UpcomingEvents = ({classes}) => {
-    const [events, setEvents] = useState([]);
+
+const NewsAndStories = ({classes}) => {
+    const [newsStories, setNewsStories] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {card, meta, list} = classes;
+    const {card, meta, list, itemCss} = classes;
 
     async function fetchUrl() {
-        const {data} = await axios.get("api/public/events");
-        if (data.data) setEvents(data.data);
+        const {data} = await axios.get("api/public/news-stories");
+        if (data.data) setNewsStories(data.data);
     }
 
     useEffect(() => {
         fetchUrl().then(r => setLoading(false));
     }, []);
-
 
     return (
         <>
@@ -49,34 +53,43 @@ const UpcomingEvents = ({classes}) => {
                 headStyle={{minHeight: 'auto'}}
                 bodyStyle={{padding: `0 8px`}}
                 className={card}
-                title={'Upcoming Events'}
-                extra={<Link to={'/events'}>View All</Link>}
+                title={'News & Stories'}
+                // extra={<Link to={'/news-stories'}>View All</Link>}
             >
                 <List
                     itemLayout="vertical"
-                    className={list}
-                    dataSource={events}
                     loading={loading}
+                    className={list}
+                    dataSource={newsStories}
                     // size="large"
                     pagination={{
                         pageSize: 4,
                         size: 'small',
                         hideOnSinglePage: true,
                     }}
-                    renderItem={event => (
+                    renderItem={(item, index) => (
                         <List.Item
-                            key={event.id}
+                            key={index}
                             style={{padding: `8px 0`}}
+                            className={itemCss}
                             actions={[
-                                <span><Icon type={"calendar"} style={{marginRight: 8}}/>{event.date}</span>,
+                                <span>
+                                    <Icon type={"calendar"} style={{marginRight: 8}}/>
+                                    {item.published_at}
+                                    </span>,
                                 <a href={'/'}>View Details</a>
                             ]}
+                            extra={<img
+                                width={80}
+                                alt={item.title}
+                                src={item.cover_thumb}/>
+                            } // delete css if this is removed
                         >
                             <List.Item.Meta
                                 className={meta}
-                                title={<a href="https://ant.design">{event.title}</a>}
+                                title={<a href="#">{item.title}</a>}
                                 description={<Paragraph ellipsis={{rows: 3}} style={{marginBottom: 0}}>
-                                    {event.description}
+                                    {item.description}
                                 </Paragraph>}
                             />
                         </List.Item>
@@ -88,4 +101,4 @@ const UpcomingEvents = ({classes}) => {
 };
 
 
-export default withStyles(styles)(UpcomingEvents);
+export default withStyles(styles)(NewsAndStories);

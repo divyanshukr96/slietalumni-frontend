@@ -20,7 +20,7 @@ class News extends Component {
 
     columns = [
         {title: 'News Title', dataIndex: 'title', render: DataRender,},
-        // {title: 'Description', dataIndex: 'description', render: DataRender, width: '60%'},
+        {title: 'Description', dataIndex: 'description_sort', render: DataRender},
         // {
         //     title: 'Content', dataIndex: 'content', render: (content) => DataRender(
         //         <div className="braft-output-content" dangerouslySetInnerHTML={{__html: content}}/>
@@ -29,8 +29,8 @@ class News extends Component {
         {title: 'Created at', dataIndex: 'created_at', className: 'px-0'},
         {
             title: 'Publish By',
-            dataIndex: 'published_by',
-            render: (e) => e ? <span><Badge status="success"/>{e}</span> :
+            dataIndex: 'published',
+            render: (publish, {published_by}) => publish ? <span><Badge status="success"/>{published_by.name}</span> :
                 <Text type={"danger"}><Badge status="error"/>Draft</Text>,
         },
         {

@@ -4,9 +4,9 @@ import axios from 'axios';
 export const alumniDataAdd = formData => async dispatch => {
     try {
         const {data} = await axios.post('/api/alumni-data', formData);
-        dispatch({
+        data.data && dispatch({
             type: type.ALUMNI_DATA_ADD,
-            payload: data
+            payload: data.data
         });
         return true;
     } catch ({response}) {
@@ -20,9 +20,9 @@ export const alumniDataAdd = formData => async dispatch => {
 export const alumniDataList = () => async dispatch => {
     try {
         const {data} = await axios.get('/api/alumni-data');
-        dispatch({
+        data.data && dispatch({
             type: type.ALUMNI_DATA_LIST,
-            payload: data
+            payload: data.data
         });
     } catch ({response}) {
         response && dispatch({
@@ -36,13 +36,13 @@ export const alumniDataUpdate = (id, formData) => async (dispatch, getState) => 
     const {alumniDatabase: {alumni, editingKey}} = getState();
     try {
         const {data} = await axios.patch('/api/alumni-data/' + id, formData);
-        await dispatch({
+        data.data && await dispatch({
             type: type.ALUMNI_DATA_UPDATE,
-            payload: data
+            payload: data.data
         });
-        if (alumni) await dispatch({
+        if (alumni && data.data) await dispatch({
             type: type.ALUMNI_DATA_VIEW,
-            payload: data.id
+            payload: data.data.id
         });
         if (editingKey) await dispatch({
             type: type.ALUMNI_DATA_EDIT_CANCEL,

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Drawer, Layout, Menu, Icon} from 'antd';
+import {Drawer, Layout, Menu, Icon, Button, Tooltip} from 'antd';
 import {Link, withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
 import Logo from 'assets/saa-logo.png'
@@ -19,16 +19,22 @@ const styles = theme => ({
     },
     content: {
         padding: 24,
+        paddingTop: 8,
         // background: '#fff',
         minHeight: 360,
         [theme.breakpoints.up('sm')]: {
             margin: '24px 16px 0',
         }
-    }
+    },
+    logout: {
+        '& i': {
+            marginRight: '0 !important'
+        }
+    },
 });
 
 
-class PublicNavBarTest extends Component {
+class PublicNavBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -49,17 +55,33 @@ class PublicNavBarTest extends Component {
         this.changeMenuSelection(this.props);
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        this.changeMenuSelection(nextProps);
+    static getDerivedStateFromProps(nextProps, prevState) {
+        let {pathname} = nextProps.location;
+        pathname = pathname === '/' ? '/' : pathname.split('/').filter(x => x).join('/');
+        return {selected: pathname}
     }
+
 
     toggle = () => this.setState({collapsed: !this.state.collapsed});
 
-    loginLogout = () => {
-        const {auth} = this.props;
-        return auth ? <Menu.Item key="38">Profile</Menu.Item> : <Menu.Item key="login"><Link to={'/login'}>
-            Login
-        </Link></Menu.Item>;
+    loginLogout = (sidebar) => {
+        const {auth, classes} = this.props;
+        return auth ? [
+            <Menu.Item key="profile">
+                <Link to={'/profile'}>{sidebar && <Icon type="profile"/>} Profile</Link>
+            </Menu.Item>,
+            <Menu.Item key="sac-home">
+                <Link to={'/sac'}>{sidebar && <Icon type="dashboard"/>} Dashboard</Link>
+            </Menu.Item>,
+            <Menu.Item key="logout">
+                <Tooltip placement="right" title='Logout'>
+                    <Button type="primary" icon="logout" className={classes.logout}>{sidebar && 'Logout'}
+                    </Button>
+                </Tooltip>
+            </Menu.Item>
+        ] : <Menu.Item key="login">
+            <Link to={'/login'}>{sidebar && <Icon type="login"/>} Login</Link>
+        </Menu.Item>;
     };
 
     render() {
@@ -87,27 +109,69 @@ class PublicNavBarTest extends Component {
                     collapsed={collapsed}
                     style={{zIndex: 1000}}
                 >
-                    <div className="logo"/>
+                    <div className="logo">
+                        <Link to={'/'}>
+                            <img src={Logo} alt="" style={{height: '100%'}}/>
+                        </Link>
+                    </div>
 
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={[selected]}
                         // style={{overflow: 'auto', height: '100vh'}}
                     >
+
                         <Menu.Item key="/">
-                            <Icon type="user"/>
-                            <span className="nav-text">nav 1</span>
+                            <Link to={'/'}>
+                                <Icon type="home"/>
+                                Home
+                            </Link>
                         </Menu.Item>
-                        <Menu.Item key="2">
-                            <Icon type="video-camera"/>
-                            <span className="nav-text">nav 2</span>
+
+                        <Menu.SubMenu title={<span><Icon type="video-camera"/>About</span>}>
+                            <Menu.Item key="about/alumni-association">
+                                <Link to={'/about/alumni-association'}>
+                                    Alumni Association
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item key="about/student-cell">
+                                <Link to={'/about/student-cell'}>
+                                    Student Cell
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item key="about/saa-constitution">
+                                <Link to={'/about/saa-constitution'}>
+                                    SAA Constitution
+                                </Link>
+                            </Menu.Item>
+                        </Menu.SubMenu>
+
+                        <Menu.SubMenu title={<span><Icon type="user"/>Committee</span>}>
+                            <Menu.Item key="advisory-committee">
+                                <Link to={'/advisory-committee'}>
+                                    Advisory
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item key="executive-committee">
+                                <Link to={'/executive-committee'}>
+                                    Executive
+                                </Link>
+                            </Menu.Item>
+                        </Menu.SubMenu>
+
+                        <Menu.Item key="gallery">
+                            <Link to={'/gallery'}>
+                                <Icon type="picture"/>
+                                Gallery
+                            </Link>
                         </Menu.Item>
-                        <Menu.Item key="3">
-                            <Icon type="upload"/>
-                            <span className="nav-text">nav 3</span>
+
+                        <Menu.Item key="contact">
+                            <Link to={'/contact'}>
+                                <Icon type="contacts"/>
+                                Contact Us
+                            </Link>
                         </Menu.Item>
-                        <Menu.Item key="4">
-                            <Icon type="user"/>
-                            <span className="nav-text">nav 4</span>
-                        </Menu.Item>
+
+                        {this.loginLogout(true)}
                     </Menu>
                 </Sider>
                 <Layout>
@@ -216,4 +280,4 @@ class PublicNavBarTest extends Component {
 const mapStateToProps = ({auth}) => ({
     auth: auth.isAuthenticated
 });
-export default connect(mapStateToProps)(withStyles(styles)(withRouter(PublicNavBarTest)));
+export default connect(mapStateToProps)(withStyles(styles)(withRouter(PublicNavBar)));

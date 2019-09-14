@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import * as _ from "lodash";
 import {Form, Row, Col, Input, Button, Checkbox, Select, Icon} from 'antd';
-import FileUploadButton from "components/Alumni Registration/FileUploadButton";
+import FileUploadButton from "components/Registration/FileUploadButton";
 import {Branch, Programme} from "Constants/ProgrammeAndBranch";
 import FormError from "components/Errors";
 import {registration} from "actions/newAlumniAction";
-import AlumniRegistrationSubmitted from "./AlumniRegistrationSubmitted";
+import RegistrationSubmitted from "./RegistrationSubmitted";
 
 
 class RegisterForm extends Component {
@@ -33,8 +33,8 @@ class RegisterForm extends Component {
         const {success, data} = this.state;
         return (
             <>
-                <AlumniRegistrationSubmitted visible={success} data={data}/>
-                <Form onSubmit={this.handleSubmit} style={{maxWidth: 800}}>
+                <RegistrationSubmitted visible={success} data={data}/>
+                <Form onSubmit={this.handleSubmit}>
                     <FormError form={this.props.form}/>
                     <Row gutter={24}>
                         <Col sm={12}>
@@ -122,6 +122,7 @@ class RegisterForm extends Component {
                         <Col sm={12}>
                             <Form.Item label={'LinkedIn Profile'} style={{marginBottom: 8}}>
                                 {getFieldDecorator('linkdein', {
+                                    initialValue: '',
                                     rules: [{type: 'url', message: 'Please enter your LinkedIn profile link!'}]
                                 })(<Input placeholder="Enter your LinkedIn profile link"/>)}
                             </Form.Item>
@@ -145,7 +146,7 @@ class RegisterForm extends Component {
                             <Form.Item style={{marginBottom: 0}}>
                                 {getFieldDecorator('accept', {
                                     valuePropName: 'checked', initialValue: false,
-                                    rules: [{validator: this.confirmAccept,}],
+                                    rules: [{validator: this.confirmAccept}],
                                 })(<Checkbox>I accept all information is correct</Checkbox>)}
                             </Form.Item>
                         </Col>
@@ -164,12 +165,12 @@ class RegisterForm extends Component {
     }
 }
 
-const AlumniRegistrationForm = Form.create({name: 'alumni_registration'})(RegisterForm);
+const RegistrationForm = Form.create({name: 'alumni_registration'})(RegisterForm);
 
 const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({
     onRegister: e => dispatch(registration(e))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlumniRegistrationForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);
 

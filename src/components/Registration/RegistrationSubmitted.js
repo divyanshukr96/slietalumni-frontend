@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import {Avatar, Button, Modal, Result} from "antd";
 import logo from 'assets/SAA-logo-color.png'
 
-class AlumniRegistrationSubmitted extends Component {
+class RegistrationSubmitted extends Component {
     render() {
         const {visible} = this.props;
         return (
@@ -19,15 +19,15 @@ class AlumniRegistrationSubmitted extends Component {
                         </Button>,
                         <Button key="buy">Buy Again</Button>,
                     ]}
-                />,
+                />
             </Modal>
         );
     }
 }
 
-AlumniRegistrationSubmitted.propTypes = {
+RegistrationSubmitted.propTypes = {
     visible: PropTypes.bool.isRequired,
     data: PropTypes.object,
 };
 
-export default AlumniRegistrationSubmitted;
+export default RegistrationSubmitted;

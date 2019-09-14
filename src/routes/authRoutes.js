@@ -5,7 +5,7 @@ import NotFound from "../components/NotFound";
 import AdminNavBar from "../components/AdminNavBar";
 import AlumniData from "../components/Alumni Database/AlumniData";
 import AlumniDataTest from "../Tests/AlumniDataTest";
-import RegistrationData from "components/Alumni Registration/RegistrationData";
+import RegistrationData from "components/Registration/RegistrationData";
 import {Permission, Role} from "components/RolePermission";
 import Users from "components/Users/Users";
 import Events from "components/Events/Events";
@@ -16,6 +16,7 @@ import EventTypes from "components/Events/EventTypes";
 import EventAdd from "components/Events/EventAdd";
 import EventView from "components/Events/EventView";
 import FeaturedAlumni from "components/FeaturedAlumni/FeaturedAlumni";
+import ImageCarousel from "components/Images/ImageCarousel";
 import Image from "components/Images";
 
 const AuthRoutes = (props) => {
@@ -27,6 +28,7 @@ const AuthRoutes = (props) => {
                 <Route exact path="/sac/new-registration" component={RegistrationData}/>
 
                 <Route exact path="/sac/images" component={Image}/>
+                <Route exact path="/sac/images/carousel" component={ImageCarousel}/>
 
                 <Route exact path="/sac/news" component={News}/>
                 <Route exact path="/sac/news/create" component={NewsCreate}/>

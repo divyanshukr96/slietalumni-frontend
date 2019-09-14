@@ -34,10 +34,12 @@ export const registration = formData => async dispatch => {
     }
 };
 
-export const confirmRegistration = () => async (dispatch, getState) => {
+export const confirmRegistration = formData => async (dispatch, getState) => {
     const {newAlumni: {alumni: {id}}} = getState();
     try {
-        const {data} = await axios.patch(`/api/alumni/confirm/${id}`);
+        let form = new FormData();
+        for (const field in formData) form.append(field, formData[field]);
+        const {data} = await axios.post(`/api/alumni/confirm/${id}`, form);
         if (data.alreadyVerified) console.log('Already Verified');
         dispatch({
             type: type.NEW_ALUMNI_VERIFIED,
@@ -53,7 +55,7 @@ export const confirmRegistration = () => async (dispatch, getState) => {
 
 export const setUsernamePassword = formData => async dispatch => {
     try {
-        const {data} = await axios.post(`/api/alumni/set-username/`, formData);
+        const {data} = await axios.post(`/api/set-username/`, formData);
         return data;
     } catch ({response}) {
         dispatch({

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import * as PropTypes from 'prop-types';
 import {withStyles} from "@material-ui/core";
 import {Carousel} from "antd";
@@ -18,29 +18,25 @@ const styles = theme => ({
 });
 
 
-class HomeCarousel extends Component {
-    render() {
-        const {classes} = this.props;
-        return (
-            <Carousel className={classes.slickSlide} autoplay fade pauseOnHover>
-                {[
-                    'https://slietalumni.com/images/sliet-college.jpg',
-                    'https://slietalumni.com/images/alumnimeet-2018/meet2018-010.jpg',
-                    'https://slietalumni.com/images/student-cell-member-meet-2018-001.JPG',
-                    'https://slietalumni.com/images/abhivyakti-08-10-2018-2152.jpg'].map(e => (
-                    <div>
-                        <div className={classes.background} style={{
-                            backgroundImage: `url("${e}")`,
-                        }}/>
-                    </div>
-                ))}
-            </Carousel>
-        );
-    }
-}
+const HomeCarousel = ({classes, images}) => {
+    return (
+        <Carousel className={classes.slickSlide} autoplay fade pauseOnHover>
+            {images.map((e, i) => (
+                <div key={i}>
+                    <div className={classes.background} style={{backgroundImage: `url("${e}")`,}}/>
+                </div>
+            ))}
+        </Carousel>
+    );
+};
 
 HomeCarousel.propTypes = {
     classes: PropTypes.object.isRequired,
+    images: PropTypes.array.isRequired,
+};
+
+HomeCarousel.defaultProps = {
+    images: []
 };
 
 export default withStyles(styles)(HomeCarousel);

@@ -52,16 +52,19 @@ class NewsView extends Component {
                     <Button icon="save" type={"primary"} onClick={this.onUpdate}>Update</Button>
                 </> :
                 <>
-                    <Button icon="edit" type={"ghost"} onClick={this.onEdit}>Edit</Button>
-                    <Button icon="global" type={"primary"} style={{margin: 4}} onClick={() => Modal.confirm({
-                        title: 'Are you sure want to publish news?',
-                        content: data.title,
-                        okText: 'Yes',
-                        okType: 'primary',
-                        cancelText: 'No',
-                        onOk: onNewsPublish,
-                    })}>Publish</Button>
-                    <Button icon="delete" type={"danger"} onClick={() => Modal.confirm({
+                    <Button icon="edit" type={"ghost"} style={{margin: 2}} onClick={this.onEdit}>Edit</Button>
+                    {!data.published && <Button
+                        icon="global"
+                        type={"primary"} style={{margin: 2}}
+                        onClick={() => Modal.confirm({
+                            title: 'Are you sure want to publish news?',
+                            content: data.title,
+                            okText: 'Yes',
+                            okType: 'primary',
+                            cancelText: 'No',
+                            onOk: onNewsPublish,
+                        })}>Publish</Button>}
+                    <Button icon="delete" type={"danger"} style={{margin: 2}} onClick={() => Modal.confirm({
                         title: 'Are you sure want to delete news?',
                         content: data.title,
                         okText: 'Yes',
@@ -90,7 +93,7 @@ class NewsView extends Component {
                         <Title level={4}>{data.title}</Title>
                         <Divider/>
                         <div style={{textAlign: 'center',}}>
-                            <img src={data.cover_thumb} alt="" style={{maxHeight: 250}}/>
+                            <img src={data.cover_thumb} alt="" style={{maxHeight: 140}}/>
                         </div>
                         <div className="ant-card-bordered" style={{padding: `4px 8px`, margin: `8px 0`}}>
                             <code>{data.description}</code>
@@ -111,7 +114,7 @@ const mapStateToProps = ({news}) => ({
 const mapDispatchToProps = dispatch => ({
     fetchNews: () => dispatch(fetchNews()),
     onNewsUpdate: (id, data) => dispatch(updateNews(id, data)),
-    onNewsPublish: (id, data) => dispatch(publishNews(id, data)),
+    onNewsPublish: () => dispatch(publishNews()),
     onLoading: () => dispatch({type: 'NEWS_LOADING'}),
     onView: id => dispatch({type: 'NEWS_EDIT', payload: id}),
     onDelete: () => dispatch(deleteNews()),

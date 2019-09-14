@@ -5,7 +5,7 @@ import ProfileDetails from "components/Profile/ProfileDetails";
 import SidebarChat from "components/Profile/SidebarChat";
 import CoverPhoto from "components/Profile/CoverPhoto";
 import About from "components/Profile/About";
-import FileUploadButton from "components/Alumni Registration/FileUploadButton";
+import FileUploadButton from "components/Registration/FileUploadButton";
 import NewPost from "components/Profile/NewPost";
 
 const {Text} = Typography;

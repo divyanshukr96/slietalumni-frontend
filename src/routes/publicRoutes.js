@@ -14,8 +14,8 @@ import SAAConstitution from "../components/About/SAAConstitution";
 import PresidentMessage from "../components/Message/PresidentMessage";
 import FormLayout from "../components/Form/FormLayout";
 import DonateButton from "components/DonateButton";
-import Register from "components/Alumni Registration/Register";
-import RegisterConfirmation from "components/Alumni Registration/RegisterConfirmation";
+import Register from "components/Registration/Register";
+import RegisterConfirmation from "components/Registration/Confirmation";
 import Profile from "components/Profile";
 import Feeds from "components/Feeds/Feeds";
 import Donate from 'components/Donate'

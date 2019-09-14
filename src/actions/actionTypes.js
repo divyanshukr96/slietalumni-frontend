@@ -79,3 +79,11 @@ export const DONATE_EDIT = "DONATE_EDIT";
 export const DONATE_UPDATE = "DONATE_UPDATE";
 export const DONATE_PUBLISH = "DONATE_PUBLISH";
 export const DONATE_DELETE = "DONATE_DELETE";
+
+export const IMAGE_LOADING = "IMAGE_LOADING";
+export const IMAGE_LIST = "IMAGE_LIST";
+export const IMAGE_ADD = "IMAGE_ADD";
+export const IMAGE_EDIT = "IMAGE_EDIT";
+export const IMAGE_UPDATE = "IMAGE_UPDATE";
+export const IMAGE_PUBLISH = "IMAGE_PUBLISH";
+export const IMAGE_DELETE = "IMAGE_DELETE";

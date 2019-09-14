@@ -28,8 +28,8 @@ class Association extends Component {
                         <img src="https://www.slietalumni.com/images/saa-about.jpg" alt="" style={{width: '100%'}}/>
                     </Col>
                     <Col sm={24} className={classes.details}>
-                        <Title level={3}>About Alumni Association</Title>
-                        <Divider/>
+                        <Title level={4}>About Alumni Association</Title>
+                        <Divider style={{margin: '12px 0'}}/>
                         <Paragraph>
                             Established in 2015, SLIET Alumni Association creates and maintains a lifelong connection
                             between the institute and its alumni. In collaboration with an extremely dedicated volunteer
@@ -40,19 +40,19 @@ class Association extends Component {
                             strength to strength, regularly undertaking several initiatives to promote and foster
                             mutually beneficial interaction between the alumni and Alma Mater.
                         </Paragraph>
-                        <Title level={4} style={{margin: 0}}>Vision and Priorities</Title>
+                        <h3>Vision and Priorities</h3>
                         <Paragraph>
                             The mission of the association is to foster strong bong between alumni, students and the
                             institute, to keep alumni informed, and create a network enabling them to remain engaged
                             with their Alma Mater and help shape its future through the Association’s programmes and
                             services.
                         </Paragraph>
-                        <Title level={4} style={{margin: 0}}>Become a life member</Title>
+                        <h3>Become a life member</h3>
                         <Paragraph>
                             Anyone who has completed one academic year as a student of SLIET is eligible for life
                             membership.
                         </Paragraph>
-                        <Title level={4} style={{margin: 0}}>Involvement and Services</Title>
+                        <h3>Involvement and Services</h3>
                         <Paragraph>
                             Developing an active and engaged alumni network empowers both the institute and its
                             graduates. The Alumni association continues to seek innovative ways to serve alumni by

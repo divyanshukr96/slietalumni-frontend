@@ -128,15 +128,21 @@ class AlumniDataTable extends Component {
                         </span>
                     ) : (
                         <span>
-                            <a href={"javascript:;"} style={{marginRight: 8, padding: '4px 0'}}
-                               onClick={() => this.props.onView(record.id)}
-                            >View</a>
-                            <Button type="link" disabled={props.editingKey !== ''}
-                                    onClick={() => {
-                                        props.form.resetFields();
-                                        props.onEdit(record.id)
-                                    }}
-                                    icon="edit"
+                            {/*<a href={"javascript:;"} style={{marginRight: 8, padding: '4px 0'}}*/}
+                            {/*   onClick={() => this.props.onView(record.id)}*/}
+                            {/*>View</a>*/}
+                            <Button
+                                type="link"
+                                onClick={() => this.props.onView(record.id)}
+                                style={{marginRight: 8, padding: '4px 0'}}
+                            >View</Button>
+                            <Button
+                                type="link" disabled={props.editingKey !== ''}
+                                onClick={() => {
+                                    props.form.resetFields();
+                                    props.onEdit(record.id)
+                                }}
+                                icon="edit"
                             />
                         </span>
                     );

@@ -1,34 +1,39 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {connect} from "react-redux";
 import {Form, Row, Col, Input, Button, Icon} from 'antd';
 import FormError from "components/Errors";
 import {setUsernamePassword} from "actions/newAlumniAction";
-import RegisterConfirmationMessage from "components/Alumni Registration/RegisterConfirmationMessage";
+import ConfirmationMessage from "components/Registration/ConfirmationMessage";
 
 
-class RegisterConfirmationForm extends Component {
-    state = {
-        success: false,
-        data: null
-    };
+const ConfirmationForm = Form.create({name: 'reg_conf'})(
+    ({form, onSetUsername, search}) => {
+        const [success, setSuccess] = useState(false);
+        const [data, setData] = useState(null);
 
-    handleSubmit = e => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) this.props.onSetUsername(values).then(res => {
-                if (res) this.setState({success: true, data: res})
-            })
-        });
-    };
+        const confirmPassword = (rule, value, callback) => {
+            let password = form.getFieldValue('password');
+            if (value !== password) callback('confirm password not match.'); else callback();
+        };
 
-    render() {
-        const {getFieldDecorator, resetFields} = this.props.form;
-        const {success, data} = this.state;
+        const handleSubmit = e => {
+            e.preventDefault();
+            form.validateFields((err, values) => {
+                if (!err) onSetUsername(values).then(res => {
+                    if (res) {
+                        setSuccess(true);
+                        setData(res)
+                    }
+                })
+            });
+        };
+
+        const {getFieldDecorator, resetFields} = form;
         return (
             <>
-                <RegisterConfirmationMessage visible={success} data={data}/>
-                <Form onSubmit={this.handleSubmit} style={{maxWidth: 800}}>
-                    <FormError form={this.props.form}/>
+                <ConfirmationMessage visible={success} data={data}/>
+                <Form onSubmit={handleSubmit} style={{maxWidth: 800}}>
+                    <FormError form={form}/>
                     <Row gutter={24}>
                         <Col span={24}>
                             <Form.Item label={'Email'} style={{marginBottom: 0}}>
@@ -52,9 +57,17 @@ class RegisterConfirmationForm extends Component {
                                 })(<Input.Password prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
                                                    placeholder="Enter new Password"/>)}
                             </Form.Item>
+                            <Form.Item label={'Confirm Password'} style={{marginBottom: 0}}>
+                                {getFieldDecorator('confirm_password', {
+                                    rules: [{required: true, message: 'Please enter confirm Password!'},
+                                        {validator: (a, b, c) => confirmPassword(a, b, c)}
+                                    ],
+                                })(<Input.Password prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                                                   placeholder="Confirm Password"/>)}
+                            </Form.Item>
                             <Form.Item>
                                 {getFieldDecorator('token', {
-                                    initialValue: new URLSearchParams(this.props.search).get('token'),
+                                    initialValue: new URLSearchParams(search).get('token'),
                                     rules: [{required: true, message: 'Invalid Url!'}],
                                 })(<Input type={'hidden'}/>)}
                             </Form.Item>
@@ -71,21 +84,19 @@ class RegisterConfirmationForm extends Component {
                     </Row>
                 </Form>
             </>
-        );
+        )
     }
-}
+);
 
 
 const mapStateToProps = (state) => ({
     search: state.router.location.search
 });
+
 const mapDispatchToProps = (dispatch) => ({
     onSetUsername: e => dispatch(setUsernamePassword(e))
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Form.create({name: 'reg_conf'})(RegisterConfirmationForm));
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmationForm);
 
 

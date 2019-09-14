@@ -1,8 +1,10 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import {withStyles} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import {Card, Icon, List, Popover, Typography} from "antd";
+import {Card, Popover, Typography} from "antd";
 import image from '../assets/president.jpg'
+import axios from "axios";
+
 
 const {Paragraph} = Typography;
 
@@ -51,64 +53,62 @@ const styles = theme => ({
 
 });
 
-const data = [
-    {
-        title: 'Ant Design Title 1',
-    },
-    {
-        title: 'Ant Design Title 2',
-    },
-    {
-        title: 'Ant Design Title 3',
-    },
-    {
-        title: 'Ant Design Title 4',
-    },
-    {
-        title: 'Ant Design Title 4',
-    },
-];
 
-class FeaturedAlumni extends Component {
-    render() {
-        const {classes} = this.props;
-        const {card, meta, list, scroll, scrollbar} = classes;
-        return (
-            <>
-                <Card
-                    headStyle={{minHeight: 'auto'}}
-                    bodyStyle={{padding: 0}}
-                    className={card}
-                    title={'Featured Alumni'}
-                    extra={<Link to={'/featured-alumni'}>View All</Link>}
-                >
-                    <div className={scroll}>
-                        {data.map(e => (
-                            <Popover
-                                align={{
-                                    points: ['cc', 'cc']
-                                }}
-                                content={<Card
-                                    style={{width: 220, margin: `-12px -16px`}}
-                                    bodyStyle={{padding: 8}}
-                                    cover={<img alt="example" src={image}/>}
-                                >
-                                    <Card.Meta
-                                        className={meta}
-                                        title={"Europe Street beat beat"}
-                                        description="www.instagram.com divyanshu kumar singh sliet colleget"
-                                    />
-                                </Card>}
-                            >
-                                <img height="140" style={{cursor: 'pointer'}} src={image} alt=""/>
-                            </Popover>
-                        ))}
-                    </div>
-                </Card>
-            </>
-        );
+const FeaturedAlumni = ({classes}) => {
+    const [featured, setFeatured] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const {card, meta, list, scroll, scrollbar} = classes;
+
+    async function fetchUrl() {
+        const {data} = await axios.get("api/public/featured-alumni");
+        if (data.data) setFeatured(data.data);
     }
-}
+
+    useEffect(() => {
+        fetchUrl().then(r => setLoading(false));
+    }, []);
+
+    return (
+        <>
+            <Card
+                headStyle={{minHeight: 'auto'}}
+                bodyStyle={{padding: 0}}
+                className={card}
+                loading={loading}
+                title={'Featured Alumni'}
+                extra={<Link to={'/featured-alumni'}>View All</Link>}
+            >
+                <div className={scroll}>
+                    {featured.map((alumni, index) => (
+                        <Popover
+                            key={index}
+                            align={{
+                                points: ['cc', 'cc']
+                            }}
+                            content={<Card
+                                style={{width: 220, margin: `-12px -16px`}}
+                                bodyStyle={{padding: 8}}
+                                cover={<img alt="example" src={alumni.image}/>}
+                            >
+                                <Card.Meta
+                                    className={meta}
+                                    title={alumni.name}
+                                    description={`${alumni.designation}, ${alumni.organisation}`}
+                                />
+                            </Card>}
+                        >
+                            <img height="140"
+                                 src={alumni.image}
+                                 style={{cursor: 'pointer', maxWidth: 180}}
+                                 alt={alumni.name}
+                            />
+                        </Popover>
+                    ))}
+                </div>
+            </Card>
+        </>
+    );
+};
 
 
 export default withStyles(styles)(FeaturedAlumni);

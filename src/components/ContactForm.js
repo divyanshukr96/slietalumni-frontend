@@ -1,6 +1,9 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {withStyles} from "@material-ui/core";
-import {Button, Divider, Form, Input} from "antd";
+import {Button, Divider, Form, Input, Modal} from "antd";
+import {connect} from "react-redux";
+import {contactUs} from "../actions/publicAction";
+import FormError from "./Errors";
 
 const {TextArea} = Input;
 
@@ -12,23 +15,36 @@ const styles = () => ({
     }
 });
 
-class ContactUsForm extends Component {
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
-    };
+const ContactForm = Form.create({name: 'contact_form'})(
+    ({classes, form, onContact}) => {
 
-    render() {
-        const {classes} = this.props;
-        const {getFieldDecorator} = this.props.form;
+        const [loading, setLoading] = useState(false);
+
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            setLoading(true);
+            form.validateFields((err, values) => {
+                if (!err) onContact(values).then(res => {
+                    if (res) {
+                        form.resetFields();
+                        Modal.success({
+                            // title: 'Your message is successfully submitted . . .',
+                            content: 'Your enquiry is submitted successfully. We will contact you back shortly.',
+                            centered: true,
+                            okText: 'Close'
+                        })
+                    }
+                });
+                setLoading(false)
+            });
+        };
+
+        const {getFieldDecorator} = form;
         return (
             <>
-                <Form onSubmit={this.handleSubmit} className={classes.form}>
+                <Form onSubmit={handleSubmit} className={classes.form} noValidate>
                     <Divider/>
+                    <FormError form={form}/>
                     <Form.Item
                         // validateStatus="error"
                         // help="Should be combination of numbers & alphabets"
@@ -41,7 +57,10 @@ class ContactUsForm extends Component {
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('email', {
-                            rules: [{required: true, message: 'Please enter your email address!'}],
+                            rules: [
+                                {required: true, message: 'Please enter your email address!'},
+                                {type: 'email', message: 'The entered mail is not valid e-mail!'},
+                            ],
                         })(
                             <Input type="email" placeholder="Email address"/>
                         )}
@@ -62,7 +81,8 @@ class ContactUsForm extends Component {
                         )}
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
+                        <Button type="primary" htmlType="submit" loading={loading}
+                                style={{width: '100%'}}>
                             Submit
                         </Button>
                     </Form.Item>
@@ -70,8 +90,10 @@ class ContactUsForm extends Component {
             </>
         );
     }
-}
+);
 
-const ContactForm = Form.create({name: 'contact_form'})(ContactUsForm);
+const mapDispatchToProps = dispatch => ({
+    onContact: (data) => dispatch(contactUs(data))
+});
 
-export default withStyles(styles)(ContactForm);
+export default connect(null, mapDispatchToProps)(withStyles(styles)(ContactForm));

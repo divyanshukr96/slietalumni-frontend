@@ -4,7 +4,7 @@ import * as PropTypes from "prop-types";
 import {Button, DatePicker, Modal, Form, Input, Select, Checkbox, Icon, Radio, Spin, Divider} from 'antd';
 
 import FormError from "components/Errors";
-import FileUploadButton from "components/Alumni Registration/FileUploadButton";
+import FileUploadButton from "components/Registration/FileUploadButton";
 
 class NewAlumniDataForm extends Component {
     state = {newAlumni: false, data: [],};
@@ -85,7 +85,7 @@ class NewAlumniDataForm extends Component {
                 </Form.Item>
             </>
         )
-    }
+    };
 
     render() {
         const {visible, onCancel, onCreate, form, onSearch, onSelect, alumni, data} = this.props;

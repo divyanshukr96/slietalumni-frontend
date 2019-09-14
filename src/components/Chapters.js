@@ -6,7 +6,13 @@ import Scrollable from "../components/Scrollable";
 import image from "../assets/president.jpg";
 import ImagePopOver from "../components/ImagePopOver";
 
+import NCR from 'assets/chapter/ncr.jpg'
+import Bangalore from 'assets/chapter/banglore.jpeg'
+import Canada from 'assets/chapter/canada.jpg'
+import Chandigarh from 'assets/chapter/chd.jpg'
+
 const {Paragraph} = Typography;
+
 
 const styles = theme => ({
     card: {
@@ -32,20 +38,24 @@ const styles = theme => ({
 
 const data = [
     {
-        title: 'Ant Design Title 1',
+        image: NCR,
+        title: 'NCR',
     },
     {
-        title: 'Ant Design Title 2',
+        image: Chandigarh,
+        title: 'Chandigarh',
     },
     {
-        title: 'Ant Design Title 3',
+        image: Canada,
+        title: 'Canada',
     },
     {
-        title: 'Ant Design Title 4',
+        image: Bangalore,
+        title: 'Bangalore',
     },
-    {
-        title: 'Ant Design Title 4',
-    },
+    // {
+    //     title: 'Bihar',
+    // },
 ];
 
 class Chapters extends Component {
@@ -60,11 +70,12 @@ class Chapters extends Component {
                     bodyStyle={{padding: 0}}
                     className={card}
                     title={'Chapters'}
-                    extra={<Link to={'/chapters'}>View All</Link>}
+                    // extra={<Link to={'/chapters'}>View All</Link>}
                 >
                     <Scrollable>
-                        {data.map(e => (
+                        {data.map(chapter => (
                             <Popover
+                                key={chapter.title}
                                 align={{
                                     points:['cc','cc']
                                 }}
@@ -72,16 +83,16 @@ class Chapters extends Component {
                                     <Card
                                         style={{width: 220, margin: `-12px -16px`}}
                                         bodyStyle={{padding: 8}}
-                                        cover={<img alt="example" src={image}/>}
+                                        cover={<img alt={chapter.title} src={chapter.image}/>}
                                     >
                                         <Card.Meta
                                             className={meta}
-                                            title={"Europe Street beat beat"}
+                                            title={chapter.title}
                                         />
                                     </Card>
                                 }
                             >
-                                <img height="140" style={{cursor: 'pointer'}} src={image} alt=""/>
+                                <img height="140" style={{cursor: 'pointer'}} src={chapter.image} alt={chapter.title}/>
                             </Popover>
                         ))}
                     </Scrollable>

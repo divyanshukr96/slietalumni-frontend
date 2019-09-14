@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import * as _ from 'lodash'
 import * as PropTypes from "prop-types";
 import {Button, Form, Input, InputNumber, Modal, Result} from "antd";
-import FileUploadButton from "../Alumni Registration/FileUploadButton";
+import FileUploadButton from "../Registration/FileUploadButton";
 import {connect} from "react-redux";
 import {authRequired, fetchDetails} from "actions/authAction";
 import {donate} from "actions/donationAction";

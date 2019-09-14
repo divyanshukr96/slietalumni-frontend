@@ -1,12 +1,14 @@
 import * as type from './actionTypes'
 import axios from 'axios';
 import * as _ from 'lodash'
+import SetAuthorizationToken from "../utils/setAuthorizationToken";
 
 export const logout = () => dispatch => {
     dispatch(unauthorized());
 };
 
 export const unauthorized = () => {
+    SetAuthorizationToken(null);
     localStorage.removeItem('token');
     return {
         type: type.USER_AUTHENTICATED,
@@ -39,6 +41,7 @@ export const login = formData => async dispatch => {
             type: type.LOGIN_SUCCESS,
             payload: data
         });
+        SetAuthorizationToken(data.access_token);
         localStorage.setItem('token', data.access_token);
         return data;
     } catch ({response}) {
