@@ -1,4 +1,5 @@
 import Recat from 'react'
+import * as PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
 const checkPermissions = (userPermissions, allowedPermissions) => {
@@ -24,6 +25,12 @@ const AccessControl = (
 
     return permitted ? children : renderNoAccess();
 
+};
+
+AccessControl.propTypes = {
+    allowedPermissions: PropTypes.array,
+    userPermissions: PropTypes.array,
+    renderNoAccess: PropTypes.func
 };
 
 AccessControl.defaultProps = {

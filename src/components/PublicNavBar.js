@@ -4,6 +4,8 @@ import {Drawer, Layout, Menu, Icon, Button, Tooltip} from 'antd';
 import {Link, withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
 import Logo from 'assets/saa-logo.png'
+import AccessControl from "../AccessControl/AccessControl";
+import {logout} from "../actions/authAction";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -65,17 +67,27 @@ class PublicNavBar extends Component {
     toggle = () => this.setState({collapsed: !this.state.collapsed});
 
     loginLogout = (sidebar) => {
-        const {auth, classes} = this.props;
+        const {auth, classes, onLogout} = this.props;
         return auth ? [
             <Menu.Item key="profile">
                 <Link to={'/profile'}>{sidebar && <Icon type="profile"/>} Profile</Link>
             </Menu.Item>,
-            <Menu.Item key="sac-home">
-                <Link to={'/sac'}>{sidebar && <Icon type="dashboard"/>} Dashboard</Link>
-            </Menu.Item>,
+            <AccessControl
+                key={"dashboard-access-control"}
+                allowedPermissions={['sac']}>
+                <Menu.Item key="sac-home">
+                    <Link to={'/sac'}>{sidebar && <Icon type="dashboard"/>} Dashboard</Link>
+                </Menu.Item>
+            </AccessControl>,
             <Menu.Item key="logout">
                 <Tooltip placement="right" title='Logout'>
-                    <Button type="primary" icon="logout" className={classes.logout}>{sidebar && 'Logout'}
+                    <Button
+                        type="primary"
+                        icon="logout"
+                        className={classes.logout}
+                        onClick={onLogout}
+                    >
+                        {sidebar && 'Logout'}
                     </Button>
                 </Tooltip>
             </Menu.Item>
@@ -280,4 +292,9 @@ class PublicNavBar extends Component {
 const mapStateToProps = ({auth}) => ({
     auth: auth.isAuthenticated
 });
-export default connect(mapStateToProps)(withStyles(styles)(withRouter(PublicNavBar)));
+
+const mapDispatchToProps = dispatch => ({
+    onLogout: () => dispatch(logout()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(PublicNavBar)));

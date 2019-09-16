@@ -1,6 +1,10 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import {withStyles} from "@material-ui/core";
-import {Button, Card, Divider, Icon, Typography} from "antd";
+import {Card, Skeleton, Typography} from "antd";
+import CoverPhoto from "./CoverPhoto";
+import ProfilePhoto from "./ProfilePhoto";
+import About from "./About";
+import axios from "axios";
 
 const {Title, Paragraph} = Typography;
 const styles = theme => ({
@@ -25,73 +29,48 @@ const styles = theme => ({
         position: 'absolute',
         bottom: 0,
         left: 8,
-        [theme.breakpoints.down('480')]: {
+        [theme.breakpoints.down('480')]:{
             flexDirection: 'column',
             alignItems: 'center',
             position: 'unset',
-            marginTop: -80,
+            marginTop:  -80,
         },
     },
-
-    cardMeta: {
-        textAlign: "center",
-        '& div': {
-            marginBottom: '0 !important'
-        }
-    },
-    postsCount: {
-        border: "solid #e8e8e8 1px",
-        borderLeft: 'unset',
-        borderRight: 'unset',
-        padding: '8px',
-        margin: '16px 0',
-        fontWeight: '500'
-    },
-
 });
 
-class ProfileDetails extends Component {
-    render() {
-        const {classes} = this.props;
-        return (
-            <Card
-                hoverable
-                style={{width: '100%', cursor: 'unset'}}
-                cover={<div
-                    style={{
-                        width: 150,
-                        height: 150,
-                        margin: 'auto',
-                        borderRadius: '50%',
-                        overflow: 'hidden',
-                        marginTop: 16,
-                    }}
-                >
-                    <img
-                        alt="example"
-                        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                        style={{width: '100%'}}
-                    />
-                </div>}
-                bodyStyle={{
-                    padding: '16px 24px'
-                }}
-            >
-                <Card.Meta title="Divyanshu" description="Student (SLIET, Longowal)"
-                           className={classes.cardMeta}
-                />
+function ProfileDetails(props) {
+    const {classes} = props;
 
-                <div className={classes.postsCount}>
-                    97 Posts
-                    <span style={{float: 'right'}}>100 Follows</span>
-                </div>
+    const [loading, setLoading] = useState(true);
+    const [profile, setProfile] = useState([]);
 
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ducimus eius facilis iste non, nostrum
-                quam velit veniam. Architecto at excepturi iste magnam, modi necessitatibus
-
-            </Card>
-        );
+    async function fetchUrl() {
+        const {data} = await axios.get("api/auth/profile");
+        if (data.data) setProfile(data.data);
     }
+
+    useEffect(() => {
+        fetchUrl().then(r => setLoading(false));
+    }, []);
+
+    if (loading) return <Skeleton/>;
+    return (
+        <div style={{maxWidth: 1200, margin: 'auto'}}>
+            <Card
+                bodyStyle={{padding: 0}}
+                cover={<CoverPhoto/>}
+            >
+                <div className={classes.container}>
+                    <ProfilePhoto/>
+                    <div style={{padding: '0 12px'}}>
+                        <Title level={3} ellipsis style={{margin: 0}}>{profile.name}</Title>
+                        <Paragraph>@{profile.username}</Paragraph>
+                    </div>
+                </div>
+            </Card>
+            <About profile={profile}/>
+        </div>
+    );
 }
 
 export default withStyles(styles)(ProfileDetails);

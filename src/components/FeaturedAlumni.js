@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {withStyles} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import {Card, Popover, Typography} from "antd";
-import image from '../assets/president.jpg'
+import {Card, Popover} from "antd";
 import axios from "axios";
 
-
-const {Paragraph} = Typography;
 
 const styles = theme => ({
     card: {
@@ -57,7 +54,7 @@ const styles = theme => ({
 const FeaturedAlumni = ({classes}) => {
     const [featured, setFeatured] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {card, meta, list, scroll, scrollbar} = classes;
+    const {card, meta, scroll} = classes;
 
     async function fetchUrl() {
         const {data} = await axios.get("api/public/featured-alumni");
@@ -67,6 +64,8 @@ const FeaturedAlumni = ({classes}) => {
     useEffect(() => {
         fetchUrl().then(r => setLoading(false));
     }, []);
+
+    const description = (alumni) => (alumni.designation ? alumni.designation + ", " : "") + (alumni.organisation || "");
 
     return (
         <>
@@ -93,7 +92,7 @@ const FeaturedAlumni = ({classes}) => {
                                 <Card.Meta
                                     className={meta}
                                     title={alumni.name}
-                                    description={`${alumni.designation}, ${alumni.organisation}`}
+                                    description={`${description(alumni)}`}
                                 />
                             </Card>}
                         >

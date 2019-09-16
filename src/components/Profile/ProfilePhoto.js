@@ -33,6 +33,8 @@ const styles = theme => ({
     },
     image: {
         opacity: 0,
+        display: 'flex',
+        alignItems: 'center',
         position: 'absolute',
         left: '50%',
         transform: 'translateX(-50%)',
@@ -41,7 +43,7 @@ const styles = theme => ({
             height: 'unset !important',
             width: 'unset !important',
             borderRadius: '50% !important',
-            margin: '0 0 !important',
+            margin: '0 auto !important',
             float: 'right',
         }
     },

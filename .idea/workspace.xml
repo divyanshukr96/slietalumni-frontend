@@ -33,45 +33,18 @@
   <component name="ChangeListManager">
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/alumniDatabaseAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/alumniDatabaseAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/authAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/authAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/newAlumniAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/newAlumniAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/About/Association.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/Association.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Database/AlumniData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Alumni Database/AlumniData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/AlumniRegistrationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/RegistrationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/AlumniRegistrationSubmitted.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/RegistrationSubmitted.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/FileUploadButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/FileUploadButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/NewAlumniData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/NewAlumniData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/NewAlumniView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/NewAlumniView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/RegisterConfirmation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Confirmation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/RegisterConfirmationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/ConfirmationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/RegisterConfirmationMessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/ConfirmationMessage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Registration/RegistrationData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/RegistrationData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chapters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chapters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ContactForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContactForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ContactUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContactUs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Donate/DonationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Donate/DonationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Events/EventForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Events/EventForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FeaturedAlumni/NewFeaturedAlumni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FeaturedAlumni/NewFeaturedAlumni.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomeCarousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeCarousel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/News/News.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/News/News.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/News/NewsCreateForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/News/NewsCreateForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/News/NewsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/News/NewsView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/About.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/NewPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/NewPost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/NewPostModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/SidebarChat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PublicNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Stories.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UpcomingEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpcomingEvents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/authRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/publicRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/publicRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -209,7 +182,9 @@
       <workItem from="1567715431139" duration="213000" />
       <workItem from="1567769860256" duration="5827000" />
       <workItem from="1567849973212" duration="15654000" />
-      <workItem from="1568442739713" duration="6979000" />
+      <workItem from="1568442739713" duration="7238000" />
+      <workItem from="1568495673887" duration="2680000" />
+      <workItem from="1568637407170" duration="12588000" />
     </task>
     <servers />
   </component>
@@ -224,6 +199,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
