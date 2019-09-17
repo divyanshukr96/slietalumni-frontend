@@ -1,14 +1,8 @@
 import React, {Component} from 'react';
 import * as _ from 'lodash'
-import {Button, Card, Col, Descriptions, Divider, Icon, Menu, Row, Tabs, Typography} from "antd";
-import {Link} from "react-router-dom";
-import NewPost from "components/Profile/NewPost";
+import {Col, Descriptions, Divider, Row, Typography} from "antd";
 
-const {Text, Title} = Typography;
-
-const data = {
-    name: 'Divyanshu'
-}
+const {Title} = Typography;
 
 class About extends Component {
     render() {
@@ -54,9 +48,9 @@ class About extends Component {
                         <Descriptions.Item label="Username">{profile.useranme}</Descriptions.Item>
                         <Descriptions.Item label="Email">{profile.email}</Descriptions.Item>
                         <Descriptions.Item label="Mobile">{profile.mobile}</Descriptions.Item>
-                        <Descriptions.Item label="Address" span={2}>
-                            No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
-                        </Descriptions.Item>
+                        {/*<Descriptions.Item label="Address" span={2}>*/}
+                        {/*    No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China*/}
+                        {/*</Descriptions.Item>*/}
                     </Descriptions>
 
                     {!_.isEmpty(profile.professionals) && <>

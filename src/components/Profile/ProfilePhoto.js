@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
 import {Avatar, Button, Icon, Tooltip, Upload} from "antd";
+import TmpProfile from "assets/profile-image.png"
 
 
 const styles = theme => ({
@@ -11,12 +12,12 @@ const styles = theme => ({
         // left: 8,
         maxWidth: 160,
         maxHeight: 160,
-        [theme.breakpoints.down('800')]: {
+        [theme.breakpoints.down(800)]: {
             // top: 'calc(30% - 24px)',
             // left: '50%',
             // transform: 'translateX(-50%)'
         },
-        [theme.breakpoints.down('400')]: {
+        [theme.breakpoints.down(400)]: {
             maxWidth: 120,
             maxHeight: 120,
         },
@@ -35,6 +36,7 @@ const styles = theme => ({
         opacity: 0,
         display: 'flex',
         alignItems: 'center',
+        justifyContent: "center",
         position: 'absolute',
         left: '50%',
         transform: 'translateX(-50%)',
@@ -73,11 +75,11 @@ class ProfilePhoto extends Component {
     render() {
         const {classes} = this.props;
         const {file} = this.state;
-        const image = "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png";
+        const image = "";
         return (
             <div className={classes.profilePhoto}>
                 <Avatar style={{height: '-webkit-fill-available', width: 'inherit'}}
-                        src={file ? URL.createObjectURL(file) : image}/>
+                        src={file ? URL.createObjectURL(file) : image ? image : TmpProfile}/>
                 <Upload
                     style={file && {display: 'none'}}
                     accept="image/*"

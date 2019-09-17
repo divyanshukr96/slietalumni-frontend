@@ -37,12 +37,12 @@ export const login = formData => async dispatch => {
             payload: true
         });
         const {data} = await axios.post('/api/auth/login', formData);
+        SetAuthorizationToken(data.access_token);
+        localStorage.setItem('token', data.access_token);
         dispatch({
             type: type.LOGIN_SUCCESS,
             payload: data
         });
-        SetAuthorizationToken(data.access_token);
-        localStorage.setItem('token', data.access_token);
         return data;
     } catch ({response}) {
         dispatch({

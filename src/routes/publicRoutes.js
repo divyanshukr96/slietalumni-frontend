@@ -19,6 +19,8 @@ import RegisterConfirmation from "components/Registration/Confirmation";
 import Profile from "components/Profile";
 import Feeds from "components/Feeds/Feeds";
 import Donate from 'components/Donate'
+import EventLists from "../components/Events/EventLists";
+import EventDetails from "../components/Events/EventDetails";
 
 const Route = ({component: Component, ...rest}) => (
     <RouteComponent
@@ -54,6 +56,8 @@ const PublicRoutes = () => {
                     <Route exact path={'/message/chairman'} component={ChairmanMessage}/>
                     <Route exact path={'/message/president'} component={PresidentMessage}/>
 
+                    <Route exact path="/events" component={EventLists}/>
+                    <Route exact path="/events/:event" component={EventDetails}/>
                     <Route exact path="/feeds" component={Feeds}/>
 
                     <Route exact path="/profile" component={Profile}/>

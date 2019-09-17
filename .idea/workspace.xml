@@ -32,19 +32,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/DIVYANSHU.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/DIVYANSHU.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/authAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/authAction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/About.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/NewPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/NewPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/NewPostModal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/SidebarChat.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PublicNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/authRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UpcomingEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpcomingEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/publicRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/publicRoutes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +62,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/Paid/LPG Vitrak Agency/frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -84,19 +78,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
-      <recent name="E:\Alumni_Association\alumni-frontend\public" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Events" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Profile" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Message" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
+      <recent name="E:\Alumni_Association\alumni-frontend\public" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Events" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -184,7 +178,8 @@
       <workItem from="1567849973212" duration="15654000" />
       <workItem from="1568442739713" duration="7238000" />
       <workItem from="1568495673887" duration="2680000" />
-      <workItem from="1568637407170" duration="12588000" />
+      <workItem from="1568637407170" duration="12752000" />
+      <workItem from="1568716022227" duration="9236000" />
     </task>
     <servers />
   </component>

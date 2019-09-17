@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {withStyles} from "@material-ui/core";
-import {Link} from "react-router-dom";
+import {makeStyles} from "@material-ui/core";
+import {Link, withRouter} from "react-router-dom";
 import {Card, Icon, List, Typography} from "antd";
 import axios from "axios";
 
 const {Paragraph} = Typography;
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
     card: {
         '& > :first-child > div div': {
             padding: `8px 0`,
@@ -26,12 +26,13 @@ const styles = theme => ({
             marginTop: `0 !important`,
         }
     }
-});
+}));
 
-const UpcomingEvents = ({classes}) => {
+const UpcomingEvents = (props) => {
+    const {card, meta, list} = useStyles();
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {card, meta, list} = classes;
+
 
     async function fetchUrl() {
         const {data} = await axios.get("api/public/events");
@@ -42,7 +43,7 @@ const UpcomingEvents = ({classes}) => {
         fetchUrl().then(r => setLoading(false));
     }, []);
 
-
+    console.log(props)
     return (
         <>
             <Card
@@ -69,7 +70,9 @@ const UpcomingEvents = ({classes}) => {
                             style={{padding: `8px 0`}}
                             actions={[
                                 <span><Icon type={"calendar"} style={{marginRight: 8}}/>{event.date}</span>,
-                                <a href={'/'}>View Details</a>
+                                <a href={event.href}
+                                   onClick={() => props.history.push('/events/' + event.id, event)}
+                                >View Details</a>
                             ]}
                         >
                             <List.Item.Meta
@@ -88,4 +91,4 @@ const UpcomingEvents = ({classes}) => {
 };
 
 
-export default withStyles(styles)(UpcomingEvents);
+export default withRouter(UpcomingEvents);
