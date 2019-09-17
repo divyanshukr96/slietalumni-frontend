@@ -25,7 +25,7 @@ const IconText = ({type, text}) => (
   </span>
 );
 
-const EventLists = (props) => {
+const NewsLists = (props) => {
     const classes = useStyles();
 
     // const [events, dispatch] = useReducer((state, action) => {
@@ -45,11 +45,11 @@ const EventLists = (props) => {
     //     }
     // }, {list: [], details: null});
 
-    const [events, setEvents] = useState([]);
+    const [newses, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
 
     async function fetchUrl() {
-        const {data} = await axios.get("api/public/events");
+        const {data} = await axios.get("api/public/news-stories");
         if (data.data) setEvents(data.data)
         // if (data.data) dispatch({
         //     type: "LIST",
@@ -64,25 +64,24 @@ const EventLists = (props) => {
     return (
         <div className={classes.main}>
             <Paper style={{marginBottom: 8, padding: `8px 12px`}}>
-                <Title level={3} style={{marginBottom: 0}}>Events</Title>
+                <Title level={3} style={{marginBottom: 0}}>News & Stories</Title>
             </Paper>
             <List
                 loading={loading}
                 itemLayout="vertical"
-                dataSource={events}
-                renderItem={event => (
+                dataSource={newses}
+                renderItem={news => (
                     <Card
-                        key={event.title}
+                        key={news.title}
                         hoverable={true}
                         style={{marginBottom: 8}}
                         bodyStyle={{paddingTop: 8, paddingBottom: 8}}
                     >
                         <List.Item
                             actions={[
-                                <IconText type={"calendar"} text={event.date}/>,
-                                <IconText type={"calendar"} text={event.venue}/>,
-                                <a href={event.href}
-                                   onClick={() => props.history.push('/events/' + event.id, event)}
+                                <IconText type={"calendar"} text={news.published_at}/>,
+                                <a href={news.href}
+                                   onClick={() => props.history.push('/news/' + news.id, news)}
                                 >View Details</a>
                             ]}
                             extra={[
@@ -90,27 +89,20 @@ const EventLists = (props) => {
                                     key={"image"}
                                     width={120}
                                     alt="logo"
-                                    src={event.image_thumb}
+                                    src={news.cover_thumb}
                                 />
                             ]}
-                            onDoubleClick={() => props.history.push('/events/' + event.id, event)}
+                            onDoubleClick={() => props.history.push('/news/' + news.id, news)}
                         >
                             <List.Item.Meta
                                 style={{marginBottom: 2}}
                                 title={[
-                                    <a key="link" href={event.href}>{event.title}</a>,
-                                    <Paragraph key="btn" style={{
-                                        fontSize: 'small',
-                                        color: 'rgba(0, 0, 0, 0.40)',
-                                        marginBottom: 0
-                                    }}>{event.published_at}</Paragraph>
+                                    <a key="link" href={news.href}>{news.title}</a>
                                 ]}
-                                description={<Paragraph
-                                    ellipsis={{rows: 5}}
-                                    style={{textAlign: 'justify'}}
-                                >
-                                    {event.description}
-                                </Paragraph>}
+                                description={
+                                    <Paragraph ellipsis={{rows: 5}}
+                                               style={{textAlign: 'justify'}}>{news.description}</Paragraph>
+                                }
                             />
                         </List.Item>
                     </Card>
@@ -121,4 +113,4 @@ const EventLists = (props) => {
 };
 
 
-export default EventLists;
+export default NewsLists;

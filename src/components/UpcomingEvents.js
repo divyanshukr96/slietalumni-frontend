@@ -43,7 +43,6 @@ const UpcomingEvents = (props) => {
         fetchUrl().then(r => setLoading(false));
     }, []);
 
-    console.log(props)
     return (
         <>
             <Card

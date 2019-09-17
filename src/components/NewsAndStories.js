@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {withStyles} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 import {Card, Icon, List, Typography} from "antd";
 import axios from "axios";
+import {Link, withRouter} from "react-router-dom";
 
 const {Paragraph} = Typography;
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
     card: {
         '& > :first-child > div div': {
             padding: `8px 0`,
@@ -30,13 +31,13 @@ const styles = theme => ({
             marginTop: `0 !important`,
         }
     }
-});
+}));
 
 
-const NewsAndStories = ({classes}) => {
+const NewsAndStories = (props) => {
     const [newsStories, setNewsStories] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {card, meta, list, itemCss} = classes;
+    const {card, meta, list, itemCss} = useStyles();
 
     async function fetchUrl() {
         const {data} = await axios.get("api/public/news-stories");
@@ -47,6 +48,7 @@ const NewsAndStories = ({classes}) => {
         fetchUrl().then(r => setLoading(false));
     }, []);
 
+
     return (
         <>
             <Card
@@ -54,7 +56,7 @@ const NewsAndStories = ({classes}) => {
                 bodyStyle={{padding: `0 8px`}}
                 className={card}
                 title={'News & Stories'}
-                // extra={<Link to={'/news-stories'}>View All</Link>}
+                extra={<Link to={'/news'}>View All</Link>}
             >
                 <List
                     itemLayout="vertical"
@@ -77,7 +79,9 @@ const NewsAndStories = ({classes}) => {
                                     <Icon type={"calendar"} style={{marginRight: 8}}/>
                                     {item.published_at}
                                     </span>,
-                                <a href={'/'}>View Details</a>
+                                <a href={item.href}
+                                   onClick={() => props.history.push('/news/' + item.id, item)}
+                                >View Details</a>
                             ]}
                             extra={<img
                                 width={80}
@@ -101,4 +105,4 @@ const NewsAndStories = ({classes}) => {
 };
 
 
-export default withStyles(styles)(NewsAndStories);
+export default withRouter(NewsAndStories);

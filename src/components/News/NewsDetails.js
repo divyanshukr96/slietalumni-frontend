@@ -26,17 +26,17 @@ const IconText = ({type, text}) => (
   </span>
 );
 
-const EventDetails = (props) => {
+const NewsDetails = (props) => {
     const classes = useStyles();
 
-    const [event, setEvent] = useState({});
+    const [news, setNews] = useState({});
     const [loading, setLoading] = useState(true);
 
     async function fetchUrl() {
         const {history: {action}, match: {params}, location} = props;
-        if (action === "PUSH") return setEvent(location.state);
-        const {data} = await axios.get("/api/public/events");
-        if (data.data) setEvent(data.data.filter(ev => ev.id === params.event)[0])
+        if (action === "PUSH") return setNews(location.state);
+        const {data} = await axios.get("/api/public/news-stories");
+        if (data.data) setNews(data.data.filter(ev => ev.id === params.news)[0])
     }
 
     useEffect(() => {
@@ -52,29 +52,23 @@ const EventDetails = (props) => {
                 style={{marginBottom: 8}}
                 bodyStyle={{paddingTop: 16, paddingBottom: 16}}
             >
-                {event && <>
-                    <Title level={3} style={{marginBottom: 2}}>{event.title}</Title>
-                    <IconText type="global" text={event.published_at}/><br/>
+                {news && <>
+                    <Title level={3} style={{marginBottom: 2}}>{news.title}</Title>
+                    <IconText type="global" text={news.published_at}/><br/>
                     <Divider style={{margin: `12px 0`}}/>
                     <div style={{textAlign: 'center', marginBottom: `8px`}}>
                         <img
                             key={"image"}
                             width={120}
                             alt="logo"
-                            src={event.image_thumb}
+                            src={news.cover_thumb}
                         />
                     </div>
 
-                    <Paragraph style={{textAlign: 'justify'}}>
-                        <div dangerouslySetInnerHTML={{__html: event.content}}/>
-                    </Paragraph>
+                    <Paragraph style={{textAlign: 'justify'}}><div dangerouslySetInnerHTML={{__html: news.content}}/></Paragraph>
 
-                    <div style={{fontWeight: 500}}>
-                        <Paragraph style={{marginBottom: 2}}>Venue: {event.venue}</Paragraph>
-                        <Paragraph>Date: {event.date}</Paragraph>
-                    </div>
 
-                    <div style={{textAlign: 'center'}}>
+                    <div style={{textAlign: 'center', marginTop: 16}}>
                         <Button onClick={() => props.history.goBack()}>Back</Button>
                     </div>
 
@@ -86,4 +80,4 @@ const EventDetails = (props) => {
     );
 };
 
-export default EventDetails;
+export default NewsDetails;
