@@ -83,7 +83,7 @@ const NewsAndStories = (props) => {
                                    onClick={() => props.history.push('/news/' + item.id, item)}
                                 >View Details</a>
                             ]}
-                            extra={<img
+                            extra={item.cover_thumb && <img
                                 width={80}
                                 alt={item.title}
                                 src={item.cover_thumb}/>
@@ -91,7 +91,9 @@ const NewsAndStories = (props) => {
                         >
                             <List.Item.Meta
                                 className={meta}
-                                title={<a href="#">{item.title}</a>}
+                                title={<a href={item.href}
+                                          onClick={() => props.history.push('/news/' + item.id, item)}
+                                >{item.title}</a>}
                                 description={<Paragraph ellipsis={{rows: 3}} style={{marginBottom: 0}}>
                                     {item.description}
                                 </Paragraph>}

@@ -76,7 +76,9 @@ const UpcomingEvents = (props) => {
                         >
                             <List.Item.Meta
                                 className={meta}
-                                title={<a href="https://ant.design">{event.title}</a>}
+                                title={<a href={event.href}
+                                          onClick={() => props.history.push('/events/' + event.id, event)}
+                                >{event.title}</a>}
                                 description={<Paragraph ellipsis={{rows: 3}} style={{marginBottom: 0}}>
                                     {event.description}
                                 </Paragraph>}

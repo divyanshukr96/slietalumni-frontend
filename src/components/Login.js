@@ -16,7 +16,7 @@ const styles = theme => ({
         },
         [theme.breakpoints.down('md')]: {
             boxShadow: theme.shadows[0],
-            padding: 0,
+            padding: 8,
         },
     },
     linkedIn: {

@@ -23,6 +23,7 @@ import EventLists from "../components/Events/EventLists";
 import EventDetails from "../components/Events/EventDetails";
 import NewsLists from "../components/News/NewsLists";
 import NewsDetails from "../components/News/NewsDetails";
+import MeetRegistration from "../components/Meet/MeetRegistration";
 
 const Route = ({component: Component, ...rest}) => (
     <RouteComponent
@@ -57,6 +58,8 @@ const PublicRoutes = () => {
                     <Route exact path={'/message/dean-sw'} component={DeanMessage}/>
                     <Route exact path={'/message/chairman'} component={ChairmanMessage}/>
                     <Route exact path={'/message/president'} component={PresidentMessage}/>
+
+                    <Route exact path={'/meet/register'} component={MeetRegistration}/>
 
                     <Route exact path="/events" component={EventLists}/>
                     <Route exact path="/events/:event" component={EventDetails}/>

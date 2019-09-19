@@ -59,6 +59,10 @@ export const login = formData => async dispatch => {
 export const authCheck = () => async dispatch => {
     try {
         const {data} = await axios.get('/api/auth');
+        data.data && dispatch({
+            type: type.AUTH_USER_DETAIL,
+            payload: data.data
+        });
         return data;
     } catch ({response}) {
         dispatch({
@@ -71,9 +75,9 @@ export const authCheck = () => async dispatch => {
 export const fetchDetails = () => async dispatch => {
     try {
         const {data} = await axios.get('/api/auth');
-        dispatch({
+        data.data && dispatch({
             type: type.AUTH_USER_DETAIL,
-            payload: data
+            payload: data.data
         });
         return data;
     } catch ({response}) {
