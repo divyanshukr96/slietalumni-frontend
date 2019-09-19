@@ -4,6 +4,8 @@ import {withStyles} from "@material-ui/core";
 import {Avatar, Button, Card, Col, Divider, Result, Row, Table, Tooltip, Typography} from "antd";
 import Text from "antd/es/typography/Text";
 import ambulance from 'assets/ambulance.svg'
+import healthCare from "assets/healthcare-icon.jpg"
+import saaInfra from "assets/SAA-logo-color.png"
 import DonationForm from "./DonationForm.js";
 
 const {Title, Paragraph} = Typography;
@@ -79,32 +81,63 @@ class Index extends Component {
                         />
                     </Card>
 
-                    <Row style={{marginTop: 16}}>
-                        <Col xs={{span: 5, offset: 1}} lg={{span: 6, offset: 2}}>
+                    <Row style={{marginTop: 16}} type={"flex"} justify={"center"} gutter={4}>
+                        <Col xs={24} sm={12} lg={6}>
                             <Card
                                 hoverable
                                 cover={
-                                    <div style={{textAlign: 'center'}}>
-                                        <img alt="example" src={ambulance} style={{width: 120}}/>
+                                    <div style={{textAlign: 'center', padding: 4}}>
+                                        <img alt="example" src={ambulance} style={{height: 70}}/>
                                     </div>
                                 }
                                 bodyStyle={{paddingTop: 4}}
                             >
                                 <Card.Meta
+                                    style={{textAlign: 'center'}}
                                     title="Donate for Ambulance fund"
-                                    description="Donate for Ambulance fund"
                                 />
                                 <div style={{textAlign: 'center', marginTop: 16}}>
                                     <DonationForm donateFor={'Ambulance'}/>
                                 </div>
-
                             </Card>
                         </Col>
-                        <Col xs={{span: 11, offset: 1}} lg={{span: 6, offset: 2}}>
-
+                        <Col xs={24} sm={12} lg={6}>
+                            <Card
+                                hoverable
+                                cover={
+                                    <div style={{textAlign: 'center', padding: 7}}>
+                                        <img alt="example" src={healthCare} style={{height: 64}}/>
+                                    </div>
+                                }
+                                bodyStyle={{paddingTop: 4}}
+                            >
+                                <Card.Meta
+                                    style={{textAlign: 'center'}}
+                                    title="Donate for Health Care"
+                                />
+                                <div style={{textAlign: 'center', marginTop: 16}}>
+                                    <DonationForm donateFor={'Health'}/>
+                                </div>
+                            </Card>
                         </Col>
-                        <Col xs={{span: 5, offset: 1}} lg={{span: 6, offset: 2}}>
-
+                        <Col xs={24} sm={12} lg={6}>
+                            <Card
+                                hoverable
+                                cover={
+                                    <div style={{textAlign: 'center', padding: 4}}>
+                                        <img alt="example" src={saaInfra} style={{height: 70}}/>
+                                    </div>
+                                }
+                                bodyStyle={{paddingTop: 4}}
+                            >
+                                <Card.Meta
+                                    style={{textAlign: 'center'}}
+                                    title="Donate for SAA Infrastructure"
+                                />
+                                <div style={{textAlign: 'center', marginTop: 16}}>
+                                    <DonationForm donateFor={'Infrastructure'}/>
+                                </div>
+                            </Card>
                         </Col>
                     </Row>
 

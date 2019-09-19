@@ -21,11 +21,7 @@ export const registration = formData => async dispatch => {
         let form = new FormData();
         for (const field in formData) form.append(field, formData[field]);
         const {data} = await axios.post('/api/alumni/register', form);
-        dispatch({
-            type: type.LOGIN_SUCCESS,
-            payload: data
-        });
-        return data;
+        return data.id ? data : data.data;
     } catch ({response}) {
         dispatch({
             type: type.ERROR_VALIDATION,

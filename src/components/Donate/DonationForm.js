@@ -172,7 +172,7 @@ class DonationForm extends Component {
 
     render() {
         const {loginRequired} = this.props;
-        const showModal = () => this.setState({visible: true, member: false, success: true});
+        const showModal = () => this.setState({visible: true, member: false});
         const authModal = () => this.setState(s => ({...s, login: true}));
         return (
             <div>
@@ -200,8 +200,14 @@ class DonationForm extends Component {
                     <Result
                         style={{padding: `12px 8px`}}
                         status="success"
-                        title="Successfully Purchased Cloud Server ECS!"
-                        subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+                        title="Your Donation is Successfully Submitted!"
+                        subTitle={
+                            <>
+                                We are extremely grateful for the gift that you have given to
+                                <strong> SLIET Alumni Association</strong>. <br/>
+                                We appreciate your help and look forward to encourage for donation.
+                            </>
+                        }
                         extra={[
                             <Button
                                 onClick={() => this.setState({success: false})}

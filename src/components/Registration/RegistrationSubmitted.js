@@ -1,28 +1,41 @@
-import React, {Component} from 'react';
+import React from 'react';
+import * as _ from "lodash";
 import * as PropTypes from 'prop-types';
-import {Avatar, Button, Modal, Result} from "antd";
+import {withRouter} from "react-router-dom";
+import {Avatar, Button, Modal, Result, Typography} from "antd";
 import logo from 'assets/SAA-logo-color.png'
 
-class RegistrationSubmitted extends Component {
-    render() {
-        const {visible} = this.props;
-        return (
-            <Modal visible={visible} footer={null} closable={false}>
-                <Result
-                    icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
-                    status="success"
-                    title="Successfully Purchased Cloud Server ECS!"
-                    subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
-                    extra={[
-                        <Button type="primary" key="console">
-                            Go Console
-                        </Button>,
-                        <Button key="buy">Buy Again</Button>,
-                    ]}
-                />
-            </Modal>
-        );
-    }
+const {Paragraph, Title} = Typography;
+
+function RegistrationSubmitted(props) {
+    const {visible, data} = props;
+    if (_.isEmpty(data)) return <div/>;
+    return (
+        <Modal visible={visible} footer={null} closable={false}>
+            <Result
+                icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
+                status="success"
+                title="Membership Registration Success"
+                subTitle={
+                    <>
+                        <Title level={4}>Hi {data.name}</Title>
+                        <Paragraph>
+                            Your Membership form of SLIET Alumni Association is successfully submitted.
+                        </Paragraph>
+                        <Paragraph>
+                            Your account is under evaluation, Once your account is verified you will receive and
+                            email with your login details
+                        </Paragraph>
+                    </>
+                }
+                extra={[
+                    <Button type="primary" key="console" onClick={() => props.history.push('/')}>
+                        Go Home
+                    </Button>
+                ]}
+            />
+        </Modal>
+    );
 }
 
 RegistrationSubmitted.propTypes = {
@@ -30,4 +43,4 @@ RegistrationSubmitted.propTypes = {
     data: PropTypes.object,
 };
 
-export default RegistrationSubmitted;
+export default withRouter(RegistrationSubmitted);

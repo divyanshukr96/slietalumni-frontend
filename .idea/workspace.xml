@@ -33,12 +33,11 @@
   <component name="ChangeListManager">
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/authAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/authAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/publicAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/publicAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewsAndStories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewsAndStories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UpcomingEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpcomingEvents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/publicRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/publicRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/newAlumniAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/newAlumniAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Donate/DonationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Donate/DonationForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Donate/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Donate/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Meet/MeetRegistrationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Meet/MeetRegistrationForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Registration/RegistrationSubmitted.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/RegistrationSubmitted.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,19 +77,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Profile" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Message" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
       <recent name="E:\Alumni_Association\alumni-frontend\public" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Events" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Profile" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Message" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -182,7 +181,7 @@
       <workItem from="1568716022227" duration="13955000" />
       <workItem from="1568813255276" duration="7509000" />
       <workItem from="1568841797566" duration="35000" />
-      <workItem from="1568841865711" duration="7594000" />
+      <workItem from="1568841865711" duration="13945000" />
     </task>
     <servers />
   </component>

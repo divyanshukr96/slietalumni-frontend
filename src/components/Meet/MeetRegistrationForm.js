@@ -32,6 +32,12 @@ const SuccessMessage = ({success, data, history}) => {
                         href="mailto:association@slietalumni.com">association@slietalumni.com</a>
                         for your payment Confirmation
 
+                        <Paragraph style={{textAlign: 'left', paddingTop: 12}}>
+                            <Text style={{fontWeight: 500}}>Registration charges for Alumni Meet</Text><br/>
+                            <Text>Single Person : ₹ 2000/-</Text><br/>
+                            <Text>With Family : ₹ 2500/-</Text>
+                        </Paragraph>
+
 
                         <Divider orientation={"left"} style={{marginBottom: 4}}>Bank Details</Divider>
                         <Paragraph style={{textAlign: 'left'}}>
