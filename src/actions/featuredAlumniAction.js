@@ -40,7 +40,7 @@ export const searchAlumni = search => async (dispatch, getState) => {
         const {data} = await axios.get(`/api/featured-alumni/${search}?alumni`);
         await dispatch({
             type: type.FEATURED_ALUMNI_SEARCH,
-            payload: data
+            payload: data.data
         });
         return true;
     } catch ({response}) {
@@ -50,6 +50,7 @@ export const searchAlumni = search => async (dispatch, getState) => {
         });
     }
 };
+
 export const alumniDataDelete = () => async (dispatch, getState) => {
     const {alumniDatabase: {alumni: {id}}} = getState();
     try {

@@ -294,11 +294,12 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
 
 const mapStateToProps = ({auth}) => ({
     user: auth.user,
+    authRequired: auth.authRequired,
     isAuthenticated: auth.isAuthenticated,
 });
 const mapDispatchToProps = (dispatch) => ({
     onRegister: e => dispatch(meetRegister(e)),
-    loginRequired: () => dispatch(authRequired()),
+    loginRequired: (d) => dispatch(authRequired(d)),
     fetchUser: () => dispatch(fetchDetails()),
 });
 

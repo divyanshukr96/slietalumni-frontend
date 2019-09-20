@@ -21,8 +21,8 @@ const ConfirmationForm = Form.create({name: 'reg_conf'})(
             form.validateFields((err, values) => {
                 if (!err) onSetUsername(values).then(res => {
                     if (res) {
+                        setData(res);
                         setSuccess(true);
-                        setData(res)
                     }
                 })
             });

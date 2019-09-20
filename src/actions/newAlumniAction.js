@@ -52,7 +52,7 @@ export const confirmRegistration = formData => async (dispatch, getState) => {
 export const setUsernamePassword = formData => async dispatch => {
     try {
         const {data} = await axios.post(`/api/set-username/`, formData);
-        return data;
+        return data.id ? data : data.data;
     } catch ({response}) {
         dispatch({
             type: type.ERROR_VALIDATION,

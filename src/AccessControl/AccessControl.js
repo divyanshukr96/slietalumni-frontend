@@ -39,8 +39,8 @@ AccessControl.defaultProps = {
     renderNoAccess: () => null,
 };
 
-const mapStateToProps = state => ({
-    userPermissions: state.auth.isAuthenticated && state.auth.permissions
+const mapStateToProps = ({auth}) => ({
+    userPermissions: auth.isAuthenticated && auth.user && auth.user.permissions
 });
 
 export default connect(mapStateToProps)(AccessControl);

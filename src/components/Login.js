@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Paper, withStyles} from "@material-ui/core";
 import LoginForm from "./LoginForm";
-import {Button, Divider, Typography} from "antd";
+import {Typography} from "antd";
+// import {Button, Divider, } from "antd";
 import SAALogo from 'assets/SAA-logo-color.png'
 
 const {Title} = Typography;
@@ -45,10 +46,10 @@ class Login extends Component {
                         Sign in
                     </Title>
                 </div>
-                <Button icon="linkedin" type="primary" size={"large"} className={classes.linkedIn}>
-                    Sign in with LinkedIn
-                </Button>
-                <Divider orientation={"center"} style={{margin: '8px 0'}}>Or</Divider>
+                {/*<Button icon="linkedin" type="primary" size={"large"} className={classes.linkedIn}>*/}
+                {/*    Sign in with LinkedIn*/}
+                {/*</Button>*/}
+                {/*<Divider orientation={"center"} style={{margin: '8px 0'}}>Or</Divider>*/}
                 <LoginForm {...rest}/>
             </Paper>
         );

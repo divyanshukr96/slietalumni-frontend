@@ -73,13 +73,12 @@ class ProfilePhoto extends Component {
     };
 
     render() {
-        const {classes} = this.props;
+        const {classes, profile} = this.props;
         const {file} = this.state;
-        const image = "";
         return (
             <div className={classes.profilePhoto}>
                 <Avatar style={{height: '-webkit-fill-available', width: 'inherit'}}
-                        src={file ? URL.createObjectURL(file) : image ? image : TmpProfile}/>
+                        src={file ? URL.createObjectURL(file) : profile ? profile : TmpProfile}/>
                 <Upload
                     style={file && {display: 'none'}}
                     accept="image/*"

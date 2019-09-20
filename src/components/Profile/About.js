@@ -45,7 +45,7 @@ class About extends Component {
                         </>
                     } layout="horizontal">
                         <Descriptions.Item label="Name">{profile.name}</Descriptions.Item>
-                        <Descriptions.Item label="Username">{profile.useranme}</Descriptions.Item>
+                        <Descriptions.Item label="Username">{profile.username}</Descriptions.Item>
                         <Descriptions.Item label="Email">{profile.email}</Descriptions.Item>
                         <Descriptions.Item label="Mobile">{profile.mobile}</Descriptions.Item>
                         {/*<Descriptions.Item label="Address" span={2}>*/}
@@ -61,7 +61,7 @@ class About extends Component {
 
                         {profile.professionals.map((prof, index) => (
                             <Descriptions key={index} title={<Divider style={{margin: 0}}/>} layout="horizontal">
-                                <Descriptions.Item label="Organisation">{prof.organization}</Descriptions.Item>
+                                <Descriptions.Item label="Organisation">{prof.organisation}</Descriptions.Item>
                                 <Descriptions.Item label="Designation">{prof.designation}</Descriptions.Item>
                             </Descriptions>
                         ))}

@@ -43,6 +43,10 @@ export const login = formData => async dispatch => {
             type: type.LOGIN_SUCCESS,
             payload: data
         });
+        dispatch({
+            type: type.LOGIN_LOADING,
+            payload: false
+        });
         return data;
     } catch ({response}) {
         dispatch({

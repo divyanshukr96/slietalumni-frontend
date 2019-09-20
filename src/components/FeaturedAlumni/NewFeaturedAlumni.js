@@ -213,7 +213,7 @@ class NewFeaturedAlumni extends Component {
     render() {
         return (
             <>
-                <Button type="primary" style={{marginLeft: 8}} onClick={this.showModal}>
+                <Button type="primary" style={{marginBottom: 8}} onClick={this.showModal}>
                     Add New Data
                 </Button>
                 <CollectionCreateForm

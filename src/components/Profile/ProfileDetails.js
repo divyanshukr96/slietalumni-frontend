@@ -42,7 +42,7 @@ function ProfileDetails(props) {
     const {classes} = props;
 
     const [loading, setLoading] = useState(true);
-    const [profile, setProfile] = useState([]);
+    const [profile, setProfile] = useState({});
 
     async function fetchUrl() {
         const {data} = await axios.get("api/auth/profile");
@@ -61,7 +61,7 @@ function ProfileDetails(props) {
                 cover={<CoverPhoto/>}
             >
                 <div className={classes.container}>
-                    <ProfilePhoto/>
+                    <ProfilePhoto profile={profile.image}/>
                     <div style={{padding: '0 12px'}}>
                         <Title level={3} ellipsis style={{margin: 0}}>{profile.name}</Title>
                         <Paragraph>@{profile.username}</Paragraph>

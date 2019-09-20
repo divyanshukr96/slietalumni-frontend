@@ -44,6 +44,7 @@ class PublicNavBar extends Component {
             breakPoint: false,
             selected: null,
             auth: false,
+            dashboard: false,
         }
     }
 
@@ -58,9 +59,16 @@ class PublicNavBar extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
+        let dashboard = prevState.dashboard;
         let {pathname} = nextProps.location;
         pathname = pathname === '/' ? '/' : pathname.split('/').filter(x => x).join('/');
-        return {selected: pathname}
+
+        const data = <AccessControl
+            key={"dashboard-access-control"}
+            allowedPermissions={['sac']}>
+            {dashboard = true}
+        </AccessControl>;
+        return {selected: pathname, dashboard: dashboard}
     }
 
 
@@ -68,17 +76,19 @@ class PublicNavBar extends Component {
 
     loginLogout = (sidebar) => {
         const {auth, classes, onLogout} = this.props;
+        const {dashboard} = this.state;
         return auth ? [
             <Menu.Item key="profile">
                 <Link to={'/profile'}>{sidebar && <Icon type="profile"/>} Profile</Link>
             </Menu.Item>,
-            <AccessControl
-                key={"dashboard-access-control"}
-                allowedPermissions={['sac']}>
-                <Menu.Item key="sac-home">
+
+            <Menu.Item key="sac-home" style={{display: !dashboard && "none"}}>
+                <AccessControl
+                    key={"dashboard-access-control"}
+                    allowedPermissions={['sac']}>
                     <Link to={'/sac'}>{sidebar && <Icon type="dashboard"/>} Dashboard</Link>
-                </Menu.Item>
-            </AccessControl>,
+                </AccessControl>
+            </Menu.Item>,
             <Menu.Item key="logout">
                 <Tooltip placement="right" title='Logout'>
                     <Button

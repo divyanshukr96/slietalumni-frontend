@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
 import {Button, Icon, Tooltip, Upload} from "antd";
+import tempcover from "assets/3chad3rzxalsf65nuo7hxciac.svg"
 
 const styles = theme => ({
     coverPhoto: {
@@ -40,7 +41,7 @@ class CoverPhoto extends Component {
     render() {
         const {classes} = this.props;
         const {file} = this.state;
-        const image = "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png";
+        const image = tempcover;
         return (
             <>
                 <img

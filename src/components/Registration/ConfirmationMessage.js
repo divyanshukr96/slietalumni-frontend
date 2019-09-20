@@ -1,28 +1,39 @@
-import React, {Component} from 'react';
+import React from 'react';
+import * as _ from "lodash"
 import * as PropTypes from 'prop-types';
-import {Avatar, Button, Modal, Result} from "antd";
+import {Avatar, Button, Modal, Result, Tooltip, Typography} from "antd";
 import logo from 'assets/SAA-logo-color.png'
+import {withRouter} from "react-router-dom";
 
-class ConfirmationMessage extends Component {
-    render() {
-        const {visible} = this.props;
-        return (
-            <Modal visible={visible} footer={null} closable={false}>
-                <Result
-                    icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
-                    status="success"
-                    title="Successfully Purchased Cloud Server ECS!"
-                    subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
-                    extra={[
-                        <Button type="primary" key="console">
-                            Go Console
-                        </Button>,
-                        <Button key="buy">Buy Again</Button>,
-                    ]}
-                />,
-            </Modal>
-        );
-    }
+const {Title} = Typography;
+
+function ConfirmationMessage({data, visible, history}) {
+    if (_.isEmpty(data)) return <div/>;
+    return (
+        <Modal visible={visible} footer={null} closable={false}>
+            <Result
+                style={{padding: 0}}
+                icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
+                status="success"
+                title={<>
+                    Congratulation {data.name}!
+                </>}
+                subTitle={
+                    <>
+                        <Title level={4}>Welcome to <Tooltip
+                            title={"SLIET Alumni Association"}>SAA</Tooltip> family</Title>
+                        Your account of SLIET Alumni Association (SAA) has been successfully created.
+                    </>
+                }
+                extra={[
+                    <Button type="primary" key="console" onClick={() => history.push("/login")}>
+                        Login
+                    </Button>,
+                    <Button key="buy" onClick={() => history.push("/")}>Home</Button>
+                ]}
+            />,
+        </Modal>
+    );
 }
 
 ConfirmationMessage.propTypes = {
@@ -30,4 +41,4 @@ ConfirmationMessage.propTypes = {
     data: PropTypes.object,
 };
 
-export default ConfirmationMessage;
+export default withRouter(ConfirmationMessage);
