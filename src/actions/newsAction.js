@@ -40,6 +40,7 @@ export const updateNews = (id, formData) => async dispatch => {
     try {
         let form = new FormData();
         for (let field in formData) form.append(field, formData[field]);
+        form.append("_method", "PATCH");
         const {data} = await axios.post('/api/news/' + id, form);
         data.data && dispatch({
             type: type.NEWS_UPDATE,

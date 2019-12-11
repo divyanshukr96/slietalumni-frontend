@@ -32,29 +32,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/3chad3rzxalsf65nuo7hxciac.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Constants/ProgrammeAndBranch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Constants/ProgrammeAndBranch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/authAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/authAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/featuredAlumniAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/featuredAlumniAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/newAlumniAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/newAlumniAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chapters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chapters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FeaturedAlumni/NewFeaturedAlumni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FeaturedAlumni/NewFeaturedAlumni.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Meet/MeetRegistrationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Meet/MeetRegistrationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/About.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/CoverPhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/CoverPhoto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/newsAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/newsAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ContactUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContactUs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PublicNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Registration/ConfirmationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/ConfirmationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Registration/ConfirmationMessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/ConfirmationMessage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stores/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/configureStore.js" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,10 +57,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Oh4lJ8Kki8e5LzEOeuyT2TYJpy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
+    <property name="last_opened_file_path" value="E:/Damanpreet_Sir/Broadcast_App/website" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -107,18 +97,6 @@
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Message" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -127,6 +105,18 @@
       <envs />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -196,7 +186,13 @@
       <workItem from="1568716022227" duration="13955000" />
       <workItem from="1568813255276" duration="7509000" />
       <workItem from="1568841797566" duration="35000" />
-      <workItem from="1568841865711" duration="36712000" />
+      <workItem from="1568841865711" duration="38584000" />
+      <workItem from="1569071050089" duration="543000" />
+      <workItem from="1570727390774" duration="635000" />
+      <workItem from="1570744601465" duration="15000" />
+      <workItem from="1575956271867" duration="2192000" />
+      <workItem from="1576040235349" duration="3769000" />
+      <workItem from="1576079413317" duration="322000" />
     </task>
     <servers />
   </component>
@@ -248,5 +244,27 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1899" height="261" key="GridCell.Tab.0.bottom" timestamp="1576049475757">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576049475757" />
+    <state width="1899" height="261" key="GridCell.Tab.0.center" timestamp="1576049475757">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="261" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576049475757" />
+    <state width="1899" height="261" key="GridCell.Tab.0.left" timestamp="1576049475757">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="261" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576049475757" />
+    <state width="1899" height="261" key="GridCell.Tab.0.right" timestamp="1576049475757">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="261" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576049475757" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576049078113">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576049078113" />
   </component>
 </project>

@@ -23,7 +23,7 @@ const styles = theme => ({
         padding: 24,
         paddingTop: 8,
         // background: '#fff',
-        minHeight: 360,
+        minHeight: '83vh',
         [theme.breakpoints.up('sm')]: {
             margin: '24px 16px 0',
         }
