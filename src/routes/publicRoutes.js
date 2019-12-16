@@ -2,7 +2,7 @@ import React from 'react';
 import {Route as RouteComponent, Switch, Redirect} from 'react-router-dom'
 import NotFound from "../components/NotFound";
 import PublicNavBar from "../components/PublicNavBar";
-import Login from "../components/Login";
+import Login from "../components/Auth/Login";
 import ContactUs from "../components/ContactUs";
 import Home from "../components/Home";
 import Advisory from "../components/Advisory";
@@ -24,6 +24,7 @@ import EventDetails from "../components/Events/EventDetails";
 import NewsLists from "../components/News/NewsLists";
 import NewsDetails from "../components/News/NewsDetails";
 import MeetRegistration from "../components/Meet/MeetRegistration";
+import ResetPassword from "../components/Auth/ResetPassword";
 
 const Route = ({component: Component, ...rest}) => (
     <RouteComponent
@@ -78,6 +79,8 @@ const PublicRoutes = () => {
                     <Route exact path={'/register'} component={Register}/>
                     <Route exact path={'/registration/confirmation'} component={RegisterConfirmation}/>
                     <Route exact path={'/contact'} component={ContactUs}/>
+
+                    <Route exact path={'/password/reset/:token'} component={ResetPassword}/>
 
                     <Route exact path={'/a'} component={() => 'Compnenet a'}/>
                     <Route path={'*'} component={NotFound}/>

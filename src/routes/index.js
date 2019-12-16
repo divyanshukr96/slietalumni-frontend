@@ -5,7 +5,7 @@ import PublicRoutes from "./publicRoutes";
 import AuthRoutes from "./authRoutes";
 import App from "../App";
 import {BackTop} from "antd";
-import LoginRequired from "../components/LoginRequired";
+import LoginRequired from "../components/Auth/LoginRequired";
 
 const routes = (
     <>

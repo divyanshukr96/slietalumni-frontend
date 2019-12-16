@@ -7,6 +7,7 @@ import {
 import {Link, Redirect} from "react-router-dom";
 import {login} from 'actions/authAction'
 import FormError from "components/Errors";
+import ForgotPassword from "./ForgotPassword";
 
 
 const LoginForm = Form.create({name: 'normal_login'})(
@@ -51,7 +52,7 @@ const LoginForm = Form.create({name: 'normal_login'})(
                         })(
                             <Checkbox>Remember me</Checkbox>
                         )}
-                        <Link to={'/login'} style={{float: 'right'}}>Forgot password</Link>
+                        <ForgotPassword/>
                         <Button loading={loading} type="primary" htmlType="submit" className="login-form-button"
                                 style={{width: '100%'}}>
                             Log in

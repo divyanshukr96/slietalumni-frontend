@@ -91,3 +91,53 @@ export const fetchDetails = () => async dispatch => {
         });
     }
 };
+
+
+export const forgotPassword = (formData) => async dispatch => {
+    try {
+        dispatch({
+            type: type.LOGIN_LOADING,
+            payload: true
+        });
+        const {data} = await axios.post('/api/auth/password/forgot', formData);
+        dispatch({
+            type: type.LOGIN_LOADING,
+            payload: false
+        });
+        return data;
+    } catch ({response}) {
+        dispatch({
+            type: type.ERROR_VALIDATION,
+            payload: response.data
+        });
+        dispatch({
+            type: type.LOGIN_LOADING,
+            payload: false
+        });
+    }
+};
+
+
+export const resetPassword = (formData) => async dispatch => {
+    try {
+        dispatch({
+            type: type.LOGIN_LOADING,
+            payload: true
+        });
+        const {data} = await axios.post('/api/auth/password/reset', formData);
+        dispatch({
+            type: type.LOGIN_LOADING,
+            payload: false
+        });
+        return data;
+    } catch ({response}) {
+        dispatch({
+            type: type.ERROR_VALIDATION,
+            payload: response.data
+        });
+        dispatch({
+            type: type.LOGIN_LOADING,
+            payload: false
+        });
+    }
+};

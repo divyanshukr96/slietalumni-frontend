@@ -34,10 +34,16 @@
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/newsAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/newsAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ContactUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContactUs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PublicNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicNavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/authAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/authAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginRequired.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/LoginRequired.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Registration/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/publicRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/publicRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stores/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +72,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/Damanpreet_Sir/Broadcast_App/website" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Auth" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -83,18 +89,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Auth" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
       <recent name="E:\Alumni_Association\alumni-frontend\public" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Events" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Auth" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\assets\chapter" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Profile" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Message" />
     </key>
   </component>
   <component name="RunManager">
@@ -193,6 +199,9 @@
       <workItem from="1575956271867" duration="2192000" />
       <workItem from="1576040235349" duration="3769000" />
       <workItem from="1576079413317" duration="322000" />
+      <workItem from="1576166310397" duration="7972000" />
+      <workItem from="1576213932824" duration="54000" />
+      <workItem from="1576392585312" duration="7277000" />
     </task>
     <servers />
   </component>
@@ -246,25 +255,33 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="261" key="GridCell.Tab.0.bottom" timestamp="1576049475757">
+    <state width="1899" height="261" key="GridCell.Tab.0.bottom" timestamp="1576392639077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576049475757" />
-    <state width="1899" height="261" key="GridCell.Tab.0.center" timestamp="1576049475757">
+    <state width="1899" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576392639077" />
+    <state width="1899" height="261" key="GridCell.Tab.0.center" timestamp="1576392639077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="261" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576049475757" />
-    <state width="1899" height="261" key="GridCell.Tab.0.left" timestamp="1576049475757">
+    <state width="1899" height="261" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576392639077" />
+    <state width="1899" height="261" key="GridCell.Tab.0.left" timestamp="1576392639077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="261" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576049475757" />
-    <state width="1899" height="261" key="GridCell.Tab.0.right" timestamp="1576049475757">
+    <state width="1899" height="261" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576392639077" />
+    <state width="1899" height="261" key="GridCell.Tab.0.right" timestamp="1576392639077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="261" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576049475757" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576049078113">
+    <state width="1899" height="261" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576392639077" />
+    <state x="770" y="157" key="RollbackChangesDialog" timestamp="1576396324029">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576049078113" />
+    <state x="770" y="157" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576396324029" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1576167999547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576167999547" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576397370579">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576397370579" />
   </component>
 </project>

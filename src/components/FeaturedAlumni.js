@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {withStyles} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import {Card, Popover} from "antd";
+import {Card, Empty, Popover} from "antd";
 import axios from "axios";
 
 
@@ -77,7 +77,11 @@ const FeaturedAlumni = ({classes}) => {
                 title={'Featured Alumni'}
                 extra={<Link to={'/featured-alumni'}>View All</Link>}
             >
-                <div className={scroll}>
+                {!loading && featured.length === 0 ? <Empty
+                    style={{padding: 16}}
+                    imageStyle={{height: 80}}
+                    description="Featured Alumni not available"
+                /> : <div className={scroll}>
                     {featured.map((alumni, index) => (
                         <Popover
                             key={index}
@@ -103,7 +107,7 @@ const FeaturedAlumni = ({classes}) => {
                             />
                         </Popover>
                     ))}
-                </div>
+                </div>}
             </Card>
         </>
     );

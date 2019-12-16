@@ -1,9 +1,9 @@
 import React from 'react';
 import {Button, Modal, Typography} from "antd";
-import SAALogo from "../assets/SAA-logo-color.png";
+import SAALogo from "assets/SAA-logo-color.png";
 import LoginForm from "./LoginForm";
 import {connect} from "react-redux";
-import {authRequired} from "../actions/authAction";
+import {authRequired} from "actions/authAction";
 
 const {Title} = Typography;
 
