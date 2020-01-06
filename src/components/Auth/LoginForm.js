@@ -45,7 +45,7 @@ const LoginForm = Form.create({name: 'normal_login'})(
                                             placeholder="Password"/>
                         )}
                     </Form.Item>
-                    <Form.Item>
+                    <Form.Item style={{marginBottom: 8}}>
                         {getFieldDecorator('remember_me', {
                             valuePropName: 'checked',
                             initialValue: false,

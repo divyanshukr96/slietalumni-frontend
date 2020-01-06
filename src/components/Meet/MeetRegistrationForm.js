@@ -19,23 +19,21 @@ const SuccessMessage = ({success, data, history}) => {
             <Result
                 icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
                 status="success"
-                title="Thank you for SLIET Alumni Meet"
+                title="SLIET Alumni Meet 2020"
                 style={{
                     padding: 0
                 }}
                 subTitle={
                     <>
                         <Title level={4}>Dear {data.name}</Title>
-                        Thanks a lot for registering yourself for Alumni Meet. <br/>
+                        Thanks a lot for registering yourself for Alumni Meet 2020. <br/>
                         Kindly Pay your Alumni Meet registration fees on the given Bank Details and send us your
-                        payment receipt on <a
-                        href="mailto:association@slietalumni.com">association@slietalumni.com</a>
-                        for your payment Confirmation
+                        payment receipt on <a href="mailto:alumnicell@sliet.ac.in">alumnicell@sliet.ac.in</a> for your
+                        payment Confirmation
 
                         <Paragraph style={{textAlign: 'left', paddingTop: 12}}>
                             <Text style={{fontWeight: 500}}>Registration charges for Alumni Meet</Text><br/>
-                            <Text>Single Person : ₹ 2000/-</Text><br/>
-                            <Text>With Family : ₹ 2500/-</Text>
+                            <Text>{data.family ? `With Family ` : `Single Person `}: ₹ {data.fees}/-</Text>
                         </Paragraph>
 
 
@@ -50,7 +48,6 @@ const SuccessMessage = ({success, data, history}) => {
 
                         <Divider orientation={"left"} style={{marginBottom: 4}}>Contact Details</Divider>
                         <Paragraph style={{textAlign: 'left'}}>
-                            Balraj - <a href="tel:+91-9041542991">+91-9041542991</a><br/>
                             Raghav Sharma - <a href="tel:+91-9569468234">+91-9569468234</a><br/>
                             Yash Verma - <a href="tel:+91-7300633011">+91-7300633011</a><br/>
                         </Paragraph>
@@ -71,12 +68,12 @@ const SuccessMessage = ({success, data, history}) => {
 };
 
 const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
-    ({form, onRegister, user, loginRequired, isAuthenticated, fetchUser, history}) => {
+    ({form, onRegister, user, loginRequired, isAuthenticated, fetchUser, history, authRequiredStatus}) => {
         const [success, setSuccess] = useState(false);
         const [registered, setRegistered] = useState(false);
         const [data, setData] = useState(null);
 
-        const {getFieldDecorator, resetFields} = form;
+        const {getFieldDecorator, resetFields, getFieldValue} = form;
 
         const handleSubmit = e => {
             e.preventDefault();
@@ -94,7 +91,10 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
             } else {
                 setRegistered(isAuthenticated);
             }
-        }, [isAuthenticated, user, registered]);
+            else if (!authRequiredStatus) {
+                setRegistered(authRequiredStatus);
+            }
+        }, [isAuthenticated, user, registered, authRequiredStatus]);
 
 
         const handleChecked = e => {
@@ -104,9 +104,6 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
             if (checkData) loginRequired();
         };
 
-        const FormColumn = ({name, children}) => {
-            return registered ? null : <Col sm={12}>{children}</Col>
-        };
 
         return (
             <>
@@ -123,7 +120,7 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
                             </Form.Item>
                         </Col>
 
-                        {registered && isAuthenticated && <>
+                        {registered && isAuthenticated ? <>
 
                             <Col sm={8} xs={10} style={{padding: 8, textAlign: 'right'}}>Name : </Col>
                             <Col sm={16} xs={14} style={{padding: 8}}><Text strong>{user.name}</Text></Col>
@@ -143,103 +140,7 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
                                     {getFieldDecorator('member', {initialValue: user.email})(<Input hidden/>)}
                                 </Form.Item>
                             </Col>
-                        </>}
-
-                        <FormColumn name="name">
-                            <Form.Item label={'Name'} style={{marginBottom: 0}}>
-                                {getFieldDecorator('name', {
-                                    rules: [{required: !registered, message: 'Please enter your full name!'}],
-                                })(<Input placeholder="Enter full name"/>)}
-                            </Form.Item>
-                        </FormColumn>
-
-                        <FormColumn name="email">
-                            <Form.Item label={'Email'} style={{marginBottom: 0}}>
-                                {getFieldDecorator('email', {
-                                    rules: [
-                                        {required: !registered, message: 'Please enter your email-id!',},
-                                        {type: 'email', message: 'The input is not valid e-mail!'},
-                                    ],
-                                })(<Input placeholder="Enter email-id"/>)}
-                            </Form.Item>
-                        </FormColumn>
-
-                        <FormColumn name="mobile">
-                            <Form.Item label={'Mobile'} style={{marginBottom: 0}}>
-                                {getFieldDecorator('mobile', {
-                                    rules: [{required: !registered, message: 'Please enter your mobile number!'}],
-                                })(<Input placeholder="Enter mobile number"/>)}
-                            </Form.Item>
-                        </FormColumn>
-
-                        <FormColumn name="academics">
-                            <Form.Item label={'Programme'} style={{marginBottom: 0}}>
-                                {getFieldDecorator('programme', {
-                                    rules: [{required: !registered, message: 'Please select your programme!'}],
-                                })(<Select placeholder="Select programme">
-                                    <Select.Option key="programme" value={null}>None</Select.Option>
-                                    {Programme.map(row =>
-                                        <Select.Option key={row.value}
-                                                       value={row.value}>{row.text}</Select.Option>)}
-                                </Select>)}
-                            </Form.Item>
-                        </FormColumn>
-
-                        <FormColumn name="academics">
-                            <Form.Item label={'Branch'} style={{marginBottom: 0}}>
-                                {getFieldDecorator('branch', {
-                                    rules: [{required: !registered, message: 'Please select your branch!'}],
-                                })(<Select placeholder="Select branch">
-                                    <Select.Option key="branch" value={null}>None</Select.Option>
-                                    {Branch.map(row =>
-                                        <Select.Option key={row.value}
-                                                       value={row.value}>{row.text}</Select.Option>)}
-                                </Select>)}
-                            </Form.Item>
-                        </FormColumn>
-
-                        <FormColumn name="academics">
-                            <Form.Item label={'Passing Year'} style={{marginBottom: 0}}>
-                                {getFieldDecorator('passing', {
-                                    rules: [{required: !registered, message: 'Select your passing year!'}],
-                                })(<Select placeholder="Select passing year" showSearch>
-                                    <Select.Option key="passing" value={null}>None</Select.Option>
-                                    {_.range(new Date().getFullYear(), 1985).map(row =>
-                                        <Select.Option key={row} value={row}>{row}</Select.Option>)}
-                                </Select>)}
-                            </Form.Item>
-                        </FormColumn>
-
-                        <FormColumn name="academics">
-                            <Form.Item label={'Batch'} style={{marginBottom: 0}}>
-                                {getFieldDecorator('batch', {
-                                    rules: [{required: !registered, message: 'Select your batch!'}],
-                                })(<Select placeholder="Select batch" showSearch>
-                                    <Select.Option key="batch" value={null}>None</Select.Option>
-                                    {_.range(new Date().getFullYear() - 3, 1985).map(row =>
-                                        <Select.Option key={row} value={row}>{row}</Select.Option>)}
-                                </Select>)}
-                            </Form.Item>
-                        </FormColumn>
-
-                        <FormColumn name="professionals">
-                            <Form.Item label={'Organisation'} style={{marginBottom: 0}}>
-                                {getFieldDecorator('organisation', {
-                                    rules: [{
-                                        required: !registered,
-                                        message: 'Please enter your current organisation!'
-                                    }],
-                                })(<Input placeholder="Enter your current organisation"/>)}
-                            </Form.Item>
-                        </FormColumn>
-
-                        <FormColumn name="professional">
-                            <Form.Item label={'Designation'} style={{marginBottom: 0}}>
-                                {getFieldDecorator('designation', {
-                                    rules: [{required: !registered, message: 'Please enter your designation!'}],
-                                })(<Input placeholder="Enter your designation"/>)}
-                            </Form.Item>
-                        </FormColumn>
+                        </> : <RegisterFormColumn form={form}/>}
 
 
                         <Col sm={24}>
@@ -257,26 +158,22 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
                                     valuePropName: 'checked'
                                 })(<Checkbox>Accommodation required</Checkbox>)}
                             </Form.Item>
+                            {getFieldValue('accommodation') && <Paragraph strong style={{}}>
+                                The Accommodation charges have to paid at the Registration desk as per the College
+                                Charges.
+                            </Paragraph>}
                         </Col>
 
                         <Col sm={12}>
                             <Form.Item label={'any other requirements ?'} style={{marginBottom: 0}}>
                                 {getFieldDecorator('requirements', {})(
                                     <Input.TextArea placeholder="Write your requirements here!"
-                                                    autosize={{minRows: 3, maxRows: 6}}/>
+                                                    autoSize={{minRows: 3, maxRows: 6}}/>
                                 )}
                             </Form.Item>
                         </Col>
 
 
-                        {/*<Col span={24}>*/}
-                        {/*    <Form.Item style={{marginBottom: 0}}>*/}
-                        {/*        {getFieldDecorator('accept', {*/}
-                        {/*            valuePropName: 'checked', initialValue: false,*/}
-                        {/*            rules: [{validator: this.confirmAccept}],*/}
-                        {/*        })(<Checkbox>I accept all information is correct</Checkbox>)}*/}
-                        {/*    </Form.Item>*/}
-                        {/*</Col>*/}
                         <Col span={24} style={{textAlign: 'right', paddingTop: 16}}>
                             <Button type="primary" htmlType="submit">
                                 Register
@@ -294,7 +191,7 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
 
 const mapStateToProps = ({auth}) => ({
     user: auth.user,
-    authRequired: auth.authRequired,
+    authRequiredStatus: auth.authRequired,
     isAuthenticated: auth.isAuthenticated,
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -304,3 +201,112 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MeetRegistrationForm));
+
+
+const RegisterFormColumn = ({form}) => {
+
+    const {getFieldDecorator} = form;
+
+    return (
+        <>
+            <Col sm={12}>
+                <Form.Item label={'Name'} style={{marginBottom: 0}}>
+                    {getFieldDecorator('name', {
+                        rules: [{required: true, message: 'Please enter your full name!'}],
+                    })(<Input placeholder="Enter full name"/>)}
+                </Form.Item>
+            </Col>
+
+            <Col sm={12}>
+                <Form.Item label={'Email'} style={{marginBottom: 0}}>
+                    {getFieldDecorator('email', {
+                        rules: [
+                            {required: true, message: 'Please enter your email-id!',},
+                            {type: 'email', message: 'The input is not valid e-mail!'},
+                        ],
+                    })(<Input placeholder="Enter email-id"/>)}
+                </Form.Item>
+            </Col>
+
+            <Col sm={12}>
+                <Form.Item label={'Mobile'} style={{marginBottom: 0}}>
+                    {getFieldDecorator('mobile', {
+                        rules: [{
+                            required: true,
+                            message: 'Please enter your mobile number!'
+                        }],
+                    })(<Input placeholder="Enter mobile number"/>)}
+                </Form.Item>
+            </Col>
+
+            <Col sm={12}>
+                <Form.Item label={'Programme'} style={{marginBottom: 0}}>
+                    {getFieldDecorator('programme', {
+                        rules: [{required: true, message: 'Please select your programme!'}],
+                    })(<Select placeholder="Select programme">
+                        <Select.Option key="programme" value={null}>None</Select.Option>
+                        {Programme.map(row =>
+                            <Select.Option key={row.value}
+                                           value={row.value}>{row.text}</Select.Option>)}
+                    </Select>)}
+                </Form.Item>
+            </Col>
+
+            <Col sm={12}>
+                <Form.Item label={'Branch'} style={{marginBottom: 0}}>
+                    {getFieldDecorator('branch', {
+                        rules: [{required: true, message: 'Please select your branch!'}],
+                    })(<Select placeholder="Select branch">
+                        <Select.Option key="branch" value={null}>None</Select.Option>
+                        {Branch.map(row =>
+                            <Select.Option key={row.value}
+                                           value={row.value}>{row.text}</Select.Option>)}
+                    </Select>)}
+                </Form.Item>
+            </Col>
+
+            <Col sm={12}>
+                <Form.Item label={'Passing Year'} style={{marginBottom: 0}}>
+                    {getFieldDecorator('passing', {
+                        rules: [{required: true, message: 'Select your passing year!'}],
+                    })(<Select placeholder="Select passing year" showSearch>
+                        <Select.Option key="passing" value={null}>None</Select.Option>
+                        {_.range(new Date().getFullYear(), 1985).map(row =>
+                            <Select.Option key={row} value={row}>{row}</Select.Option>)}
+                    </Select>)}
+                </Form.Item>
+            </Col>
+
+            <Col sm={12}>
+                <Form.Item label={'Batch'} style={{marginBottom: 0}}>
+                    {getFieldDecorator('batch', {
+                        rules: [{required: true, message: 'Select your batch!'}],
+                    })(<Select placeholder="Select batch" showSearch>
+                        <Select.Option key="batch" value={null}>None</Select.Option>
+                        {_.range(new Date().getFullYear() - 3, 1985).map(row =>
+                            <Select.Option key={row} value={row}>{row}</Select.Option>)}
+                    </Select>)}
+                </Form.Item>
+            </Col>
+
+            <Col sm={12}>
+                <Form.Item label={'Organisation'} style={{marginBottom: 0}}>
+                    {getFieldDecorator('organisation', {
+                        rules: [{
+                            required: true,
+                            message: 'Please enter your current organisation!'
+                        }],
+                    })(<Input placeholder="Enter your current organisation"/>)}
+                </Form.Item>
+            </Col>
+
+            <Col sm={12}>
+                <Form.Item label={'Designation'} style={{marginBottom: 0}}>
+                    {getFieldDecorator('designation', {
+                        rules: [{required: true, message: 'Please enter your designation!'}],
+                    })(<Input placeholder="Enter your designation"/>)}
+                </Form.Item>
+            </Col>
+        </>
+    )
+};

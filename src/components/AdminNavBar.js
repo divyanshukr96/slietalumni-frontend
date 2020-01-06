@@ -129,6 +129,24 @@ class AdminNavBar extends Component {
                         </Menu.SubMenu>
 
 
+                        <Menu.SubMenu
+                            key="member"
+                            title={<span><Icon type="calendar"/><span>Member</span></span>}
+                        >
+                            <Menu.Item key="sac/member/executive">
+                                <Link to={'/sac/member/executive'}>
+                                    <span className="nav-text">SAA Executive</span>
+                                </Link>
+                            </Menu.Item>
+
+                            <Menu.Item key="sac/member">
+                                <Link to={'/sac/member'}>
+                                    <span className="nav-text">SAC</span>
+                                </Link>
+                            </Menu.Item>
+                        </Menu.SubMenu>
+
+
                         {/*<Menu.Item key="sac/news">*/}
                         {/*    <Link to={'/sac/news'}>*/}
                         {/*        <Icon type="calendar"/>*/}
@@ -221,10 +239,10 @@ class AdminNavBar extends Component {
                         </Menu.Item>}
                     </Menu>
                 </Sider>
-                <Layout>
+                <Layout style={{minHeight: '100vh'}}>
                     <Header style={{background: '#fff', padding: 0, paddingLeft: 50}}>
-                        <div>
-                            hello
+                        <div style={{fontSize: 18, fontWeight: 700}}>
+                            Admin Dashboard
                         </div>
                     </Header>
                     <Content style={{margin: '24px 16px 0'}}>

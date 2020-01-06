@@ -31,7 +31,7 @@ const MeetRegistration = () => {
                 <div style={{textAlign: 'center'}}>
                     <img src={SAALogo} alt="saa-logo" style={{height: 80}}/>
                     <Title level={4} style={{margin: `8px 0`}}>
-                        Alumni Meet Registration
+                        Alumni Meet Registration 2020
                     </Title>
                     <Divider style={{margin: `4px 0`}}/>
                 </div>

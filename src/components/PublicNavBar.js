@@ -26,6 +26,9 @@ const styles = theme => ({
         minHeight: '83vh',
         [theme.breakpoints.up('sm')]: {
             margin: '24px 16px 0',
+        },
+        [theme.breakpoints.down('sm')]: {
+            padding: 8,
         }
     },
     logout: {

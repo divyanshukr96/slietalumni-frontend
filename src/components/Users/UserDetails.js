@@ -82,9 +82,10 @@ class UserDetails extends Component {
                 title="User Details"
                 okText={edit ? 'Update' : 'Edit'}
                 cancelText={edit ? 'Cancel' : 'Close'}
-                onOk={edit && isFieldsTouched()? this.onSave : this.onEdit}
+                onOk={edit ? this.onSave : this.onEdit}
                 onCancel={edit ? this.onEdit : () => this.props.onClose(null)}
                 destroyOnClose={true}
+                maskClosable={false}
                 bodyStyle={{paddingBottom: 8}}
             >
                 <EditableContext.Provider value={this.props.form}>

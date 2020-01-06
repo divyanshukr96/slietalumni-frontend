@@ -12,12 +12,13 @@ const styles = theme => ({
         width: 'auto',
         padding: `${theme.spacing() * 2}px ${theme.spacing() * 3}px ${theme.spacing() * 3}px`,
         [theme.breakpoints.up(400 + theme.spacing() * 3 * 2)]: {
-            width: 400,
+            width: 350,
             margin: 'auto',
         },
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('sm')]: {
             boxShadow: theme.shadows[0],
             padding: 8,
+            marginTop: 16,
         },
     },
     linkedIn: {
