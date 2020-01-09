@@ -6,12 +6,12 @@ import 'braft-editor/dist/index.css'
 import FormError from "components/Errors";
 import FileUploadButton from "components/Registration/FileUploadButton";
 
-const autoSave = (props, changedValues, allValues) => {
-    if (props.form.isFieldTouched('content')) {
-        allValues = {...allValues, content: allValues.content.toHTML()}
-    }
-    sessionStorage.setItem('newNews', JSON.stringify(allValues))
-};
+// const autoSave = (props, changedValues, allValues) => {
+//     if (props.form.isFieldTouched('content')) {
+//         allValues = {...allValues, content: allValues.content.toHTML()}
+//     }
+//     sessionStorage.setItem('newNews', JSON.stringify(allValues))
+// };
 
 class NewsCreateForm extends Component {
 
@@ -32,7 +32,7 @@ class NewsCreateForm extends Component {
         const {form: {getFieldDecorator}, edit, data} = this.props;
         return (
             <Form>
-                <FormError form={this.props.form}/>
+                <FormError form={this.props.form} formName="add_new_news"/>
                 <Form.Item label="News Title" style={{marginBottom: 0}}>
                     {getFieldDecorator('title', {
                         initialValue: data.title,
@@ -44,7 +44,7 @@ class NewsCreateForm extends Component {
                     {getFieldDecorator('description', {
                         initialValue: data.description,
                         rules: [{required: true, message: 'News description field is required!'}],
-                    })(<Input.TextArea placeholder="Enter news description" autosize/>)}
+                    })(<Input.TextArea placeholder="Enter news description" autoSize/>)}
                 </Form.Item>
 
                 <FileUploadButton
@@ -105,6 +105,6 @@ NewsCreateForm.defaultProps = {
 };
 
 export default Form.create({
-    name: 'new_news',
+    name: 'add_new_news',
     // onValuesChange: autoSave
 })(NewsCreateForm);

@@ -11,12 +11,14 @@ import events from './eventReducer'
 import news from './newsReducer'
 import featuredAlumni from './featuredAlumniReducer'
 import images from './imageReducer'
+import alumniMeet from './alumniMeetReducer'
 
 export default (history) => combineReducers({
     router: connectRouter(history),
     alumniDatabase,
     featuredAlumni,
     newAlumni,
+    alumniMeet,
     errors,
     roles,
     users,

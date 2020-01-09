@@ -20,6 +20,9 @@ import FeaturedAlumni from "components/FeaturedAlumni/FeaturedAlumni";
 import ImageCarousel from "components/Images/ImageCarousel";
 import Image from "components/Images";
 import AccessControl from "../AccessControl/AccessControl";
+import Executive from "components/Member/Executive";
+import Sac from "components/Member/SAC";
+import AlumniMeet from "components/Meet/AlumniMeet";
 
 
 const AuthRoutes = (props) => {
@@ -58,6 +61,11 @@ const AuthRoutes = (props) => {
                     <Route exact path="/sac/users" component={Users}/>
                     <Route exact path="/sac/roles" component={Role}/>
                     <Route exact path="/sac/permissions" component={Permission}/>
+
+                    <Route exact path="/sac/member" component={Sac}/>
+                    <Route exact path="/sac/member/executive" component={Executive}/>
+
+                    <Route exact path="/sac/alumni-meet" component={AlumniMeet}/>
 
                     <Route exact path="/sac/hello" component={() => 'component auth'}/>
                     <Route exact path="/sac/test" component={AlumniDataTest}/>

@@ -12,9 +12,10 @@ export const addFeaturedAlumni = formData => async dispatch => {
         });
         return true;
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "new_featured_alumni",
         })
     }
 };
@@ -35,7 +36,7 @@ export const getFeaturedAlumni = () => async dispatch => {
 };
 
 export const searchAlumni = search => async (dispatch, getState) => {
-    const {alumniDatabase: {alumni, editingKey}} = getState();
+    // const {alumniDatabase: {alumni, editingKey}} = getState();
     try {
         const {data} = await axios.get(`/api/featured-alumni/${search}?alumni`);
         await dispatch({
@@ -52,24 +53,24 @@ export const searchAlumni = search => async (dispatch, getState) => {
 };
 
 export const alumniDataDelete = () => async (dispatch, getState) => {
-    const {alumniDatabase: {alumni: {id}}} = getState();
-    try {
-        await axios.delete('/api/alumni-data/' + id);
-        await dispatch({
-            type: type.ALUMNI_DATA_DELETE,
-            payload: id
-        });
-        await dispatch({
-            type: type.ALUMNI_DATA_VIEW,
-            payload: null
-        });
-        return true;
-    } catch ({response}) {
-        await dispatch({
-            type: type.ERROR_VALIDATION,
-            payload: response.data
-        });
-    }
+    // const {alumniDatabase: {alumni: {id}}} = getState();
+    // try {
+    //     await axios.delete('/api/alumni-data/' + id);
+    //     await dispatch({
+    //         type: type.ALUMNI_DATA_DELETE,
+    //         payload: id
+    //     });
+    //     await dispatch({
+    //         type: type.ALUMNI_DATA_VIEW,
+    //         payload: null
+    //     });
+    //     return true;
+    // } catch ({response}) {
+    //     await dispatch({
+    //         type: type.ERROR_VALIDATION,
+    //         payload: response.data
+    //     });
+    // }
 };
 
 export const alumniDataSearch = event => async dispatch => {

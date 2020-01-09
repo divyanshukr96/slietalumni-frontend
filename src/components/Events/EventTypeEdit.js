@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import * as _ from "lodash";
 import * as PropTypes from 'prop-types';
-import {Button, Col, Form, Icon, Input, Modal, Row, Select, Typography} from "antd";
-import {Programme, Branch} from 'Constants/ProgrammeAndBranch'
+import {Button, Col, Form, Input, Modal, Row, Typography} from "antd";
 import FormError from "components/Errors";
 
 const {Text} = Typography;
@@ -50,6 +49,7 @@ EditableCell.propTypes = {
 class EventTypeEdit extends Component {
     state = {
         edit: false,
+        loading: false,
     };
 
     onEdit = () => this.setState(s => ({edit: !s.edit}));
@@ -57,9 +57,13 @@ class EventTypeEdit extends Component {
     onSave = () => {
         const {form, data} = this.props;
         form.validateFields((err, values) => {
-            if (!err) this.props.onUpdate(data.id, values).then(res => {
-                if (res) this.onEdit()
-            });
+            if (!err) {
+                this.setState({loading: true});
+                this.props.onUpdate(data.id, values).then(res => {
+                    if (res) this.onEdit();
+                    this.setState({loading: false});
+                });
+            }
         });
     };
 
@@ -86,11 +90,13 @@ class EventTypeEdit extends Component {
                 onCancel={edit ? this.onEdit : () => this.props.onClose(null)}
                 destroyOnClose={true}
                 bodyStyle={{paddingBottom: 8}}
+                maskClosable={false}
+                confirmLoading={this.state.loading}
             >
 
                 <EditableContext.Provider value={this.props.form}>
                     <Form {...formItemLayout}>
-                        <FormError form={this.props.form}/>
+                        <FormError form={this.props.form} formName="event_type_update"/>
 
                         {edit ? <Form.Item label="Event Type" style={{marginBottom: 0}}>
                             <Input value={props.data.name} readOnly disabled/>
@@ -103,7 +109,7 @@ class EventTypeEdit extends Component {
 
                         <EditableCell edit={edit} name="description" label="Description" options={{
                             rules: [{required: true, message: 'Please enter event type description!'}],
-                        }} inputProps={<Input.TextArea autosize placeholder="Enter current organisation"/>} {...props}/>
+                        }} inputProps={<Input.TextArea autoSize placeholder="Enter current organisation"/>} {...props}/>
                     </Form>
                 </EditableContext.Provider>
                 <div style={{textAlign: 'right'}}>
@@ -121,4 +127,4 @@ EventTypeEdit.propTypes = {
 };
 
 
-export default Form.create()(EventTypeEdit);
+export default Form.create({name: 'event_type_update'})(EventTypeEdit);

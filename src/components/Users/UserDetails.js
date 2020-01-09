@@ -49,6 +49,7 @@ EditableCell.propTypes = {
 class UserDetails extends Component {
     state = {
         edit: false,
+        loading: false,
     };
 
     onEdit = () => this.setState(s => ({edit: !s.edit}));
@@ -56,15 +57,19 @@ class UserDetails extends Component {
     onSave = () => {
         const {form, data} = this.props;
         form.validateFields((err, values) => {
-            if (!err) this.props.onUserUpdate(data.id, values).then(res => {
-                if (res) this.onEdit()
-            });
+            if (!err) {
+                this.setState({loading: true});
+                this.props.onUserUpdate(data.id, values).then(res => {
+                    if (res) this.onEdit();
+                    this.setState({loading: false});
+                });
+            }
         });
     };
 
     render() {
         const {props, state: {edit}} = this;
-        const {data, form: {getFieldDecorator, isFieldsTouched}, rolesList} = props;
+        const {data, form: {getFieldDecorator}, rolesList} = props;
         const formItemLayout = {
             labelCol: {
                 xs: {span: 24},
@@ -87,6 +92,7 @@ class UserDetails extends Component {
                 destroyOnClose={true}
                 maskClosable={false}
                 bodyStyle={{paddingBottom: 8}}
+                confirmLoading={this.state.loading}
             >
                 <EditableContext.Provider value={this.props.form}>
                     <Row>
@@ -106,7 +112,7 @@ class UserDetails extends Component {
                     <Title level={4}>Roles :-</Title>
 
                     <Form {...formItemLayout}>
-                        <FormError form={this.props.form}/>
+                        <FormError form={this.props.form} formName="user_update"/>
 
                         <Form.Item label={'User Roles'} style={{marginBottom: 8}} >
                             {getFieldDecorator('roles', {
@@ -149,4 +155,4 @@ UserDetails.propTypes = {
     data: PropTypes.any.isRequired
 };
 
-export default Form.create()(UserDetails);
+export default Form.create({name: 'user_update'})(UserDetails);

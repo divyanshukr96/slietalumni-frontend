@@ -7,8 +7,8 @@ class FormError extends React.Component {
     state = {};
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        const {errors, form: {setFields, getFieldValue}} = nextProps;
-        if (!_(errors)) {
+        const {errors, form: {setFields, getFieldValue}, formName, name} = nextProps;
+        if (!_(errors) && formName === name) {
             Object.keys(errors).forEach(k => {
                 setFields({
                     [k]: {
@@ -30,10 +30,12 @@ class FormError extends React.Component {
 
 FormError.propTypes = {
     form: PropTypes.object.isRequired,
+    formName: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
-    errors: state.errors.errors
+    errors: state.errors.errors,
+    name: state.errors.name,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -10,7 +10,7 @@ import EventForm from "components/Events/EventForm";
 const {Paragraph, Text, Title} = Typography;
 
 class EventView extends Component {
-    state = {edit: false};
+    state = {edit: false, loading: false};
 
     constructor(props) {
         super(props);
@@ -30,12 +30,16 @@ class EventView extends Component {
         const {formRef, props: {data, onEventUpdate}} = this;
         e.preventDefault();
         formRef.props.form.validateFields((err, values) => {
-            if (!err) onEventUpdate(data.id, _.pickBy({...values, content: values.content.toHTML()})).then(res => {
-                if (res) {
-                    formRef.onSuccess();
-                    this.onEdit();
-                }
-            });
+            if (!err) {
+                this.setState({loading: true});
+                onEventUpdate(data.id, _.pickBy({...values, content: values.content.toHTML()})).then(res => {
+                    if (res) {
+                        formRef.onSuccess();
+                        this.onEdit();
+                    }
+                    this.setState({loading: false});
+                });
+            }
         });
     };
 
@@ -55,27 +59,49 @@ class EventView extends Component {
         const ButtonComp = () => <div style={{textAlign: 'right'}}>
             {edit ? <>
                     <Button type={"ghost"} style={{margin: 8}} onClick={this.onEdit}>Cancel</Button>
-                    <Button icon="save" type={"primary"} onClick={this.onUpdate}>Update</Button>
+                    <Button
+                        icon="save" type={"primary"}
+                        loading={this.state.loading}
+                        onClick={this.onUpdate}
+                    >Update</Button>
                 </> :
                 <>
-                    <Button size={"small"} icon="edit" type={"ghost"} onClick={this.onEdit}>Edit</Button>
-                    <Button size={"small"} icon="global" type={"primary"} style={{margin: 4}}
-                            onClick={() => Modal.confirm({
-                                title: 'Are you sure want to publish Event?',
-                                content: data.title,
-                                okText: 'Yes',
-                                okType: 'primary',
-                                cancelText: 'No',
-                                onOk: onEventPublish,
-                            })}>Publish</Button>
-                    <Button size={"small"} icon="delete" type={"danger"} onClick={() => Modal.confirm({
-                        title: 'Are you sure want to delete news?',
-                        content: data.title,
-                        okText: 'Yes',
-                        okType: 'danger',
-                        cancelText: 'No',
-                        onOk: this.onDelete,
-                    })}>Delete</Button>
+                    <Button
+                        size={"small"}
+                        icon="edit"
+                        type={"ghost"}
+                        style={{marginRight: 2}}
+                        onClick={this.onEdit}
+                    >Edit</Button>
+
+                    <Button
+                        size={"small"}
+                        style={{margin: 2}}
+                        icon={data.published ? "undo" : "global"}
+                        type={data.published ? "dashed" : "primary"}
+                        onClick={() => Modal.confirm({
+                            title: `Are you sure want to ${data.published && 'un-'}publish Event?`,
+                            content: data.title,
+                            okText: 'Yes',
+                            okType: 'primary',
+                            cancelText: 'No',
+                            onOk: onEventPublish,
+                        })}
+                    >{data.published && 'Un-'}Publish</Button>
+
+
+                    <Button
+                        size={"small"} icon="delete" type={"danger"}
+                        style={{marginLeft: 2}}
+                        onClick={() => Modal.confirm({
+                            title: 'Are you sure want to delete news?',
+                            content: data.title,
+                            okText: 'Yes',
+                            okType: 'danger',
+                            cancelText: 'No',
+                            onOk: this.onDelete,
+                        })}
+                    >Delete</Button>
                 </>
             }
         </div>;

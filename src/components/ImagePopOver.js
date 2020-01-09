@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
-import {Popover, Button, Card} from 'antd';
+import {Popover, Card} from 'antd';
 
 const styles = theme => ({
     meta: {

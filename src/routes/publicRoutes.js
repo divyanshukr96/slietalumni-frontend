@@ -25,6 +25,7 @@ import NewsLists from "../components/News/NewsLists";
 import NewsDetails from "../components/News/NewsDetails";
 import MeetRegistration from "../components/Meet/MeetRegistration";
 import ResetPassword from "../components/Auth/ResetPassword";
+import Executive from "../components/Executive";
 
 const Route = ({component: Component, ...rest}) => (
     <RouteComponent
@@ -53,6 +54,7 @@ const PublicRoutes = () => {
                     <Route exact path={'/about/saa-constitution'} component={SAAConstitution}/>
 
                     <Route exact path={'/advisory-committee'} component={Advisory}/>
+                    <Route exact path={'/executive-committee'} component={Executive}/>
 
                     <Route exact path={'/message'} component={() => <Redirect to={'/advisory-committee'}/>}/>
                     <Route exact path={'/message/director'} component={DirectorMessage}/>

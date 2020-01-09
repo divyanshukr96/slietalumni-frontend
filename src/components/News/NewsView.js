@@ -9,7 +9,7 @@ import 'braft-editor/dist/output.css'
 const {Title} = Typography;
 
 class NewsView extends Component {
-    state = {edit: false};
+    state = {edit: false, loading: false};
 
     constructor(props) {
         super(props);
@@ -28,12 +28,16 @@ class NewsView extends Component {
         const {formRef, props: {data, onNewsUpdate}} = this;
         e.preventDefault();
         formRef.props.form.validateFields((err, values) => {
-            if (!err) onNewsUpdate(data.id, _.pickBy({...values, content: values.content.toHTML()})).then(res => {
-                if (res) {
-                    formRef.onSuccess();
-                    this.onEdit();
-                }
-            });
+            if (!err) {
+                this.setState({loading: true});
+                onNewsUpdate(data.id, _.pickBy({...values, content: values.content.toHTML()})).then(res => {
+                    if (res) {
+                        formRef.onSuccess();
+                        this.onEdit();
+                    }
+                    this.setState({loading: false});
+                });
+            }
         });
     };
 
@@ -49,21 +53,29 @@ class NewsView extends Component {
         const ButtonComp = () => <div style={{textAlign: 'right'}}>
             {edit ? <>
                     <Button type={"ghost"} style={{margin: 8}} onClick={this.onEdit}>Cancel</Button>
-                    <Button icon="save" type={"primary"} onClick={this.onUpdate}>Update</Button>
+                    <Button
+                        icon="save" type={"primary"}
+                        loading={this.state.loading}
+                        onClick={this.onUpdate}
+                    >Update</Button>
                 </> :
                 <>
                     <Button icon="edit" type={"ghost"} style={{margin: 2}} onClick={this.onEdit}>Edit</Button>
-                    {!data.published && <Button
-                        icon="global"
-                        type={"primary"} style={{margin: 2}}
+
+                    <Button
+                        style={{margin: 2}}
+                        icon={data.published ? "undo" : "global"}
+                        type={data.published ? "dashed" : "primary"}
                         onClick={() => Modal.confirm({
-                            title: 'Are you sure want to publish news?',
+                            title: `Are you sure want to ${data.published && 'un-'}publish news?`,
                             content: data.title,
                             okText: 'Yes',
                             okType: 'primary',
                             cancelText: 'No',
                             onOk: onNewsPublish,
-                        })}>Publish</Button>}
+                        })}
+                    >{data.published && 'Un-'}Publish</Button>
+
                     <Button icon="delete" type={"danger"} style={{margin: 2}} onClick={() => Modal.confirm({
                         title: 'Are you sure want to delete news?',
                         content: data.title,
@@ -93,7 +105,7 @@ class NewsView extends Component {
                         <Title level={4}>{data.title}</Title>
                         <Divider/>
                         <div style={{textAlign: 'center',}}>
-                            <img src={data.cover_thumb} alt="" style={{maxHeight: 140}}/>
+                            <img src={data.cover_thumb} alt="" style={{maxHeight: 150}}/>
                         </div>
                         <div className="ant-card-bordered" style={{padding: `4px 8px`, margin: `8px 0`}}>
                             <code>{data.description}</code>

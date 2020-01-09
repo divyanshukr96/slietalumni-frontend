@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import * as _ from "lodash";
 import {connect} from "react-redux";
 import {Button, Input, Table} from "antd";
-import {Programme, Branch} from 'Constants/ProgrammeAndBranch';
+import {Programme} from 'Constants/ProgrammeAndBranch';
 import {
     alumniDataList,
     alumniDataSearch,
@@ -73,20 +73,22 @@ class AlumniData extends Component {
         const {alumni, data, onView, startSearch, onConfirm} = this.props;
         return (
             <>
-                <Input.Search
-                    style={{maxWidth: 300, marginBottom: 8}}
-                    // onKeyUpCapture={this.props.startSearch}
-                    onChange={startSearch}
-                    onPressEnter={startSearch}
-                    placeholder="Search"
-                    allowClear
-                />
-                <Button
-                    shape="circle" icon="reload"
-                    style={{float: 'right'}}
-                    onClick={this.props.getDataList}
-                    size={"small"}
-                />
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <Input.Search
+                        style={{maxWidth: 300, marginBottom: 8}}
+                        // onKeyUpCapture={this.props.startSearch}
+                        onChange={startSearch}
+                        onPressEnter={startSearch}
+                        placeholder="Search"
+                        allowClear
+                    />
+                    <Button
+                        shape="circle" icon="reload"
+                        style={{marginLeft: 12}}
+                        onClick={this.props.getDataList}
+                        size={"small"}
+                    />
+                </div>
                 <NewAlumniView data={_.pickBy(alumni)} onClose={onView} onConfirm={onConfirm}/>
                 <Table
                     style={{overflow: 'overlay'}}

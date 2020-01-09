@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Badge, Button, Divider, Table, Typography} from "antd";
-import * as _ from 'lodash'
-import {addEvent, deleteEvent, fetchEvents, updateEvent} from "actions/eventAction";
+import {Badge, Divider, Table, Typography} from "antd";
+import {fetchEvents} from "actions/eventAction";
 import {Link} from "react-router-dom";
 
 const {Text, Title} = Typography;
@@ -44,18 +43,11 @@ class Events extends Component {
     ];
 
     render() {
-        const {data, loading, onEventAdd, onEventUpdate, onDelete, onView, roles, events} = this.props;
+        const {loading, events} = this.props;
         return (
             <div>
                 <Title level={3}>Events</Title>
-                <Divider/>
-                {/*<UserDetails*/}
-                {/*    data={_.pickBy(data)}*/}
-                {/*    onClose={onView}*/}
-                {/*    rolesList={roles}*/}
-                {/*    onUserUpdate={onEventUpdate}*/}
-                {/*    onDelete={onDelete}*/}
-                {/*/>*/}
+                <Divider style={{margin: `8px 0`}}/>
                 <Table
                     style={{overflow: 'overlay'}}
                     loading={loading}
@@ -70,19 +62,14 @@ class Events extends Component {
 }
 
 const mapStateToProps = ({events}) => ({
-
     events: events.events,
     loading: events.loading,
     data: events.data
 });
+
 const mapDispatchToProps = dispatch => ({
     fetchEvents: () => dispatch(fetchEvents()),
-    onEventAdd: data => dispatch(addEvent(data)),
-    onEventUpdate: (id, data) => dispatch(updateEvent(id, data)),
     onLoading: () => dispatch({type: 'EVENT_LOADING'}),
-    onView: id => dispatch({type: 'EVENT_EDIT', payload: id}),
-    onDelete: () => dispatch(deleteEvent()),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Events);

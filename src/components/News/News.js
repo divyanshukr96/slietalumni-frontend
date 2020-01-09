@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Badge, Button, Typography, Table} from "antd";
+import {Badge, Button, Typography, Table, Divider} from "antd";
 import {fetchNews} from "actions/newsAction";
 import 'braft-editor/dist/output.css'
 
-const {Paragraph, Text} = Typography;
+const {Paragraph, Text, Title} = Typography;
 
 const DataRender = (content) => {
     return <Paragraph ellipsis={{rows: 4}} style={{marginBottom: 0, maxHeight: `5.6rem`}}>{content}</Paragraph>;
@@ -52,13 +52,17 @@ class News extends Component {
     render() {
         const {loading, news} = this.props;
         return (
-            <Table
-                style={{overflow: 'overlay'}}
-                loading={loading}
-                rowKey="id"
-                columns={this.columns}
-                dataSource={news}
-            />
+            <>
+                <Title level={4}>News</Title>
+                <Divider style={{margin: `8px 0`}}/>
+                <Table
+                    style={{overflow: 'overlay'}}
+                    loading={loading}
+                    rowKey="id"
+                    columns={this.columns}
+                    dataSource={news}
+                />
+            </>
         );
     }
 }

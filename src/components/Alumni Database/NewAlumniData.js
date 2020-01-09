@@ -12,7 +12,7 @@ class NewAlumniDataForm extends Component {
     };
 
     render() {
-        const {visible, onCancel, onCreate, form} = this.props;
+        const {visible, onCancel, onCreate, form, loading} = this.props;
         const {getFieldDecorator, getFieldValue} = form;
         const formItemLayout = {
             labelCol: {
@@ -41,10 +41,14 @@ class NewAlumniDataForm extends Component {
                 okText="Save"
                 onCancel={onCancel}
                 onOk={onCreate}
+                confirmLoading={loading}
                 okButtonProps={{disabled: !getFieldValue('accept')}}
+                maskClosable={false}
+                destroyOnClose
             >
                 <Form {...formItemLayout}>
-                    <FormError form={this.props.form}/>
+                    <FormError form={this.props.form} formName="new_alumni_data"/>
+
                     <Form.Item label="Name" style={{marginBottom: 8}}>
                         {getFieldDecorator('name', {
                             rules: [{required: true, message: 'Alumni name field is required!'}],
@@ -115,11 +119,12 @@ class NewAlumniDataForm extends Component {
 }
 
 
-const CollectionCreateForm = Form.create({name: 'new_alumni'})(NewAlumniDataForm);
+const CollectionCreateForm = Form.create({name: 'new_alumni_data'})(NewAlumniDataForm);
 
 class NewAlumniData extends Component {
     state = {
         visible: false,
+        loading: false,
     };
 
     showModal = () => {
@@ -133,9 +138,13 @@ class NewAlumniData extends Component {
 
     handleCreate = () => {
         this.formRef.props.form.validateFields((err, values) => {
-            if (!err) this.props.onAlumniAdd(_.pickBy(values)).then(res => {
-                if (res) this.handleCancel()
-            });
+            if (!err) {
+                this.setState(s => ({...s, loading: true}));
+                this.props.onAlumniAdd(_.pickBy(values)).then(res => {
+                    if (res) this.handleCancel();
+                    this.setState(s => ({...s, loading: false}));
+                });
+            }
         });
     };
 
@@ -150,6 +159,7 @@ class NewAlumniData extends Component {
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
                     onCreate={this.handleCreate}
+                    loading={this.state.loading}
                 />
             </>
         );

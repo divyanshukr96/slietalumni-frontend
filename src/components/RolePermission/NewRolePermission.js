@@ -20,9 +20,13 @@ class NewRolePermission extends Component {
 
     handleCreate = () => {
         this.formRef.props.form.validateFields((err, values) => {
-            if (!err) this.props.onAddRole(_.pickBy(values)).then(res => {
-                if (res) this.handleCancel()
-            });
+            if (!err) {
+                this.formRef.setState({loading: true});
+                this.props.onAddRole(_.pickBy(values)).then(res => {
+                    if (res) this.handleCancel();
+                    this.formRef.setState({loading: false});
+                });
+            }
         });
     };
 

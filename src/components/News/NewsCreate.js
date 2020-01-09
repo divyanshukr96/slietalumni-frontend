@@ -6,7 +6,7 @@ import {addNews} from "actions/newsAction";
 import NewsCreateForm from "components/News/NewsCreateForm";
 
 class NewsCreate extends Component {
-    state = {success: null};
+    state = {success: null, loading: false};
 
     handleCancel = () => {
         this.formRef.handleCancel()
@@ -16,12 +16,16 @@ class NewsCreate extends Component {
         const {formRef, props: {onNewsAdd}} = this;
         e.preventDefault();
         formRef.props.form.validateFields((err, values) => {
-            if (!err) onNewsAdd({...values, content: values.content.toHTML()}).then(res => {
-                if (res) {
-                    formRef.onSuccess();
-                    this.setState({success: res})
-                }
-            });
+            if (!err) {
+                this.setState({loading: true});
+                onNewsAdd({...values, content: values.content.toHTML()}).then(res => {
+                    if (res) {
+                        formRef.onSuccess();
+                        this.setState({success: res});
+                    }
+                    this.setState({loading: false});
+                });
+            }
         });
     };
 
@@ -35,7 +39,7 @@ class NewsCreate extends Component {
                 />
                 <div style={{textAlign: 'right'}}>
                     <Button style={{marginRight: 8}} onClick={this.handleCancel}>Reset</Button>
-                    <Button type="primary" onClick={this.handleSubmit}>Add News</Button>
+                    <Button loading={this.state.loading} type="primary" onClick={this.handleSubmit}>Add News</Button>
                 </div>
             </div>
         );

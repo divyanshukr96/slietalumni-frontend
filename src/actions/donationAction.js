@@ -1,6 +1,5 @@
 import * as type from './actionTypes'
 import axios from 'axios';
-import * as _ from 'lodash'
 
 export const donate = formData => async dispatch => {
     try {
@@ -15,7 +14,8 @@ export const donate = formData => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "donation_form"
         })
     }
 };

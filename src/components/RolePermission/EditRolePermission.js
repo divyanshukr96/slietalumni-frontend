@@ -6,12 +6,18 @@ import FormError from "components/Errors";
 
 
 class EditRolePermission extends Component {
+    state = {loading: false};
+
     onUpdate = () => {
         const {form, onClose, onUpdate} = this.props;
         form.validateFields((err, values) => {
-            if (!err) onUpdate(values).then(res => {
-                if (res) onClose(null)
-            });
+            if (!err) {
+                this.setState({loading: true});
+                onUpdate(values).then(res => {
+                    if (res) onClose(null);
+                    this.setState({loading: false});
+                });
+            }
         });
     };
 
@@ -36,11 +42,13 @@ class EditRolePermission extends Component {
                 cancelText={'Cancel'}
                 onOk={this.onUpdate}
                 onCancel={() => this.props.onClose(null)}
+                confirmLoading={this.state.loading}
                 destroyOnClose={true}
+                maskClosable={false}
                 bodyStyle={{paddingBottom: 8}}
             >
                 <Form {...formItemLayout}>
-                    <FormError form={this.props.form}/>
+                    <FormError form={this.props.form} formName="edit_role"/>
 
                     <Form.Item label="Name" style={{marginBottom: 8}}>
                         {getFieldDecorator('name', {

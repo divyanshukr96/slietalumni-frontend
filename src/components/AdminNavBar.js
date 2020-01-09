@@ -232,6 +232,14 @@ class AdminNavBar extends Component {
                                 <span className="nav-text">Alumni Database</span>
                             </Link>
                         </Menu.Item>
+
+                        <Menu.Item key="sac/alumni-meet">
+                            <Link to={'/sac/alumni-meet'}>
+                                <Icon type="user"/>
+                                <span className="nav-text">Alumni Meet</span>
+                            </Link>
+                        </Menu.Item>
+
                         {auth && <Menu.Divider/>}
                         {auth && <Menu.Item key="logout" onClick={onLogout}>
                             <Icon type="logout"/>

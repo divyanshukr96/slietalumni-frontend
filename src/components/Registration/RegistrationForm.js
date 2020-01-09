@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {connect} from "react-redux";
 import * as _ from "lodash";
 import {Form, Row, Col, Input, Button, Checkbox, Select, Icon} from 'antd';
@@ -9,42 +9,49 @@ import {registration} from "actions/newAlumniAction";
 import RegistrationSubmitted from "./RegistrationSubmitted";
 
 
-class RegisterForm extends Component {
-    state = {
-        success: false,
-        data: null
-    };
+const RegistrationForm = Form.create({name: 'alumni_registration'})(
+    ({form, onRegister}) => {
 
-    confirmAccept = (rule, value, callback) => {
-        if (!value) callback('Accept the terms & conditions.'); else callback();
-    };
+        const [success, setSuccess] = useState(false);
+        const [loading, setLoading] = useState(false);
+        const [data, setData] = useState(null);
 
-    handleSubmit = e => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) this.props.onRegister(values).then(res => {
-                this.setState({data: res, success: true})
-            })
-        });
-    };
+        const {getFieldDecorator, resetFields} = form;
 
-    render() {
-        const {getFieldDecorator, resetFields} = this.props.form;
-        const {success, data} = this.state;
+        const confirmAccept = (rule, value, callback) => {
+            if (!value) callback('Accept the terms & conditions.'); else callback();
+        };
+
+        const handleSubmit = e => {
+            e.preventDefault();
+            form.validateFields((err, values) => {
+                if (!err) {
+                    setLoading(true);
+                    onRegister(values).then(res => {
+                        if (res) {
+                            setData(res);
+                            setSuccess(true);
+                        }
+                        setLoading(false);
+                    });
+                }
+            });
+        };
+
         return (
             <>
                 <RegistrationSubmitted visible={success} data={data}/>
-                <Form onSubmit={this.handleSubmit}>
-                    <FormError form={this.props.form}/>
-                    <Row gutter={24}>
-                        <Col sm={12}>
+                <Form onSubmit={handleSubmit}>
+                    <FormError form={form} formName="alumni_registration"/>
+                    <Row gutter={12} type="flex">
+                        <Col sm={12} xs={24}>
                             <Form.Item label={'Name'} style={{marginBottom: 0}}>
                                 {getFieldDecorator('name', {
                                     rules: [{required: true, message: 'Please enter your full name!'}],
                                 })(<Input placeholder="Enter full name"/>)}
                             </Form.Item>
                         </Col>
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <Form.Item label={'Email'} style={{marginBottom: 0}}>
                                 {getFieldDecorator('email', {
                                     rules: [
@@ -54,14 +61,14 @@ class RegisterForm extends Component {
                                 })(<Input placeholder="Enter email-id"/>)}
                             </Form.Item>
                         </Col>
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <Form.Item label={'Mobile'} style={{marginBottom: 0}}>
                                 {getFieldDecorator('mobile', {
                                     rules: [{required: true, message: 'Please enter your mobile number!'}],
                                 })(<Input placeholder="Enter mobile number"/>)}
                             </Form.Item>
                         </Col>
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <Form.Item label={'Programme'} style={{marginBottom: 0}}>
                                 {getFieldDecorator('programme', {
                                     rules: [{required: true, message: 'Please select your programme!'}],
@@ -72,7 +79,7 @@ class RegisterForm extends Component {
                                 </Select>)}
                             </Form.Item>
                         </Col>
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <Form.Item label={'Branch'} style={{marginBottom: 0}}>
                                 {getFieldDecorator('branch', {
                                     rules: [{required: true, message: 'Please select your branch!'}],
@@ -105,21 +112,21 @@ class RegisterForm extends Component {
                                 </Select>)}
                             </Form.Item>
                         </Col>
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <Form.Item label={'Organisation'} style={{marginBottom: 0}}>
                                 {getFieldDecorator('organisation', {
                                     rules: [{required: true, message: 'Please enter your current organisation!'}],
                                 })(<Input placeholder="Enter your current organisation"/>)}
                             </Form.Item>
                         </Col>
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <Form.Item label={'Designation'} style={{marginBottom: 0}}>
                                 {getFieldDecorator('designation', {
                                     rules: [{required: true, message: 'Please enter your designation!'}],
                                 })(<Input placeholder="Enter your designation"/>)}
                             </Form.Item>
                         </Col>
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <Form.Item label={'LinkedIn Profile'} style={{marginBottom: 8}}>
                                 {getFieldDecorator('linkdein', {
                                     initialValue: '',
@@ -127,10 +134,10 @@ class RegisterForm extends Component {
                                 })(<Input placeholder="Enter your LinkedIn profile link"/>)}
                             </Form.Item>
                         </Col>
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <FileUploadButton
                                 label={'Photo'} name={'image'}
-                                formProps={this.props.form}
+                                formProps={form}
                                 itemProps={{
                                     // labelCol: {span: 4},
                                     // wrapperCol: {span: 20},
@@ -142,16 +149,16 @@ class RegisterForm extends Component {
                                 <Button><Icon type="user"/> Select photo</Button>
                             </FileUploadButton>
                         </Col>
-                        <Col span={24}>
+                        <Col span={24} >
                             <Form.Item style={{marginBottom: 0}}>
                                 {getFieldDecorator('accept', {
                                     valuePropName: 'checked', initialValue: false,
-                                    rules: [{validator: this.confirmAccept}],
+                                    rules: [{validator: confirmAccept}],
                                 })(<Checkbox>I accept all information is correct</Checkbox>)}
                             </Form.Item>
                         </Col>
-                        <Col span={24} style={{textAlign: 'right'}}>
-                            <Button type="primary" htmlType="submit">
+                        <Col span={24} style={{textAlign: 'right', marginBottom: 16}}>
+                            <Button loading={loading} type="primary" htmlType="submit">
                                 Register
                             </Button>
                             <Button style={{marginLeft: 8}} onClick={() => resetFields()}>
@@ -163,9 +170,7 @@ class RegisterForm extends Component {
             </>
         );
     }
-}
-
-const RegistrationForm = Form.create({name: 'alumni_registration'})(RegisterForm);
+);
 
 const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({

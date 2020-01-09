@@ -10,10 +10,13 @@ export const fetchUsers = () => async dispatch => {
             payload: data.data
         });
     } catch ({response}) {
-        response && dispatch({
+        response ? dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
-        })
+        }) : dispatch({
+            type: type.USER_LIST,
+            payload: []
+        });
     }
 };
 
@@ -28,7 +31,8 @@ export const userAdd = formData => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "add_new_user",
         })
     }
 };
@@ -44,7 +48,8 @@ export const userUpdate = (id, formData) => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "user_update",
         })
     }
 };

@@ -11,24 +11,26 @@ const ForgotPassword = Form.create({name: 'forgot_password'})(
     props => {
 
         const [open, setOpen] = useState(false);
+        const [loading, setLoading] = useState(false);
         const [success, setSuccess] = useState(null);
 
-        const {form, onFormSubmit, loading} = props;
+        const {form, onFormSubmit} = props;
         const {getFieldDecorator} = form;
 
         const handleSubmit = () => {
             form.validateFields((err, values) => {
-                if (err) {
-                    return;
+                if (!err) {
+                    setLoading(true);
+                    onFormSubmit(values).then(res => {
+                        if (res) {
+                            form.resetFields();
+                            setSuccess(res.message)
+                        }
+                        setLoading(false);
+                    });
                 }
-                onFormSubmit(values).then(res => {
-                    if (res) {
-                        form.resetFields();
-                        setSuccess(res.message)
-                    }
-                });
-
             });
+
         };
 
         const onCancel = () => {
@@ -47,12 +49,12 @@ const ForgotPassword = Form.create({name: 'forgot_password'})(
                     footer={<Button onClick={onCancel}>Close</Button>}
                     width={400}
                     closable={false}
-
+                    destroyOnClose
                 >
 
                     {success ? <Result status="success" subTitle={<Title level={4}>{success}</Title>}
                     /> : <Form layout="vertical">
-                        <FormError form={form}/>
+                        <FormError form={form} formName="forgot_password"/>
                         <Form.Item label="Registered Email Address">
                             {getFieldDecorator('email', {
                                 rules: [{required: true, message: 'Please input the registered e-mail address!'}],
@@ -71,9 +73,7 @@ const ForgotPassword = Form.create({name: 'forgot_password'})(
     }
 );
 
-const mapStateToProps = ({auth}) => ({
-    loading: auth.loading,
-});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
     onFormSubmit: data => dispatch(forgotPassword(data)),

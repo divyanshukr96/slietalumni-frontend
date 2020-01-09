@@ -4,71 +4,74 @@ import * as _ from "lodash";
 import {Form, Row, Col, Input, Button, Checkbox, Select, Divider, Typography, Result, Avatar, Modal} from 'antd';
 import {Branch, Programme} from "Constants/ProgrammeAndBranch";
 import FormError from "components/Errors";
-import {meetRegister} from "actions/publicAction";
-import {authRequired, fetchDetails} from "../../actions/authAction";
+import {meetRegister} from "actions/alumniMeetAction";
+import {authRequired, fetchDetails} from "actions/authAction";
 import logo from "../../assets/SAA-logo-color.png";
 import {withRouter} from "react-router-dom";
 
 const {Text, Title, Paragraph} = Typography;
 
 
-const SuccessMessage = ({success, data, history}) => {
-    if (_.isEmpty(data)) return null;
-    return (
-        <Modal visible={success} footer={null} closable={false}>
-            <Result
-                icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
-                status="success"
-                title="SLIET Alumni Meet 2020"
-                style={{
-                    padding: 0
-                }}
-                subTitle={
-                    <>
-                        <Title level={4}>Dear {data.name}</Title>
-                        Thanks a lot for registering yourself for Alumni Meet 2020. <br/>
-                        Kindly Pay your Alumni Meet registration fees on the given Bank Details and send us your
-                        payment receipt on <a href="mailto:alumnicell@sliet.ac.in">alumnicell@sliet.ac.in</a> for your
-                        payment Confirmation
+const SuccessMessage = withRouter(
+    ({success, data, history}) => {
+        if (_.isEmpty(data)) return null;
+        return (
+            <Modal visible={success} footer={null} closable={false}>
+                <Result
+                    icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
+                    status="success"
+                    title="SLIET Alumni Meet 2020"
+                    style={{
+                        padding: 0
+                    }}
+                    subTitle={
+                        <>
+                            <Title level={4}>Dear {data.name}</Title>
+                            Thanks a lot for registering yourself for Alumni Meet 2020. <br/>
+                            Kindly Pay your Alumni Meet registration fees on the given Bank Details and send us your
+                            payment receipt on <a href="mailto:alumnicell@sliet.ac.in">alumnicell@sliet.ac.in</a> for
+                            your
+                            payment Confirmation
 
-                        <Paragraph style={{textAlign: 'left', paddingTop: 12}}>
-                            <Text style={{fontWeight: 500}}>Registration charges for Alumni Meet</Text><br/>
-                            <Text>{data.family ? `With Family ` : `Single Person `}: ₹ {data.fees}/-</Text>
-                        </Paragraph>
+                            <Paragraph style={{textAlign: 'left', paddingTop: 12}}>
+                                <Text style={{fontWeight: 500}}>Registration charges for Alumni Meet</Text><br/>
+                                <Text>{data.family ? `With Family ` : `Single Person `}: ₹ {data.fees}/-</Text>
+                            </Paragraph>
 
 
-                        <Divider orientation={"left"} style={{marginBottom: 4}}>Bank Details</Divider>
-                        <Paragraph style={{textAlign: 'left'}}>
-                            Account No - 3652214249<br/>
-                            Name - SLIET Alumni Association<br/>
-                            IFSC Code - CBIN0283105<br/>
-                            Branch - LONGOWAL<br/>
-                            Bank Name - Central Bank of India<br/>
-                        </Paragraph>
+                            <Divider orientation={"left"} style={{marginBottom: 4}}>Bank Details</Divider>
+                            <Paragraph style={{textAlign: 'left'}}>
+                                Account No - 3652214249<br/>
+                                Name - SLIET Alumni Association<br/>
+                                IFSC Code - CBIN0283105<br/>
+                                Branch - LONGOWAL<br/>
+                                Bank Name - Central Bank of India<br/>
+                            </Paragraph>
 
-                        <Divider orientation={"left"} style={{marginBottom: 4}}>Contact Details</Divider>
-                        <Paragraph style={{textAlign: 'left'}}>
-                            Raghav Sharma - <a href="tel:+91-9569468234">+91-9569468234</a><br/>
-                            Yash Verma - <a href="tel:+91-7300633011">+91-7300633011</a><br/>
-                        </Paragraph>
-                        <Paragraph style={{paddingTop: 8}} code>
-                            A confirmation Mail is sent to your email <a
-                            href={`mailto:${data.email}`}>{data.email}</a>
-                        </Paragraph>
-                    </>
-                }
-                extra={[
-                    <Button type="primary" key="console" onClick={() => history.goBack()}>
-                        Go Back
-                    </Button>
-                ]}
-            />
-        </Modal>
-    );
-};
+                            <Divider orientation={"left"} style={{marginBottom: 4}}>Contact Details</Divider>
+                            <Paragraph style={{textAlign: 'left'}}>
+                                Raghav Sharma - <a href="tel:+91-9569468234">+91-9569468234</a><br/>
+                                Yash Verma - <a href="tel:+91-7300633011">+91-7300633011</a><br/>
+                            </Paragraph>
+                            <Paragraph style={{paddingTop: 8}} code>
+                                A confirmation Mail is sent to your email <a
+                                href={`mailto:${data.email}`}>{data.email}</a>
+                            </Paragraph>
+                        </>
+                    }
+                    extra={[
+                        <Button type="primary" key="console" onClick={() => history.push('/')}>
+                            Go Home
+                        </Button>
+                    ]}
+                />
+            </Modal>
+        );
+    }
+);
 
-const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
-    ({form, onRegister, user, loginRequired, isAuthenticated, fetchUser, history, authRequiredStatus}) => {
+const MeetRegistrationForm = Form.create({name: 'alumni_meet_registration'})(
+    ({form, onRegister, user, loginRequired, isAuthenticated, fetchUser, authRequiredStatus, loading}) => {
         const [success, setSuccess] = useState(false);
         const [registered, setRegistered] = useState(false);
         const [data, setData] = useState(null);
@@ -107,11 +110,11 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
 
         return (
             <>
-                <SuccessMessage success={success} data={data} history={history}/>
+                <SuccessMessage success={success} data={data}/>
 
                 <Form onSubmit={handleSubmit}>
-                    <FormError form={form}/>
-                    <Row gutter={24}>
+                    <FormError form={form} formName="alumni_meet_registration"/>
+                    <Row gutter={16} type="flex">
 
                         <Col sm={24}>
                             <Form.Item style={{marginBottom: 0}}>
@@ -175,7 +178,7 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
 
 
                         <Col span={24} style={{textAlign: 'right', paddingTop: 16}}>
-                            <Button type="primary" htmlType="submit">
+                            <Button loading={loading} type="primary" htmlType="submit">
                                 Register
                             </Button>
                             <Button style={{marginLeft: 8}} onClick={() => resetFields()}>
@@ -189,7 +192,8 @@ const MeetRegistrationForm = Form.create({name: 'meet_registration'})(
     }
 );
 
-const mapStateToProps = ({auth}) => ({
+const mapStateToProps = ({auth, alumniMeet}) => ({
+    loading: alumniMeet.loading,
     user: auth.user,
     authRequiredStatus: auth.authRequired,
     isAuthenticated: auth.isAuthenticated,
@@ -200,7 +204,7 @@ const mapDispatchToProps = (dispatch) => ({
     fetchUser: () => dispatch(fetchDetails()),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MeetRegistrationForm));
+export default connect(mapStateToProps, mapDispatchToProps)(MeetRegistrationForm);
 
 
 const RegisterFormColumn = ({form}) => {

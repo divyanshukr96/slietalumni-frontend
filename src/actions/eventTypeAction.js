@@ -10,10 +10,13 @@ export const fetchEventTypes = () => async dispatch => {
             payload: data.data
         });
     } catch ({response}) {
-        response && dispatch({
+        response ? dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
-        })
+        }) : dispatch({
+            type: type.EVENT_TYPE_LIST,
+            payload: []
+        });
     }
 };
 
@@ -28,7 +31,8 @@ export const addEventType = formData => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "new_event_type",
         })
     }
 };
@@ -44,7 +48,8 @@ export const updateEventType = (id, formData) => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "event_type_update",
         })
     }
 };

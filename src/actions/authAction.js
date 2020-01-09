@@ -49,9 +49,10 @@ export const login = formData => async dispatch => {
         });
         return data;
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "login_form",
         });
         dispatch({
             type: type.LOGIN_LOADING,
@@ -69,7 +70,7 @@ export const authCheck = () => async dispatch => {
         });
         return data;
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
         });
@@ -85,7 +86,7 @@ export const fetchDetails = () => async dispatch => {
         });
         return data;
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
         });
@@ -95,24 +96,13 @@ export const fetchDetails = () => async dispatch => {
 
 export const forgotPassword = (formData) => async dispatch => {
     try {
-        dispatch({
-            type: type.LOGIN_LOADING,
-            payload: true
-        });
         const {data} = await axios.post('/api/auth/password/forgot', formData);
-        dispatch({
-            type: type.LOGIN_LOADING,
-            payload: false
-        });
         return data;
     } catch ({response}) {
         dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
-        });
-        dispatch({
-            type: type.LOGIN_LOADING,
-            payload: false
+            payload: response.data,
+            name: 'forgot_password'
         });
     }
 };
@@ -133,7 +123,8 @@ export const resetPassword = (formData) => async dispatch => {
     } catch ({response}) {
         dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "reset_password",
         });
         dispatch({
             type: type.LOGIN_LOADING,

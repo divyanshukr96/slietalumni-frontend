@@ -7,7 +7,7 @@ import logo from 'assets/SAA-logo-color.png'
 
 const {Paragraph, Title} = Typography;
 
-function RegistrationSubmitted(props) {
+const RegistrationSubmitted = props => {
     const {visible, data} = props;
     if (_.isEmpty(data)) return <div/>;
     return (
@@ -36,7 +36,7 @@ function RegistrationSubmitted(props) {
             />
         </Modal>
     );
-}
+};
 
 RegistrationSubmitted.propTypes = {
     visible: PropTypes.bool.isRequired,

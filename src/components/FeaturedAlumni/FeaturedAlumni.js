@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Button, Divider, Table, Typography} from "antd";
-import {deleteEvent, updateEvent} from "actions/eventAction";
 import {addFeaturedAlumni, getFeaturedAlumni, searchAlumni} from "actions/featuredAlumniAction";
 import NewFeaturedAlumni from "components/FeaturedAlumni/NewFeaturedAlumni";
-import moment from "moment";
+// import moment from "moment";
 
 const {Text, Title} = Typography;
 
 class FeaturedAlumni extends Component {
     constructor(props) {
         super(props);
-        props.onLoading();
         props.fetchFeatured();
     }
 
@@ -35,7 +33,7 @@ class FeaturedAlumni extends Component {
         return (
             <div>
                 <Title level={4}>Featured Alumni</Title>
-                <Divider/>
+                <Divider style={{margin: `8px 0`}}/>
                 <NewFeaturedAlumni onAlumniAdd={() => true} {...rest}/>
                 <Table
                     style={{overflow: 'overlay'}}
@@ -56,12 +54,10 @@ const mapStateToProps = ({featuredAlumni}) => ({
     data: featuredAlumni.data,
 });
 const mapDispatchToProps = dispatch => ({
-
-
-    onEventUpdate: (id, data) => dispatch(updateEvent(id, data)),
-    onLoading: () => dispatch({type: 'EVENT_LOADING'}),
-    onView: id => dispatch({type: 'EVENT_EDIT', payload: id}),
-    onDelete: () => dispatch(deleteEvent()),
+    // onEventUpdate: (id, data) => dispatch(updateEvent(id, data)),
+    // onLoading: () => dispatch({type: 'EVENT_LOADING'}),
+    // onView: id => dispatch({type: 'EVENT_EDIT', payload: id}),
+    // onDelete: () => dispatch(deleteEvent()),
 
     fetchFeatured: () => dispatch(getFeaturedAlumni()),
     onAlumniAdd: data => dispatch(addFeaturedAlumni(data)),

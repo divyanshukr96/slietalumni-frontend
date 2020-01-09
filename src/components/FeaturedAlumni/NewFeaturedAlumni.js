@@ -113,7 +113,7 @@ class NewAlumniDataForm extends Component {
                 bodyStyle={{paddingTop: 16}}
             >
                 <Form {...formItemLayout}>
-                    <FormError form={this.props.form}/>
+                    <FormError form={this.props.form} formName="new_featured_alumni"/>
 
                     <div style={{textAlign: 'center', marginBottom: 8}}>
                         <Radio.Group defaultValue={this.state.newAlumni} buttonStyle="solid" onChange={this.toggle}>
@@ -186,7 +186,7 @@ class NewAlumniDataForm extends Component {
 }
 
 
-const CollectionCreateForm = Form.create({name: 'new_alumni'})(NewAlumniDataForm);
+const CollectionCreateForm = Form.create({name: 'new_featured_alumni'})(NewAlumniDataForm);
 
 class NewFeaturedAlumni extends Component {
     state = {

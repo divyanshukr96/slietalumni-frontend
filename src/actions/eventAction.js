@@ -10,10 +10,13 @@ export const fetchEvents = () => async dispatch => {
             payload: data.data
         });
     } catch ({response}) {
-        response && dispatch({
+        response ? dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
-        })
+        }) : dispatch({
+            type: type.EVENT_LIST,
+            payload: []
+        });
     }
 };
 
@@ -30,7 +33,8 @@ export const addEvent = formData => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "add_new_event",
         })
     }
 };
@@ -39,6 +43,7 @@ export const updateEvent = (id, formData) => async dispatch => {
     try {
         let form = new FormData();
         for (let field in formData) form.append(field, formData[field]);
+        form.append('_method', 'PATCH');
         const {data} = await axios.post('/api/events/' + id, form);
         data.data && dispatch({
             type: type.EVENT_UPDATE,
@@ -48,7 +53,8 @@ export const updateEvent = (id, formData) => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "add_new_event",
         })
     }
 };
@@ -58,7 +64,7 @@ export const publishEvent = () => async (dispatch, getState) => {
     try {
         const {data} = await axios.patch(`/api/events/${id}/publish`);
         data.data && dispatch({
-            type: type.EVENT_PUBLISH,
+            type: type.EVENT_UPDATE,
             payload: data.data
         });
         return data;

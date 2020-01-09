@@ -6,9 +6,10 @@ import {setUsernamePassword} from "actions/newAlumniAction";
 import ConfirmationMessage from "components/Registration/ConfirmationMessage";
 
 
-const ConfirmationForm = Form.create({name: 'reg_conf'})(
+const ConfirmationForm = Form.create({name: 'alumni_username_set'})(
     ({form, onSetUsername, search}) => {
         const [success, setSuccess] = useState(false);
+        const [loading, setLoading] = useState(false);
         const [data, setData] = useState(null);
 
         const confirmPassword = (rule, value, callback) => {
@@ -19,12 +20,16 @@ const ConfirmationForm = Form.create({name: 'reg_conf'})(
         const handleSubmit = e => {
             e.preventDefault();
             form.validateFields((err, values) => {
-                if (!err) onSetUsername(values).then(res => {
-                    if (res) {
-                        setData(res);
-                        setSuccess(true);
-                    }
-                })
+                if (!err) {
+                    setLoading(true);
+                    onSetUsername(values).then(res => {
+                        if (res) {
+                            setData(res);
+                            setSuccess(true);
+                        }
+                        setLoading(false);
+                    })
+                }
             });
         };
 
@@ -33,7 +38,7 @@ const ConfirmationForm = Form.create({name: 'reg_conf'})(
             <>
                 <ConfirmationMessage visible={success} data={data}/>
                 <Form onSubmit={handleSubmit} style={{maxWidth: 800}}>
-                    <FormError form={form}/>
+                    <FormError form={form} formName="alumni_username_set"/>
                     <Row gutter={24}>
                         <Col span={24}>
                             <Form.Item label={'Email'} style={{marginBottom: 0}}>
@@ -74,7 +79,7 @@ const ConfirmationForm = Form.create({name: 'reg_conf'})(
                         </Col>
 
                         <Col span={24} style={{textAlign: 'right'}}>
-                            <Button type="primary" htmlType="submit">
+                            <Button loading={loading} type="primary" htmlType="submit">
                                 Confirm Registration
                             </Button>
                             <Button style={{marginLeft: 8}} onClick={() => resetFields()}>

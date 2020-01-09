@@ -30,7 +30,39 @@ export const addCarousel = formData => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "carousel_upload"
+        })
+    }
+};
+
+export const activateCarousel = id => async dispatch => {
+    try {
+        const {data} = await axios.patch(`/api/carousel/${id}`);
+        data.data && dispatch({
+            type: type.IMAGE_UPDATE,
+            payload: data.data
+        });
+        return data.data ? data.data : data;
+    } catch ({response}) {
+        response && dispatch({
+            type: type.ERROR_VALIDATION,
+            payload: response.data,
+        })
+    }
+};
+
+export const deleteCarousel = id => async dispatch => {
+    try {
+        await axios.delete(`/api/carousel/${id}`);
+        dispatch({
+            type: type.IMAGE_DELETE,
+            payload: id
+        });
+    } catch ({response}) {
+        response && dispatch({
+            type: type.ERROR_VALIDATION,
+            payload: response.data,
         })
     }
 };

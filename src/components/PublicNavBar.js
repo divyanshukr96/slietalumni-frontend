@@ -88,7 +88,8 @@ class PublicNavBar extends Component {
             <Menu.Item key="sac-home" style={{display: !dashboard && "none"}}>
                 <AccessControl
                     key={"dashboard-access-control"}
-                    allowedPermissions={['sac']}>
+                    allowedPermissions={['sac']}
+                >
                     <Link to={'/sac'}>{sidebar && <Icon type="dashboard"/>} Dashboard</Link>
                 </AccessControl>
             </Menu.Item>,
@@ -141,7 +142,7 @@ class PublicNavBar extends Component {
                     </div>
 
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={[selected]}
-                        // style={{overflow: 'auto', height: '100vh'}}
+                          style={{overflow: 'auto', height: 'calc(100vh - 64px)'}}
                     >
 
                         <Menu.Item key="/">
@@ -197,6 +198,9 @@ class PublicNavBar extends Component {
                         </Menu.Item>
 
                         {this.loginLogout(true)}
+
+                        <div style={{marginBottom: 40}}/>
+
                     </Menu>
                 </Sider>
                 <Layout>
@@ -282,7 +286,9 @@ class PublicNavBar extends Component {
                                 style={{lineHeight: '64px', textAlign: 'right', padding: '0 8px'}}
                             >
                                 <Menu.Item key={'logo'} className={classes.header}>
-                                    <img src={Logo} alt="" style={{height: 64}}/>
+                                    <Link to={'/'}>
+                                        <img src={Logo} alt="" style={{height: 64}}/>
+                                    </Link>
                                 </Menu.Item>
                                 <Menu.Item key={'65'} onClick={this.toggle}>
                                     <Icon type="menu" style={{margin: 0, fontSize: 24, verticalAlign: 'middle'}}/>

@@ -21,16 +21,21 @@ DataCol.propTypes = {
     value: PropTypes.any,
 };
 
-const RegistrationConfirm = Form.create({name: 'reg_cong_form'})(
+const RegistrationConfirm = Form.create({name: 'alumni_registration_confirm'})(
     ({form, onConfirm}) => {
         const [visible, setVisible] = useState(false);
+        const [loading, setLoading] = useState(false);
 
         const handleConfirm = e => {
             e.preventDefault();
             form.validateFields((err, values) => {
-                if (!err) onConfirm(values).then(res => {
-                    if (res) setVisible(false)
-                })
+                if (!err) {
+                    setLoading(true);
+                    onConfirm(values).then(res => {
+                        if (res) setVisible(false);
+                        setLoading(false);
+                    })
+                }
             });
         };
 
@@ -45,11 +50,11 @@ const RegistrationConfirm = Form.create({name: 'reg_cong_form'})(
                 bodyStyle={{padding: 16}}
                 visible={visible}
                 destroyOnClose={true}
-                footer={<Button type={"primary"} onClick={handleConfirm}>Submit</Button>}
+                footer={<Button loading={loading} type={"primary"} onClick={handleConfirm}>Submit</Button>}
                 onCancel={() => setVisible(false)}
             >
                 <Form>
-                    <FormError form={form}/>
+                    <FormError form={form} formName="alumni_registration_confirm"/>
                     <Form.Item style={{marginBottom: 0}}>
                         {getFieldDecorator('_method', {initialValue: 'PATCH'})(<Input hidden/>)}
                     </Form.Item>

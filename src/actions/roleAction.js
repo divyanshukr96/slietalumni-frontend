@@ -13,7 +13,8 @@ export const addNewRoles = formData => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "add_new_role",
         })
     }
 };
@@ -30,7 +31,8 @@ export const updateRole = formData => async (dispatch, getState) => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "edit_role",
         })
     }
 };
@@ -60,10 +62,13 @@ export const fetchRolesPermissions = () => async dispatch => {
             payload: data.data
         });
     } catch ({response}) {
-        response && dispatch({
+        response ? dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
-        })
+        }) : dispatch({
+            type: type.ROLE_LIST,
+            payload: []
+        });
     }
     try {
         const {data} = await axios.get('/api/permissions');
@@ -72,9 +77,12 @@ export const fetchRolesPermissions = () => async dispatch => {
             payload: data.data
         });
     } catch ({response}) {
-        response && dispatch({
+        response ? dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
-        })
+        }) : dispatch({
+            type: type.PERMISSION_LIST,
+            payload: []
+        });
     }
 };

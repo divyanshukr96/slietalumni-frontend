@@ -2,9 +2,7 @@ import React, {useState} from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import * as _ from "lodash";
-import {
-    Form, Icon, Input, Button, Modal, Result, Typography,
-} from 'antd';
+import {Form, Icon, Input, Button, Modal, Result, Typography} from 'antd';
 import {resetPassword} from 'actions/authAction'
 import FormError from "components/Errors";
 
@@ -36,7 +34,7 @@ const SuccessMessage = withRouter(({visible, data, history}) => {
 );
 
 
-const ResetPasswordForm = Form.create({name: 'normal_login'})(
+const ResetPasswordForm = Form.create({name: 'reset_password'})(
     props => {
 
         const {form, loading, onReset} = props;
@@ -62,7 +60,7 @@ const ResetPasswordForm = Form.create({name: 'normal_login'})(
             <>
                 <SuccessMessage visible={!_.isEmpty(success)} data={success}/>
                 <Form onSubmit={handleSubmit} className="password-reset-form" style={{maxWidth: 800}}>
-                    <FormError form={form}/>
+                    <FormError form={form} formName="reset_password"/>
                     <Form.Item style={{marginBottom: 12}}>
                         {getFieldDecorator('token', {
                             initialValue: token
@@ -96,8 +94,7 @@ const ResetPasswordForm = Form.create({name: 'normal_login'})(
                     </Form.Item>
                     <Form.Item>
 
-                        <Button loading={loading} type="primary" htmlType="submit"
-                                style={{width: '100%'}}>
+                        <Button loading={loading} type="primary" htmlType="submit" style={{width: '100%'}}>
                             Password Reset
                         </Button>
 

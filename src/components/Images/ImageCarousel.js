@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import HomeCarousel from "../HomeCarousel";
-import {Button, Col, Form, Icon, Input, Modal, Row} from "antd";
-import FileUploadButton from "../Registration/FileUploadButton";
-import {makeStyles, colors} from "@material-ui/core";
 import {connect} from "react-redux";
-import {addCarousel, fetchCarousel} from "actions/imageAction";
+import {makeStyles} from "@material-ui/core";
+import {Button, Col, Form, Icon, Input, Modal, Row, Typography} from "antd";
+import HomeCarousel from "../HomeCarousel";
+import FileUploadButton from "../Registration/FileUploadButton";
+import {activateCarousel, addCarousel, deleteCarousel, fetchCarousel} from "actions/imageAction";
+import FormError from "../Errors";
 
+const {Paragraph} = Typography;
 
 const useStyles = makeStyles(theme => ({
     upload: {
@@ -37,6 +39,8 @@ const ImageCarouselUpload = Form.create({name: 'carousel_upload'})(
     ({form, onAddCarousel}) => {
         const [imageUrl, setImageUrl] = useState(null);
         const [visible, setVisible] = useState(false);
+        const [loading, setLoading] = useState(false);
+
         const classes = useStyles();
 
         const handleChange = info => {
@@ -50,13 +54,17 @@ const ImageCarouselUpload = Form.create({name: 'carousel_upload'})(
         const handleSubmit = e => {
             e.preventDefault();
             form.validateFields((err, values) => {
-                if (!err) onAddCarousel(values).then(res => {
-                    if (res) {
-                        form.resetFields();
-                        setImageUrl(null);
-                        setVisible(false);
-                    }
-                })
+                if (!err) {
+                    setLoading(true);
+                    onAddCarousel(values).then(res => {
+                        if (res) {
+                            form.resetFields();
+                            setImageUrl(null);
+                            setVisible(false);
+                        }
+                        setLoading(false);
+                    })
+                }
             });
         };
 
@@ -75,10 +83,12 @@ const ImageCarouselUpload = Form.create({name: 'carousel_upload'})(
                         setVisible(false);
                         setImageUrl(null);
                     }}
+                    confirmLoading={loading}
                     closable={false}
                     destroyOnClose
                 >
                     <Form>
+                        <FormError form={form} formName="carousel_upload"/>
                         <Form.Item style={{marginBottom: 0}}>
                             {form.getFieldDecorator('active', {initialValue: 0})(<Input hidden/>)}
                         </Form.Item>
@@ -86,7 +96,7 @@ const ImageCarouselUpload = Form.create({name: 'carousel_upload'})(
                             formProps={form}
                             label={''}
                             name={'image'}
-                            dragger={true}
+                            dragger="true"
                             uploadProps={{
                                 listType: "picture-card",
                                 showUploadList: false,
@@ -118,7 +128,6 @@ const ImageCarouselUpload = Form.create({name: 'carousel_upload'})(
                                 </div>
                             }
                         </FileUploadButton>
-
                     </Form>
                 </Modal>
             </>
@@ -127,46 +136,68 @@ const ImageCarouselUpload = Form.create({name: 'carousel_upload'})(
 );
 
 
-const ImageCarouselPreview = () => {
+const ImageCarouselPreview = (props) => {
+    const [visible, setVisible] = useState(false);
     return (
         <>
-            <Button icon={'picture'} type={"dashed"} style={{marginLeft: 8}}>
+            <Button icon={'picture'} type={"dashed"} onClick={() => setVisible(true)} style={{marginLeft: 8}}>
                 Preview
             </Button>
-            <Modal>
-                <HomeCarousel images={
-                    [
-                        'https://slietalumni.com/images/sliet-college.jpg',
-                        'https://slietalumni.com/images/alumnimeet-2018/meet2018-010.jpg',
-                        'https://slietalumni.com/images/student-cell-member-meet-2018-001.JPG',
-                        'https://slietalumni.com/images/abhivyakti-08-10-2018-2152.jpg']
-                }/>
+            <Modal
+                visible={visible}
+                bodyStyle={{
+                    paddingBottom: 8,
+                }}
+                footer={null}
+                onCancel={() => setVisible(false)}
+            >
+                <div style={{marginTop: 18}}>
+                    <HomeCarousel images={props.images}/>
+                </div>
             </Modal>
         </>
     );
 };
 
 
-const ImageCarousel = ({imagesList, onAddCarousel, fetchCarousel}) => {
+const ImageCarousel = ({imagesList, onAddCarousel, fetchCarousel, activateCarousel, deleteCarousel}) => {
 
     const classes = useStyles();
+
     useEffect(() => {
-        fetchCarousel()
+        fetchCarousel();
     }, []);
 
     return (
         <div>
             <div style={{textAlign: 'right', marginBottom: 8}}>
                 <ImageCarouselUpload onAddCarousel={onAddCarousel}/>
-                <ImageCarouselPreview/>
+                <ImageCarouselPreview images={imagesList.filter(im => im.active).map(im => im.image_url)}/>
             </div>
 
-            <Row gutter={4} align={'middle'} type={'flex'} justify={'center'} >
+            <Row gutter={4} align={'middle'} type={'flex'} justify={'center'}>
                 {imagesList.map((e, i) =>
-                    <Col sm={4} key={i} style={{marginBottom: 6}}>
-                        <img src={e.image_url} alt="" style={{width: '100%'}}/>
-                        {/*<Button type="danger" shape="circle" icon="delete" size={"small"} className={classes.delete}/>*/}
-                        {/*<Button type="primary" shape="circle" icon="check" size={"small"} className={classes.active}/>*/}
+                    <Col md={6} sm={4} key={i} style={{marginBottom: 6}}>
+                        <div style={{position: "relative"}}>
+                            <img src={e.image_url} alt="" style={{width: '100%'}}/>
+                            <Button
+                                type="danger"
+                                shape="circle"
+                                icon="delete"
+                                size={"small"}
+                                className={classes.delete}
+                                onClick={() => deleteCarousel(e.id)}
+                            />
+                            <Button
+                                type={e.active ? "primary" : "ghost"}
+                                shape="circle"
+                                icon="check"
+                                size={"small"}
+                                className={classes.active}
+                                onClick={() => activateCarousel(e.id)}
+                            />
+                        </div>
+                        <Paragraph code>Created At : {e.created_at}</Paragraph>
                     </Col>
                 )}
             </Row>
@@ -182,6 +213,8 @@ const mapStateToProps = ({images}) => ({
 const mapDispatchToProps = dispatch => ({
     onAddCarousel: (data) => dispatch(addCarousel(data)),
     fetchCarousel: () => dispatch(fetchCarousel()),
+    activateCarousel: (id) => dispatch(activateCarousel(id)),
+    deleteCarousel: (id) => dispatch(deleteCarousel(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageCarousel);

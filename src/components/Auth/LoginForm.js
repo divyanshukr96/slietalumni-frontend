@@ -1,16 +1,14 @@
 import React from 'react';
 import {connect} from "react-redux";
 import * as PropTypes from "prop-types";
-import {
-    Form, Icon, Input, Button, Checkbox,
-} from 'antd';
+import {Form, Icon, Input, Button, Checkbox} from 'antd';
 import {Link, Redirect} from "react-router-dom";
 import {login} from 'actions/authAction'
 import FormError from "components/Errors";
 import ForgotPassword from "./ForgotPassword";
 
 
-const LoginForm = Form.create({name: 'normal_login'})(
+const LoginForm = Form.create({name: 'login_form'})(
     class extends React.Component {
         handleSubmit = (e) => {
             const {form, history, redirect} = this.props;
@@ -28,21 +26,25 @@ const LoginForm = Form.create({name: 'normal_login'})(
             if (isAuthenticated && redirect) return <Redirect to="/profile"/>;
             return (
                 <Form onSubmit={this.handleSubmit} className="login-form" style={{maxWidth: 800}}>
-                    <FormError form={form}/>
+                    <FormError form={form} formName="login_form"/>
                     <Form.Item style={{marginBottom: 8}}>
                         {getFieldDecorator('username', {
                             rules: [{required: true, message: 'Please enter your email / username!'}],
                         })(
-                            <Input prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                   placeholder="Email / Username"/>
+                            <Input
+                                prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                                placeholder="Email / Username"
+                            />
                         )}
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('password', {
                             rules: [{required: true, message: 'Please enter your Password!'}],
                         })(
-                            <Input.Password prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                            placeholder="Password"/>
+                            <Input.Password
+                                prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                                placeholder="Password"
+                            />
                         )}
                     </Form.Item>
                     <Form.Item style={{marginBottom: 8}}>
@@ -53,8 +55,13 @@ const LoginForm = Form.create({name: 'normal_login'})(
                             <Checkbox>Remember me</Checkbox>
                         )}
                         <ForgotPassword/>
-                        <Button loading={loading} type="primary" htmlType="submit" className="login-form-button"
-                                style={{width: '100%'}}>
+
+                        <Button
+                            loading={loading}
+                            onClick={this.handleSubmit}
+                            type="primary" block
+                            htmlType="submit" className="login-form-button"
+                        >
                             Log in
                         </Button>
                         Or <Link to={'/register'}> Register Now </Link>

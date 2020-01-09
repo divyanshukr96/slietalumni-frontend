@@ -7,4 +7,8 @@ export const Category = [
         value: 'Health',
         text: 'Health'
     },
+    {
+        value: 'Infrastructure',
+        text: 'Infrastructure'
+    },
 ];

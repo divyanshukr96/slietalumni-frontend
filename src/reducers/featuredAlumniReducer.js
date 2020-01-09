@@ -1,5 +1,5 @@
 import * as type from 'actions/actionTypes'
-import * as _ from "lodash";
+// import * as _ from "lodash";
 
 const initialState = {
     featured: [],
@@ -40,26 +40,26 @@ export default (state = initialState, action) => {
     }
 }
 
-const dataUpdate = (data, action) => {
-    const newData = [...data];
-    const key = action.payload.id;
-    const index = newData.findIndex(item => key === item.id);
-    newData.splice(index, 1, {...action.payload});
-    return newData;
-};
-
-const dataFilter = (state, reg) => _.flatMap(state.dataList, record => {
-    const nameMatch = record.name.match(reg);
-    const e = record.email ? record.email.match(reg) : null;
-    const m = record.mobile ? record.mobile.match(reg) : null;
-    const pr = record.programme ? record.programme.match(reg) : null;
-    const b = record.branch ? record.branch.match(reg) : null;
-    const ba = record.batch ? record.batch.toString().match(reg) : null;
-    const p = record.passing ? record.passing.toString().match(reg) : null;
-    if (!nameMatch && !e && !m && !pr && !b && !ba && !p) {
-        return null;
-    }
-    return {
-        ...record,
-    };
-}).filter(record => !!record);
+// const dataUpdate = (data, action) => {
+//     const newData = [...data];
+//     const key = action.payload.id;
+//     const index = newData.findIndex(item => key === item.id);
+//     newData.splice(index, 1, {...action.payload});
+//     return newData;
+// };
+//
+// const dataFilter = (state, reg) => _.flatMap(state.dataList, record => {
+//     const nameMatch = record.name.match(reg);
+//     const e = record.email ? record.email.match(reg) : null;
+//     const m = record.mobile ? record.mobile.match(reg) : null;
+//     const pr = record.programme ? record.programme.match(reg) : null;
+//     const b = record.branch ? record.branch.match(reg) : null;
+//     const ba = record.batch ? record.batch.toString().match(reg) : null;
+//     const p = record.passing ? record.passing.toString().match(reg) : null;
+//     if (!nameMatch && !e && !m && !pr && !b && !ba && !p) {
+//         return null;
+//     }
+//     return {
+//         ...record,
+//     };
+// }).filter(record => !!record);

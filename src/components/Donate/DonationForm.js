@@ -49,7 +49,7 @@ const CollectionCreateForm = Form.create({name: 'donation_form'})(
 
                     <Form {...formItemLayout}>
 
-                        <FormError form={form}/>
+                        <FormError form={form} formName="donation_form"/>
 
                         {isMember && <Form.Item style={{marginBottom: 0}}>
                             {getFieldDecorator('member', {initialValue: user.username})(<Input hidden/>)}
@@ -159,13 +159,15 @@ class DonationForm extends Component {
 
     handleCreate = (e) => {
         const {form} = this.formRef.props;
-        this.formRef.setState({submitted: true});
         e.preventDefault();
         form.validateFields((err, values) => {
-            if (!err) this.props.addDonation(values).then(res => {
-                if (res) this.setState({visible: false, success: true, member: false, login: false});
-            });
-            setTimeout(() => this.formRef.setState({submitted: false}), 2000)
+            if (!err) {
+                this.formRef.setState({submitted: true});
+                this.props.addDonation(values).then(res => {
+                    if (res) this.setState({visible: false, success: true, member: false, login: false});
+                    this.formRef.setState({submitted: false});
+                });
+            }
         });
     };
 

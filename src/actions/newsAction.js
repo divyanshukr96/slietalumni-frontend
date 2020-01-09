@@ -10,10 +10,13 @@ export const fetchNews = () => async dispatch => {
             payload: data.data
         });
     } catch ({response}) {
-        response && dispatch({
+        response ? dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
-        })
+        }) : dispatch({
+            type: type.NEWS_LIST,
+            payload: []
+        });
     }
 };
 
@@ -31,7 +34,8 @@ export const addNews = formData => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "add_new_news",
         })
     }
 };
@@ -50,7 +54,8 @@ export const updateNews = (id, formData) => async dispatch => {
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "add_new_news",
         })
     }
 };

@@ -59,9 +59,10 @@ const EventDetails = (props) => {
                     <div style={{textAlign: 'center', marginBottom: `8px`}}>
                         <img
                             key={"image"}
-                            width={120}
+                            width={300}
                             alt="logo"
                             src={event.image_thumb}
+                            style={{maxWidth: '100%'}}
                         />
                     </div>
 

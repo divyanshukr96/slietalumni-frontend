@@ -15,7 +15,16 @@ export default (state = initialState, action) => {
         case type.LOGIN_LOADING:
             return {...state, loading: action.payload};
         case type.LOGIN_SUCCESS:
-            return {...state, authRequired: false, isAuthenticated: true, ...action.payload};
+            return {
+                ...state,
+                authRequired: false,
+                isAuthenticated: true,
+                user: {
+                    ...state.user,
+                    roles: action.payload.roles,
+                    permissions: action.payload.permissions
+                }, ...action.payload
+            };
         case type.USER_AUTHENTICATED:
             return {...state, authRequired: false, isAuthenticated: action.payload};
         case type.AUTH_USER_DETAIL:

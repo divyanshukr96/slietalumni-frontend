@@ -10,7 +10,7 @@ class EventAdd extends Component {
     constructor(props) {
         super(props);
         props.onLoad();
-        this.state = {success: null};
+        this.state = {success: null, loading: false};
     }
 
     handleCancel = () => {
@@ -21,12 +21,16 @@ class EventAdd extends Component {
         const {formRef, props: {onEventAdd}} = this;
         e.preventDefault();
         formRef.props.form.validateFields((err, values) => {
-            if (!err) onEventAdd({...values, content: values.content.toHTML()}).then(res => {
-                if (res) {
-                    formRef.onSuccess();
-                    this.setState({success: res})
-                }
-            });
+            if (!err) {
+                this.setState({loading: true});
+                onEventAdd({...values, content: values.content.toHTML()}).then(res => {
+                    if (res) {
+                        formRef.onSuccess();
+                        this.setState({success: res});
+                    }
+                    this.setState({loading: false});
+                });
+            }
         });
     };
 
@@ -41,7 +45,11 @@ class EventAdd extends Component {
                 />
                 <div style={{textAlign: 'right'}}>
                     <Button style={{marginRight: 8}} onClick={this.handleCancel}>Reset</Button>
-                    <Button icon="save" type="primary" onClick={this.handleSubmit}>Save</Button>
+                    <Button
+                        icon="save" type="primary"
+                        loading={this.state.loading}
+                        onClick={this.handleSubmit}
+                    >Save</Button>
                 </div>
             </div>
         );
@@ -51,6 +59,7 @@ class EventAdd extends Component {
 const mapStateToProps = ({eventTypes}) => ({
     eventTypes: eventTypes.eventTypes,
 });
+
 const mapDispatchToProps = dispatch => ({
     onLoad: () => dispatch(fetchEventTypes()),
     onEventAdd: data => dispatch(addEvent(data)),

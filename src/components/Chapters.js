@@ -57,7 +57,7 @@ const data = [
 ];
 
 function Chapters() {
-    const {card, meta, list} = useStyles();
+    const {card, meta} = useStyles();
     return (
         <>
             <Card

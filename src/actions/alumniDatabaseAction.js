@@ -10,9 +10,10 @@ export const alumniDataAdd = formData => async dispatch => {
         });
         return true;
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "new_alumni_data",
         })
     }
 };
@@ -51,10 +52,12 @@ export const alumniDataUpdate = (id, formData) => async (dispatch, getState) => 
     } catch ({response}) {
         response && await dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "alumni_data_update",
         });
     }
 };
+
 export const alumniDataDelete = () => async (dispatch, getState) => {
     const {alumniDatabase: {alumni: {id}}} = getState();
     try {
@@ -69,7 +72,7 @@ export const alumniDataDelete = () => async (dispatch, getState) => {
         });
         return true;
     } catch ({response}) {
-        await dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
             payload: response.data
         });

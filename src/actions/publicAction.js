@@ -17,25 +17,12 @@ export const getCarousel = () => async dispatch => {
 export const contactUs = formData => async dispatch => {
     try {
         const {data} = await axios.post('/api/contact', formData);
-
         return data.id ? data : data.data
     } catch ({response}) {
         response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
-        })
-    }
-};
-
-export const meetRegister = formData => async dispatch => {
-    try {
-        const {data} = await axios.post('/api/meet/register', formData);
-
-        return data.id ? data : data.data
-    } catch ({response}) {
-        response && dispatch({
-            type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "contact_form"
         })
     }
 };

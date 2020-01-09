@@ -23,9 +23,10 @@ export const registration = formData => async dispatch => {
         const {data} = await axios.post('/api/alumni/register', form);
         return data.id ? data : data.data;
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "alumni_registration",
         })
     }
 };
@@ -42,9 +43,10 @@ export const confirmRegistration = formData => async (dispatch, getState) => {
             payload: id
         });
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "alumni_registration_confirm",
         })
     }
 };
@@ -54,9 +56,10 @@ export const setUsernamePassword = formData => async dispatch => {
         const {data} = await axios.post(`/api/set-username/`, formData);
         return data.id ? data : data.data;
     } catch ({response}) {
-        dispatch({
+        response && dispatch({
             type: type.ERROR_VALIDATION,
-            payload: response.data
+            payload: response.data,
+            name: "alumni_username_set"
         })
     }
 };

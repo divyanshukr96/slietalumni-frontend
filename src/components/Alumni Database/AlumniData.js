@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import * as _ from "lodash";
 import {connect} from "react-redux";
-import {Button, Form, Input, Popconfirm, Select, Table} from "antd";
-import FormError from "components/Errors";
+import {Button, Input, Table} from "antd";
 import NewAlumniData from "components/Alumni Database/NewAlumniData";
 import AlumniDataView from "components/Alumni Database/AlumniDataView";
 import {Programme, Branch} from 'Constants/ProgrammeAndBranch';
@@ -14,69 +13,21 @@ import {
     alumniDataUpdate
 } from "actions/alumniDatabaseAction";
 
-const EditableContext = React.createContext();
 
-class EditableCell extends Component {
-    getInput = () => {
-        const {dataIndex, inputType, inputProps, title} = this.props;
-        if (inputType === 'select') {
-            return <Select placeholder={`Select ${title}`} style={{width: '100%'}} showSearch>
-                <Select.Option key={dataIndex} value={null}>None</Select.Option>
-                {inputProps.list.map(row =>
-                    <Select.Option key={row.value} value={row.value}>{row.text}</Select.Option>)}
-            </Select>;
-        }
-        return <Input/>;
-    };
-    renderCell = ({getFieldDecorator}) => {
-        const {
-            editing,
-            dataIndex,
-            title,
-            inputType,
-            inputProps,
-            record,
-            index,
-            children,
-            ...restProps
-        } = this.props;
-        return (
-            <td {...restProps}>
-                {editing ? (
-                    <Form.Item style={{margin: 0}}>
-                        {getFieldDecorator(dataIndex, {
-                            initialValue: record[dataIndex],
-                        })(this.getInput())}
-                    </Form.Item>
-                ) : (
-                    children
-                )}
-            </td>
-        );
-    };
-
-    render() {
-        return <EditableContext.Consumer>{this.renderCell}</EditableContext.Consumer>;
-    }
-}
-
-class AlumniDataTable extends Component {
+class AlumniData extends Component {
     constructor(props) {
         super(props);
         this.props.getDataList();
         this.columns = [
-            {title: 'Name', dataIndex: 'name', sorter: (a, b) => this.shorting(a, b, 'name'), editable: true},
-            {title: 'Email', dataIndex: 'email', sorter: (a, b) => this.shorting(a, b, 'email'), editable: true},
-            {title: 'Mobile', dataIndex: 'mobile', editable: true},
+            {title: 'Name', dataIndex: 'name', sorter: (a, b) => this.shorting(a, b, 'name')},
+            {title: 'Email', dataIndex: 'email', sorter: (a, b) => this.shorting(a, b, 'email')},
+            {title: 'Mobile', dataIndex: 'mobile'},
             {
                 title: 'Programme',
                 dataIndex: 'programme',
                 filters: [...Programme, {text: 'None', value: 'NONE'}],
                 onFilter: (a, b) => this.filter(a, b, 'programme'),
                 sorter: (a, b) => this.shorting(a, b, 'programme'),
-                editable: true,
-                inputType: "select",
-                inputProps: {list: Programme}
             },
             {
                 title: 'Branch',
@@ -84,67 +35,27 @@ class AlumniDataTable extends Component {
                 filters: [...Branch, {text: 'None', value: 'NONE'}],
                 onFilter: (a, b) => this.filter(a, b, 'branch'),
                 sorter: (a, b) => this.shorting(a, b, 'branch'),
-                editable: true,
-                inputType: "select",
-                inputProps: {list: Branch}
             },
             {
                 title: 'Batch',
                 dataIndex: 'batch',
                 sorter: (a, b) => a.batch - b.batch,
-                editable: true,
-                inputType: "select",
-                inputProps: {list: _.range(new Date().getFullYear() - 3, 1980).map(d => ({value: d, text: d}))}
             },
             {
                 title: 'Passing Year',
                 dataIndex: 'passing',
                 sorter: (a, b) => a.passing - b.passing,
-                editable: true,
-                inputType: "select",
-                inputProps: {list: _.range(new Date().getFullYear(), 1980).map(d => ({value: d, text: d}))}
             },
             {
                 title: 'Action',
                 dataIndex: 'id',
                 render: (id, record) => {
-                    const editable = this.isEditing(record);
-                    return editable ? (
-                        <span>
-                            <EditableContext.Consumer>
-                                {form => (
-                                    <Button
-                                        type="link"
-                                        onClick={() => this.saveChanges(form, record.id)}
-                                        style={{paddingLeft: 0}}
-                                    >
-                                        Save
-                                    </Button>
-                                )}
-                            </EditableContext.Consumer>
-                            <Popconfirm title="Sure to cancel?" onConfirm={() => props.onEditCancel()}>
-                                <Button type="link" icon="close-circle"/>
-                            </Popconfirm>
-                        </span>
-                    ) : (
-                        <span>
-                            {/*<a href={"javascript:;"} style={{marginRight: 8, padding: '4px 0'}}*/}
-                            {/*   onClick={() => this.props.onView(record.id)}*/}
-                            {/*>View</a>*/}
-                            <Button
-                                type="link"
-                                onClick={() => this.props.onView(record.id)}
-                                style={{marginRight: 8, padding: '4px 0'}}
-                            >View</Button>
-                            <Button
-                                type="link" disabled={props.editingKey !== ''}
-                                onClick={() => {
-                                    props.form.resetFields();
-                                    props.onEdit(record.id)
-                                }}
-                                icon="edit"
-                            />
-                        </span>
+                    return (
+                        <Button
+                            type="link"
+                            onClick={() => this.props.onView(record.id)}
+                            style={{marginRight: 8, padding: '4px 0'}}
+                        >View</Button>
                     );
                 },
             },
@@ -161,31 +72,8 @@ class AlumniDataTable extends Component {
         return record[column].indexOf(value) === 0
     };
 
-    isEditing = record => record.id === this.props.editingKey;
-
-    saveChanges = (form, key) => {
-        form.validateFields((error, values) => {
-            if (!error) this.props.onUpdate(key, values);
-        });
-    };
-
     render() {
-        const {alumni, data, form, onAlumniAdd, onDelete, onView, onUpdate, startSearch} = this.props;
-        const components = {body: {cell: EditableCell}};
-        const columns = this.columns.map(col => {
-            if (!col.editable) return col;
-            return {
-                ...col,
-                onCell: record => ({
-                    record: _.pickBy(record),
-                    inputType: col.inputType ? col.inputType : 'text',
-                    inputProps: col.inputProps,
-                    dataIndex: col.dataIndex,
-                    title: col.title,
-                    editing: this.isEditing(record),
-                }),
-            };
-        });
+        const {alumni, data, onAlumniAdd, onDelete, onView, onUpdate, startSearch} = this.props;
         return (
             <>
                 <Input.Search
@@ -198,23 +86,17 @@ class AlumniDataTable extends Component {
                 />
                 <NewAlumniData onAlumniAdd={onAlumniAdd}/>
                 <AlumniDataView data={_.pickBy(alumni)} onClose={onView} onUpdate={onUpdate} onDelete={onDelete}/>
-                <EditableContext.Provider value={form}>
-                    <FormError form={form}/>
-                    <Table
-                        style={{overflow: 'overlay'}}
-                        size={"middle"}
-                        components={components}
-                        rowKey="id"
-                        columns={columns}
-                        dataSource={data}
-                    />
-                </EditableContext.Provider>
+                <Table
+                    style={{overflow: 'overlay'}}
+                    size={"middle"}
+                    rowKey="id"
+                    columns={this.columns}
+                    dataSource={data}
+                />
             </>
         );
     }
 }
-
-const AlumniData = Form.create()(AlumniDataTable);
 
 const mapStateToProps = ({alumniDatabase}) => ({
     data: alumniDatabase.data,

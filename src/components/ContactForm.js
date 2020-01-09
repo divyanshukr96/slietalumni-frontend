@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
+import {connect} from "react-redux";
 import {withStyles} from "@material-ui/core";
 import {Button, Divider, Form, Input, Modal} from "antd";
-import {connect} from "react-redux";
 import {contactUs} from "../actions/publicAction";
 import FormError from "./Errors";
 
@@ -22,20 +22,22 @@ const ContactForm = Form.create({name: 'contact_form'})(
 
         const handleSubmit = async (e) => {
             e.preventDefault();
-            setLoading(true);
             form.validateFields((err, values) => {
-                if (!err) onContact(values).then(res => {
-                    if (res) {
-                        form.resetFields();
-                        Modal.success({
-                            // title: 'Your message is successfully submitted . . .',
-                            content: 'Your enquiry is submitted successfully. We will contact you back shortly.',
-                            centered: true,
-                            okText: 'Close'
-                        })
-                    }
-                });
-                setLoading(false)
+                if (!err) {
+                    setLoading(true);
+                    onContact(values).then(res => {
+                        if (res) {
+                            form.resetFields();
+                            Modal.success({
+                                // title: 'Your message is successfully submitted . . .',
+                                content: 'Your enquiry is submitted successfully. We will contact you back shortly.',
+                                centered: true,
+                                okText: 'Close'
+                            })
+                        }
+                        setLoading(false)
+                    });
+                }
             });
         };
 
@@ -44,7 +46,7 @@ const ContactForm = Form.create({name: 'contact_form'})(
             <>
                 <Form onSubmit={handleSubmit} className={classes.form} noValidate>
                     <Divider/>
-                    <FormError form={form}/>
+                    <FormError form={form} formName="contact_form"/>
                     <Form.Item
                         // validateStatus="error"
                         // help="Should be combination of numbers & alphabets"
@@ -77,12 +79,16 @@ const ContactForm = Form.create({name: 'contact_form'})(
                             rules: [{required: true, message: 'Please enter your message / enquiry!'}],
                         })(
                             <TextArea placeholder="Write your message here!"
-                                      autosize={{minRows: 3, maxRows: 6}}/>
+                                      autoSize={{minRows: 3, maxRows: 6}}/>
                         )}
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" loading={loading}
-                                style={{width: '100%'}}>
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            loading={loading}
+                            style={{width: '100%'}}
+                        >
                             Submit
                         </Button>
                     </Form.Item>

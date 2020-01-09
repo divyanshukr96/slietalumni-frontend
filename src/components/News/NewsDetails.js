@@ -42,7 +42,7 @@ const NewsDetails = (props) => {
     useEffect(() => {
         setLoading(true);
         fetchUrl().then(r => setLoading(false));
-    }, []);
+    }, [props]);
 
     return (
         <div className={classes.main}>
@@ -59,13 +59,16 @@ const NewsDetails = (props) => {
                     <div style={{textAlign: 'center', marginBottom: `8px`}}>
                         <img
                             key={"image"}
-                            width={120}
+                            width={300}
                             alt="logo"
                             src={news.cover_thumb}
+                            style={{maxWidth: '100%'}}
                         />
                     </div>
 
-                    <Paragraph style={{textAlign: 'justify'}}><div dangerouslySetInnerHTML={{__html: news.content}}/></Paragraph>
+                    <Paragraph style={{textAlign: 'justify'}}>
+                        <div dangerouslySetInnerHTML={{__html: news.content}}/>
+                    </Paragraph>
 
 
                     <div style={{textAlign: 'center', marginTop: 16}}>

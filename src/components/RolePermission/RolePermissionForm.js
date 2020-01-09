@@ -3,6 +3,9 @@ import {Form, Input, Modal, Select} from "antd";
 import FormError from "components/Errors";
 
 class RolePermissionForm extends Component {
+
+    state = {loading: false};
+
     render() {
         const {visible, onCancel, onCreate, form, permissions} = this.props;
         const {getFieldDecorator} = form;
@@ -24,9 +27,12 @@ class RolePermissionForm extends Component {
                 okText="Save"
                 onCancel={onCancel}
                 onOk={onCreate}
+                confirmLoading={this.state.loading}
+                destroyOnClose
+                maskClosable={false}
             >
                 <Form {...formItemLayout}>
-                    <FormError form={form}/>
+                    <FormError form={form} formName="add_new_role"/>
                     <Form.Item label="Name" style={{marginBottom: 8}}>
                         {getFieldDecorator('name', {
                             rules: [{required: true, message: 'Name field is required!'}],
@@ -40,7 +46,8 @@ class RolePermissionForm extends Component {
                     </Form.Item>
 
                     <Form.Item label="Description" style={{marginBottom: 8}}>
-                        {getFieldDecorator('description')(<Input.TextArea placeholder="Enter description here" autosize/>)}
+                        {getFieldDecorator('description')(<Input.TextArea placeholder="Enter description here"
+                                                                          autosize/>)}
                     </Form.Item>
 
                     <Form.Item label="Permission" style={{marginBottom: 8}}>
@@ -56,4 +63,4 @@ class RolePermissionForm extends Component {
     }
 }
 
-export default Form.create({name: 'new_role_permission'})(RolePermissionForm);
+export default Form.create({name: 'add_new_role'})(RolePermissionForm);

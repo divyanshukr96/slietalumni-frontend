@@ -7,17 +7,17 @@ import FormError from "components/Errors";
 import FileUploadButton from "components/Registration/FileUploadButton";
 import moment from "moment";
 
-const autoSave = (props, changedValues, allValues) => {
-    if (props.form.isFieldTouched('content')) {
-        allValues = {...allValues, content: allValues.content.toHTML()}
-    }
-    sessionStorage.setItem('newEvent', JSON.stringify(allValues))
-}
+// const autoSave = (props, changedValues, allValues) => {
+//     if (props.form.isFieldTouched('content')) {
+//         allValues = {...allValues, content: allValues.content.toHTML()}
+//     }
+//     sessionStorage.setItem('newEvent', JSON.stringify(allValues))
+// };
 
 class EventForm extends Component {
 
     componentDidMount() {
-        this.setFields();
+        this.setFields().then(r => r);
     }
 
     setFields = async () => {
@@ -33,7 +33,7 @@ class EventForm extends Component {
     handleCancel = () => {
         sessionStorage.removeItem('newEvent');
         this.props.form.resetFields()
-    }
+    };
 
     onSuccess = () => sessionStorage.removeItem('newEvent');
 
@@ -41,7 +41,7 @@ class EventForm extends Component {
         const {form: {getFieldDecorator}, edit, data, eventTypes} = this.props;
         return (
             <Form>
-                <FormError form={this.props.form}/>
+                <FormError form={this.props.form} formName="add_new_event"/>
                 <Form.Item label="Event Title" style={{marginBottom: 0}}>
                     {getFieldDecorator('title', {
                         initialValue: data.title,
@@ -53,7 +53,7 @@ class EventForm extends Component {
                     {getFieldDecorator('description', {
                         initialValue: data.description,
                         rules: [{required: true, message: 'Event description field is required!'}],
-                    })(<Input.TextArea placeholder="Enter event description" autosize/>)}
+                    })(<Input.TextArea placeholder="Enter event description" autoSize/>)}
                 </Form.Item>
 
                 <Row gutter={8}>
@@ -162,6 +162,6 @@ EventForm.defaultProps = {
 };
 
 export default Form.create({
-    name: 'new_event',
+    name: 'add_new_event',
     // onValuesChange: autoSave
 })(EventForm);
