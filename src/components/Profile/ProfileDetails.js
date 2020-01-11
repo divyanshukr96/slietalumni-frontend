@@ -29,13 +29,17 @@ const styles = theme => ({
         position: 'absolute',
         bottom: 0,
         left: 8,
-        [theme.breakpoints.down('480')]:{
+        [theme.breakpoints.down(500)]: {
             flexDirection: 'column',
             alignItems: 'center',
             position: 'unset',
-            marginTop:  -80,
+            marginTop: -60,
+            "& $username": {
+                textAlign: "center"
+            }
         },
     },
+    username: {}
 });
 
 function ProfileDetails(props) {
@@ -64,7 +68,7 @@ function ProfileDetails(props) {
                     <ProfilePhoto profile={profile.image}/>
                     <div style={{padding: '0 12px'}}>
                         <Title level={3} ellipsis style={{margin: 0}}>{profile.name}</Title>
-                        <Paragraph>@{profile.username}</Paragraph>
+                        <Paragraph className={classes.username}>@{profile.username}</Paragraph>
                     </div>
                 </div>
             </Card>

@@ -43,10 +43,9 @@ class EventView extends Component {
         });
     };
 
-    onDelete = e => {
-        e.preventDefault();
+    onDelete = () => {
         this.props.onDelete().then(res => {
-            if (res) this.props.history.push('/sac/events')
+            if (res) this.props.history.replace('/sac/events')
         })
     };
 

@@ -42,7 +42,7 @@ class NewsView extends Component {
     };
 
     onDelete = () => this.props.onDelete().then(res => {
-        if (res) this.props.history.push('/sac/news')
+        if (res) this.props.history.replace('/sac/news')
     });
 
     render() {

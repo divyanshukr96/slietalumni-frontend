@@ -6,6 +6,7 @@ import tempcover from "assets/3chad3rzxalsf65nuo7hxciac.svg"
 const styles = theme => ({
     coverPhoto: {
         maxHeight: 280,
+        minHeight: 80,
         objectFit: 'cover',
     },
     button: {
@@ -47,7 +48,8 @@ class CoverPhoto extends Component {
                 <img
                     className={classes.coverPhoto}
                     alt="example"
-                    src={file ? URL.createObjectURL(file) : image}/>
+                    src={file ? URL.createObjectURL(file) : image}
+                />
                 <div className={classes.button}
                      style={file && {
                          backgroundColor: 'rgba(255, 255, 255, 1)',

@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Button, Divider, Table, Typography} from "antd";
-import {addFeaturedAlumni, getFeaturedAlumni, searchAlumni} from "actions/featuredAlumniAction";
+import {
+    addFeaturedAlumni,
+    deleteFeaturedAlumni,
+    getFeaturedAlumni,
+    searchAlumni,
+    updateFeaturedAlumni
+} from "actions/featuredAlumniAction";
 import NewFeaturedAlumni from "components/FeaturedAlumni/NewFeaturedAlumni";
-// import moment from "moment";
+import FeaturedAlumniDetails from "./FeaturedAlumniDetails";
 
 const {Text, Title} = Typography;
 
@@ -29,12 +35,19 @@ class FeaturedAlumni extends Component {
     ];
 
     render() {
-        const {loading, featured, ...rest} = this.props;
+        const {loading, featured, onAlumniAdd, onSearch, alumni, data, onSelect, featuredAlumni} = this.props;
         return (
             <div>
                 <Title level={4}>Featured Alumni</Title>
                 <Divider style={{margin: `8px 0`}}/>
-                <NewFeaturedAlumni onAlumniAdd={() => true} {...rest}/>
+                {/*<NewFeaturedAlumni onAlumniAdd={() => true} {...rest}/>*/}
+                <NewFeaturedAlumni
+                    alumni={alumni}
+                    onSearch={onSearch}
+                    onSelect={onSelect}
+                    onAlumniAdd={onAlumniAdd}
+                    data={data}
+                />
                 <Table
                     style={{overflow: 'overlay'}}
                     loading={loading}
@@ -43,27 +56,31 @@ class FeaturedAlumni extends Component {
                     dataSource={featured}
                     size={"small"}
                 />
+                <FeaturedAlumniDetails
+                    data={featuredAlumni || {}}
+                    onClose={() => this.props.onView(null)}
+                    onUpdate={this.props.onUpdate}
+                    onDelete={this.props.onDelete}
+                />
             </div>
         );
     }
 }
 
 const mapStateToProps = ({featuredAlumni}) => ({
+    featuredAlumni: featuredAlumni.featuredAlumni,
     featured: featuredAlumni.featured,
     alumni: featuredAlumni.alumni,
     data: featuredAlumni.data,
 });
 const mapDispatchToProps = dispatch => ({
-    // onEventUpdate: (id, data) => dispatch(updateEvent(id, data)),
-    // onLoading: () => dispatch({type: 'EVENT_LOADING'}),
-    // onView: id => dispatch({type: 'EVENT_EDIT', payload: id}),
-    // onDelete: () => dispatch(deleteEvent()),
-
+    onSearch: value => dispatch(searchAlumni(value)),
     fetchFeatured: () => dispatch(getFeaturedAlumni()),
     onAlumniAdd: data => dispatch(addFeaturedAlumni(data)),
-    onSearch: value => dispatch(searchAlumni(value)),
+    onDelete: data => dispatch(deleteFeaturedAlumni(data)),
+    onUpdate: (id, data) => dispatch(updateFeaturedAlumni(id, data)),
+    onView: id => dispatch({type: 'FEATURED_ALUMNI_VIEW', payload: id}),
     onSelect: value => dispatch({type: "FEATURED_ALUMNI_SELECT", payload: value}),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeaturedAlumni);

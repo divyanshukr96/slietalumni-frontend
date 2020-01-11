@@ -105,19 +105,7 @@ class AdminNavBar extends Component {
                         >
                             <Menu.Item key="sac/news">
                                 <Link to={'/sac/news'}>
-                                    <span className="nav-text">All News</span>
-                                </Link>
-                            </Menu.Item>
-
-                            <Menu.Item key="sac/news/published">
-                                <Link to={'/sac/news/published'}>
-                                    <span className="nav-text">Published News</span>
-                                </Link>
-                            </Menu.Item>
-
-                            <Menu.Item key="sac/news/unpublished">
-                                <Link to={'/sac/news/unpublished'}>
-                                    <span className="nav-text">Un-Published News</span>
+                                    <span className="nav-text">News</span>
                                 </Link>
                             </Menu.Item>
 
@@ -167,19 +155,7 @@ class AdminNavBar extends Component {
                         >
                             <Menu.Item key="sac/events">
                                 <Link to={'/sac/events'}>
-                                    <span className="nav-text">All Event</span>
-                                </Link>
-                            </Menu.Item>
-
-                            <Menu.Item key="sac/events/published">
-                                <Link to={'/sac/events/published'}>
-                                    <span className="nav-text">Published Event</span>
-                                </Link>
-                            </Menu.Item>
-
-                            <Menu.Item key="sac/events/unpublished">
-                                <Link to={'/sac/events/unpublished'}>
-                                    <span className="nav-text">Un-Published Event</span>
+                                    <span className="nav-text">Event</span>
                                 </Link>
                             </Menu.Item>
 

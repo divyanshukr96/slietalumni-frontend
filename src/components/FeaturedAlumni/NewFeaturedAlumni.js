@@ -7,7 +7,7 @@ import FormError from "components/Errors";
 import FileUploadButton from "components/Registration/FileUploadButton";
 
 class NewAlumniDataForm extends Component {
-    state = {newAlumni: false, data: [],};
+    state = {newAlumni: false, data: [], loading: false};
 
     confirmAccept = (rule, value, callback) => {
         if (!value) callback('Accept the terms & conditions.'); else callback();
@@ -89,9 +89,8 @@ class NewAlumniDataForm extends Component {
 
     render() {
         const {visible, onCancel, onCreate, form, onSearch, onSelect, alumni, data} = this.props;
-        console.log(alumni);
-        const {getFieldDecorator, getFieldValue} = form;
-        const {fetching, value} = this.state;
+        const {getFieldDecorator} = form;
+        const {fetching, loading} = this.state;
         const formItemLayout = {
             labelCol: {
                 xs: {span: 24},
@@ -111,6 +110,8 @@ class NewAlumniDataForm extends Component {
                 onOk={onCreate}
                 // okButtonProps={{disabled: !getFieldValue('accept')}}
                 bodyStyle={{paddingTop: 16}}
+                confirmLoading={loading}
+                maskClosable={false}
             >
                 <Form {...formItemLayout}>
                     <FormError form={this.props.form} formName="new_featured_alumni"/>
@@ -124,8 +125,9 @@ class NewAlumniDataForm extends Component {
                     <Divider style={{margin: `8px -8px`}}/>
 
                     {this.state.newAlumni ? this.renderForm() : <>
-                        <Form.Item style={{marginBottom: 8}}
-                                   wrapperCol={{sm: {span: 16, offset: 4}}}
+                        <Form.Item
+                            style={{marginBottom: 8}}
+                            wrapperCol={{sm: {span: 16, offset: 4}}}
                         >
                             {getFieldDecorator('alumni', {
                                 rules: [{required: true, message: 'Select registered alumni!'}],
@@ -171,6 +173,12 @@ class NewAlumniDataForm extends Component {
                                 uploadProps={{
                                     accept: 'image/*',
                                     listType: 'picture',
+                                    defaultFileList: data.image && [{
+                                        uid: _.random(),
+                                        url: data.image,
+                                        thumbUrl: data.image_thumb,
+                                        name: _.split(data.image, '/').pop(),
+                                    }]
                                 }}
                                 style={{marginBottom: 8}}
                             >
@@ -204,9 +212,13 @@ class NewFeaturedAlumni extends Component {
 
     handleCreate = () => {
         this.formRef.props.form.validateFields((err, values) => {
-            if (!err) this.props.onAlumniAdd(_.pickBy(values)).then(res => {
-                if (res) this.handleCancel()
-            });
+            if (!err) {
+                this.formRef.setState({loading: true});
+                this.props.onAlumniAdd(_.pickBy(values)).then(res => {
+                    if (res) this.handleCancel();
+                    this.formRef.setState({loading: false});
+                });
+            }
         });
     };
 
@@ -233,8 +245,8 @@ class NewFeaturedAlumni extends Component {
 
 NewFeaturedAlumni.propTypes = {
     onAlumniAdd: PropTypes.any.isRequired,
-
     onSearch: PropTypes.func.isRequired,
+    alumni: PropTypes.array.isRequired
 };
 
 export default NewFeaturedAlumni

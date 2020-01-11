@@ -16,7 +16,7 @@ export default {
             switch (error.response.status) {
                 case 401:
                     store.dispatch(unauthorized());
-                    history.push('/login');
+                    history.replace('/login');
                     break;
                 case 403:
                     console.log('AccessControl denied');

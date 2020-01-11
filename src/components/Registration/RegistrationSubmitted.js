@@ -4,11 +4,21 @@ import * as PropTypes from 'prop-types';
 import {withRouter} from "react-router-dom";
 import {Avatar, Button, Modal, Result, Typography} from "antd";
 import logo from 'assets/SAA-logo-color.png'
+import {makeStyles} from "@material-ui/core";
 
 const {Paragraph, Title} = Typography;
 
+const useStyles = makeStyles(theme => ({
+    result: {
+        [theme.breakpoints.down(500)]: {
+            padding: 0
+        },
+    },
+}));
+
 const RegistrationSubmitted = props => {
     const {visible, data} = props;
+    const classes = useStyles();
     if (_.isEmpty(data)) return <div/>;
     return (
         <Modal visible={visible} footer={null} closable={false}>
@@ -16,6 +26,7 @@ const RegistrationSubmitted = props => {
                 icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
                 status="success"
                 title="Membership Registration Success"
+                className={classes.result}
                 subTitle={
                     <>
                         <Title level={4}>Hi {data.name}</Title>

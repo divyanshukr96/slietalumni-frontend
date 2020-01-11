@@ -4,7 +4,7 @@ import {Drawer, Layout, Menu, Icon, Button, Tooltip} from 'antd';
 import {Link, withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
 import Logo from 'assets/saa-logo.png'
-import AccessControl from "../AccessControl/AccessControl";
+import AccessControl, {checkPermissions} from "../AccessControl/AccessControl";
 import {logout} from "../actions/authAction";
 
 const {Header, Content, Footer, Sider} = Layout;
@@ -62,16 +62,9 @@ class PublicNavBar extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        let dashboard = prevState.dashboard;
         let {pathname} = nextProps.location;
         pathname = pathname === '/' ? '/' : pathname.split('/').filter(x => x).join('/');
-
-        const data = <AccessControl
-            key={"dashboard-access-control"}
-            allowedPermissions={['sac']}>
-            {dashboard = true}
-        </AccessControl>;
-        return {selected: pathname, dashboard: dashboard}
+        return {selected: pathname, dashboard: checkPermissions(nextProps.userPermissions, ['sac'])}
     }
 
 
@@ -80,34 +73,48 @@ class PublicNavBar extends Component {
     loginLogout = (sidebar) => {
         const {auth, classes, onLogout} = this.props;
         const {dashboard} = this.state;
-        return auth ? [
-            <Menu.Item key="profile">
-                <Link to={'/profile'}>{sidebar && <Icon type="profile"/>} Profile</Link>
-            </Menu.Item>,
+        const menuItems = [];
+        if (auth) {
+            menuItems.push(
+                <Menu.Item key="profile">
+                    <Link to={'/profile'}>{sidebar && <Icon type="profile"/>} Profile</Link>
+                </Menu.Item>
+            );
 
-            <Menu.Item key="sac-home" style={{display: !dashboard && "none"}}>
-                <AccessControl
-                    key={"dashboard-access-control"}
-                    allowedPermissions={['sac']}
-                >
-                    <Link to={'/sac'}>{sidebar && <Icon type="dashboard"/>} Dashboard</Link>
-                </AccessControl>
-            </Menu.Item>,
-            <Menu.Item key="logout">
-                <Tooltip placement="right" title='Logout'>
-                    <Button
-                        type="primary"
-                        icon="logout"
-                        className={classes.logout}
-                        onClick={onLogout}
+            dashboard && menuItems.push(
+                <Menu.Item key="sac-home" style={{display: !dashboard && "none"}}>
+                    <AccessControl
+                        key={"dashboard-access-control"}
+                        allowedPermissions={['sac']}
                     >
-                        {sidebar && 'Logout'}
-                    </Button>
-                </Tooltip>
-            </Menu.Item>
-        ] : <Menu.Item key="login">
-            <Link to={'/login'}>{sidebar && <Icon type="login"/>} Login</Link>
-        </Menu.Item>;
+                        <Link to={'/sac'}>{sidebar && <Icon type="dashboard"/>} Dashboard</Link>
+                    </AccessControl>
+                </Menu.Item>
+            );
+
+            menuItems.push(
+                <Menu.Item key="logout">
+                    <Tooltip placement="right" title='Logout'>
+                        <Button
+                            type="primary"
+                            icon="logout"
+                            className={classes.logout}
+                            onClick={onLogout}
+                        >
+                            {sidebar && 'Logout'}
+                        </Button>
+                    </Tooltip>
+                </Menu.Item>
+            );
+        } else {
+            menuItems.push(
+                <Menu.Item key="login">
+                    <Link to={'/login'}>{sidebar && <Icon type="login"/>} Login</Link>
+                </Menu.Item>
+            );
+        }
+
+        return menuItems;
     };
 
     render() {
@@ -308,8 +315,13 @@ class PublicNavBar extends Component {
     }
 }
 
+PublicNavBar.defaultProps = {
+    userPermissions: []
+};
+
 const mapStateToProps = ({auth}) => ({
-    auth: auth.isAuthenticated
+    auth: auth.isAuthenticated,
+    userPermissions: auth.isAuthenticated && auth.user && auth.user.permissions
 });
 
 const mapDispatchToProps = dispatch => ({

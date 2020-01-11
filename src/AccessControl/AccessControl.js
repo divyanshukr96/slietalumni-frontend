@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-const checkPermissions = (userPermissions, allowedPermissions) => {
+export const checkPermissions = (userPermissions, allowedPermissions) => {
     if (allowedPermissions.length === 0) {
         return true;
     }

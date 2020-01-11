@@ -26,10 +26,10 @@ function ConfirmationMessage({data, visible, history}) {
                     </>
                 }
                 extra={[
-                    <Button type="primary" key="console" onClick={() => history.push("/login")}>
+                    <Button type="primary" key="console" onClick={() => history.replace("/login")}>
                         Login
                     </Button>,
-                    <Button key="buy" onClick={() => history.push("/")}>Home</Button>
+                    <Button key="buy" onClick={() => history.replace("/")}>Home</Button>
                 ]}
             />,
         </Modal>

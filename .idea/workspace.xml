@@ -33,22 +33,35 @@
   <component name="ChangeListManager">
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/authAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/authAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginRequired.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/LoginRequired.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Registration/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/publicRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/publicRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stores/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/featuredAlumniAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/featuredAlumniAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AdminNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminNavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Events/EventView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Events/EventView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Events/Events.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Events/Events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FeaturedAlumni/FeaturedAlumni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FeaturedAlumni/FeaturedAlumni.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FeaturedAlumni/NewFeaturedAlumni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FeaturedAlumni/NewFeaturedAlumni.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/News/News.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/News/News.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/News/NewsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/News/NewsView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/CoverPhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/CoverPhoto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PublicNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicNavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Registration/ConfirmationMessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/ConfirmationMessage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Registration/RegistrationSubmitted.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/RegistrationSubmitted.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/featuredAlumniReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/featuredAlumniReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/networkService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/networkService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Need to Modified">
+      <favorite_root url="file://$PROJECT_DIR$/src/components/FeaturedAlumni/FeaturedAlumni.js" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -72,7 +85,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/FeaturedAlumni" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -84,16 +97,17 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="E:\Alumni_Association\alumni-frontend\node_modules\prettier" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Auth" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\FeaturedAlumni" />
       <recent name="E:\Alumni_Association\alumni-frontend\public" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\Tests" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Meet" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\reducers" />
+      <recent name="E:\Alumni_Association\alumni-frontend\src\actions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Auth" />
@@ -103,7 +117,17 @@
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Alumni Registration" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="start" />
@@ -111,6 +135,15 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.build" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -201,7 +234,17 @@
       <workItem from="1576079413317" duration="322000" />
       <workItem from="1576166310397" duration="7972000" />
       <workItem from="1576213932824" duration="54000" />
-      <workItem from="1576392585312" duration="7277000" />
+      <workItem from="1576392585312" duration="8844000" />
+      <workItem from="1576755286481" duration="3920000" />
+      <workItem from="1576761158518" duration="16195000" />
+      <workItem from="1577628212410" duration="10121000" />
+      <workItem from="1577804359637" duration="14390000" />
+      <workItem from="1577981069920" duration="4728000" />
+      <workItem from="1578042953903" duration="11163000" />
+      <workItem from="1578244914060" duration="1711000" />
+      <workItem from="1578324290310" duration="8603000" />
+      <workItem from="1578350987581" duration="28048000" />
+      <workItem from="1578552837851" duration="78879000" />
     </task>
     <servers />
   </component>
@@ -255,33 +298,97 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="261" key="GridCell.Tab.0.bottom" timestamp="1576392639077">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578611829350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576392639077" />
-    <state width="1899" height="261" key="GridCell.Tab.0.center" timestamp="1576392639077">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578611829350" />
+    <state x="703" y="354" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578611957803">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="261" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576392639077" />
-    <state width="1899" height="261" key="GridCell.Tab.0.left" timestamp="1576392639077">
+    <state x="703" y="354" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1578611957803" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1577700609600">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="261" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576392639077" />
-    <state width="1899" height="261" key="GridCell.Tab.0.right" timestamp="1576392639077">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1577700609600" />
+    <state width="1899" height="271" key="GridCell.Tab.0.bottom" timestamp="1578611942172">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="261" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576392639077" />
+    <state width="1899" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578611942172" />
+    <state width="1899" height="271" key="GridCell.Tab.0.center" timestamp="1578611942172">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="271" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578611942172" />
+    <state width="1899" height="271" key="GridCell.Tab.0.left" timestamp="1578611942172">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="271" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578611942172" />
+    <state width="1899" height="271" key="GridCell.Tab.0.right" timestamp="1578611942172">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="271" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578611942172" />
+    <state width="1899" height="326" key="GridCell.Tab.1.bottom" timestamp="1578605779941">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779941" />
+    <state width="1899" height="326" key="GridCell.Tab.1.center" timestamp="1578605779940">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779940" />
+    <state width="1899" height="326" key="GridCell.Tab.1.left" timestamp="1578605779940">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779940" />
+    <state width="1899" height="326" key="GridCell.Tab.1.right" timestamp="1578605779940">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779940" />
+    <state width="1899" height="326" key="GridCell.Tab.2.bottom" timestamp="1578605779942">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779942" />
+    <state width="1899" height="326" key="GridCell.Tab.2.center" timestamp="1578605779941">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779941" />
+    <state width="1899" height="326" key="GridCell.Tab.2.left" timestamp="1578605779941">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779941" />
+    <state width="1899" height="326" key="GridCell.Tab.2.right" timestamp="1578605779942">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779942" />
+    <state width="1899" height="326" key="GridCell.Tab.3.bottom" timestamp="1578605779943">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779943" />
+    <state width="1899" height="326" key="GridCell.Tab.3.center" timestamp="1578605779942">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779942" />
+    <state width="1899" height="326" key="GridCell.Tab.3.left" timestamp="1578605779942">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779942" />
+    <state width="1899" height="326" key="GridCell.Tab.3.right" timestamp="1578605779943">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="326" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578605779943" />
     <state x="770" y="157" key="RollbackChangesDialog" timestamp="1576396324029">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="770" y="157" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576396324029" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1576167999547">
+    <state x="581" y="49" width="758" height="942" key="find.popup" timestamp="1578735913632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576167999547" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576397370579">
+    <state x="581" y="49" width="758" height="942" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578735913632" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1577629962476">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576397370579" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1577629962476" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578715341850">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578715341850" />
   </component>
 </project>

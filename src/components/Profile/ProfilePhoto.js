@@ -17,7 +17,7 @@ const styles = theme => ({
             // left: '50%',
             // transform: 'translateX(-50%)'
         },
-        [theme.breakpoints.down(400)]: {
+        [theme.breakpoints.down(500)]: {
             maxWidth: 120,
             maxHeight: 120,
         },
