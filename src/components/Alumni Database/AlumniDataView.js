@@ -154,6 +154,13 @@ const AlumniDataView = Form.create({name: 'alumni_data_update'})(
                             <EditableCell edit={edit} name="designation" label="Designation"
                                           placeholder="Enter current designation" {...props}/>
 
+                            <Row>
+                                <Col sm={8} xs={10} style={{padding: 8, textAlign: 'right'}}>Uploaded By : </Col>
+                                <Col sm={16} xs={14} style={{padding: 8}}>
+                                    <Text strong>{this.props.data.created_by}</Text>
+                                </Col>
+                            </Row>
+
                         </Form>
                     </EditableContext.Provider>
                     <div style={{textAlign: 'right'}}>

@@ -321,7 +321,7 @@ PublicNavBar.defaultProps = {
 
 const mapStateToProps = ({auth}) => ({
     auth: auth.isAuthenticated,
-    userPermissions: auth.isAuthenticated && auth.user && auth.user.permissions
+    userPermissions: (auth.isAuthenticated && auth.user && auth.user.permissions) || []
 });
 
 const mapDispatchToProps = dispatch => ({

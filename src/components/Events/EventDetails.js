@@ -57,13 +57,15 @@ const EventDetails = (props) => {
                     <IconText type="global" text={event.published_at}/><br/>
                     <Divider style={{margin: `12px 0`}}/>
                     <div style={{textAlign: 'center', marginBottom: `8px`}}>
-                        <img
-                            key={"image"}
-                            width={300}
-                            alt="logo"
-                            src={event.image_thumb}
-                            style={{maxWidth: '100%'}}
-                        />
+                        <a href={event.image} target="_blank" rel="noopener noreferrer">
+                            <img
+                                key={"image"}
+                                width={300}
+                                alt="logo"
+                                src={event.image_thumb}
+                                style={{maxWidth: '100%'}}
+                            />
+                        </a>
                     </div>
 
                     <Paragraph style={{textAlign: 'justify'}}>

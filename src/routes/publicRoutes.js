@@ -18,7 +18,7 @@ import Register from "components/Registration/Register";
 import RegisterConfirmation from "components/Registration/Confirmation";
 import Profile from "components/Profile";
 import Feeds from "components/Feeds/Feeds";
-import Donate from 'components/Donate'
+import Donate from 'components/Donation'
 import EventLists from "../components/Events/EventLists";
 import EventDetails from "../components/Events/EventDetails";
 import NewsLists from "../components/News/NewsLists";

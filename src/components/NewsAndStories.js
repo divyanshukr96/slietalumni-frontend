@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import axios from "axios";
+import * as _ from "lodash";
+import {Link, withRouter} from "react-router-dom";
 import {makeStyles} from "@material-ui/core";
 import {Card, Icon, List, Typography} from "antd";
-import axios from "axios";
-import {Link, withRouter} from "react-router-dom";
 
 const {Paragraph} = Typography;
 
@@ -35,17 +36,28 @@ const useStyles = makeStyles(theme => ({
 
 
 const NewsAndStories = (props) => {
-    const [newsStories, setNewsStories] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const isCancelled = React.useRef(false);
+    const [newsStories, setNewsStories] = useState(JSON.parse(sessionStorage.getItem('news_stories')) || []);
+    const [loading, setLoading] = useState(_.isEmpty(newsStories));
     const {card, meta, list, itemCss} = useStyles();
 
-    async function fetchUrl() {
-        const {data} = await axios.get("api/public/news-stories");
-        if (data.data) setNewsStories(data.data);
+    function fetchUrl() {
+        axios.get("api/public/news-stories").then(({data}) => {
+            if (!isCancelled.current) {
+                if (data.data) {
+                    sessionStorage.setItem('news_stories', JSON.stringify(data.data));
+                    setNewsStories(data.data);
+                }
+                setLoading(false)
+            }
+        }).catch(() => setLoading(false));
     }
 
     useEffect(() => {
-        fetchUrl().then(r => setLoading(false));
+        fetchUrl();
+        return () => {
+            isCancelled.current = true;
+        };
     }, []);
 
 

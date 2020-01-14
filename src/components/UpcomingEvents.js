@@ -3,6 +3,7 @@ import {makeStyles} from "@material-ui/core";
 import {Link, withRouter} from "react-router-dom";
 import {Card, Icon, List, Typography} from "antd";
 import axios from "axios";
+import * as _ from "lodash";
 
 const {Paragraph} = Typography;
 
@@ -29,18 +30,29 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const UpcomingEvents = (props) => {
+    const isCancelled = React.useRef(false);
     const {card, meta, list} = useStyles();
-    const [events, setEvents] = useState([]);
-    const [loading, setLoading] = useState(true);
 
+    const [events, setEvents] = useState(JSON.parse(sessionStorage.getItem('upcoming_event')) || []);
+    const [loading, setLoading] = useState(_.isEmpty(events));
 
-    async function fetchUrl() {
-        const {data} = await axios.get("api/public/events");
-        if (data.data) setEvents(data.data);
+    function fetchUrl() {
+        axios.get("api/public/events").then(({data}) => {
+            if (!isCancelled.current) {
+                if (data.data) {
+                    sessionStorage.setItem('upcoming_event', JSON.stringify(data.data));
+                    setEvents(data.data);
+                }
+                setLoading(false)
+            }
+        }).catch(() => setLoading(false));
     }
 
     useEffect(() => {
-        fetchUrl().then(r => setLoading(false));
+        fetchUrl();
+        return () => {
+            isCancelled.current = true;
+        };
     }, []);
 
     return (

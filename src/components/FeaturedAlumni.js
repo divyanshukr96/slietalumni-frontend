@@ -3,6 +3,7 @@ import {withStyles} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {Card, Empty, Popover} from "antd";
 import axios from "axios";
+import * as _ from "lodash";
 
 
 const styles = theme => ({
@@ -52,17 +53,29 @@ const styles = theme => ({
 
 
 const FeaturedAlumni = ({classes}) => {
-    const [featured, setFeatured] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const isCancelled = React.useRef(false);
+    const [featured, setFeatured] = useState(JSON.parse(sessionStorage.getItem('featured_alumni')) || []);
+    const [loading, setLoading] = useState(_.isEmpty(featured));
     const {card, meta, scroll} = classes;
 
-    async function fetchUrl() {
-        const {data} = await axios.get("api/public/featured-alumni");
-        if (data.data) setFeatured(data.data);
+    function fetchUrl() {
+        axios.get("api/public/featured-alumni").then(({data}) => {
+            if (!isCancelled.current) {
+                if (data.data) {
+                    sessionStorage.setItem('featured_alumni', JSON.stringify(data.data));
+                    setFeatured(data.data);
+                }
+                setLoading(false);
+            }
+        }).catch(() => setLoading(false));
+
     }
 
     useEffect(() => {
-        fetchUrl().then(r => setLoading(false));
+        fetchUrl();
+        return () => {
+            isCancelled.current = true;
+        };
     }, []);
 
     const description = (alumni) => (alumni.designation ? alumni.designation + ", " : "") + (alumni.organisation || "");

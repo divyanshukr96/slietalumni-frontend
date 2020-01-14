@@ -39,7 +39,7 @@ AccessControl.defaultProps = {
 };
 
 const mapStateToProps = ({auth}) => ({
-    userPermissions: auth.isAuthenticated && auth.user && auth.user.permissions
+    userPermissions: (auth.isAuthenticated && auth.user && auth.user.permissions) || []
 });
 
 export default connect(mapStateToProps)(AccessControl);

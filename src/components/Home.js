@@ -10,21 +10,23 @@ import HomeCarousel from "components/HomeCarousel";
 import SLIET from 'assets/sliet-college.jpg';
 
 const Home = () => {
+    const isCancelled = React.useRef(false);
     const [carousel, setCarousel] = useState([SLIET]);
 
-    async function fetchUrl() {
-        try {
-            const {data} = await axios.get("api/public/carousel");
-            return data.data ? data.data : data;
-        } catch (e) {
-            return null;
-        }
+    function fetchUrl() {
+        axios.get("api/public/carousel").then(({data}) => {
+            const carouselData = data.data ? data.data : data;
+            if (!isCancelled.current) {
+                setCarousel(c => [...carouselData, ...c])
+            }
+        }).catch(err => err);
     }
 
-    useEffect((d) => {
-        fetchUrl().then(res => {
-            if (res) setCarousel(c => [...res, ...c])
-        });
+    useEffect(() => {
+        fetchUrl();
+        return () => {
+            isCancelled.current = true;
+        };
     }, []);
 
 

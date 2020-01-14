@@ -216,6 +216,21 @@ class AdminNavBar extends Component {
                             </Link>
                         </Menu.Item>
 
+                        <Menu.Item key="sac/donation">
+                            <Link to={'/sac/donation'}>
+                                <Icon type="gift"/>
+                                <span className="nav-text">Donation</span>
+                            </Link>
+                        </Menu.Item>
+
+
+                        <Menu.Item key="sac/enquiries">
+                            <Link to={'/sac/enquiries'}>
+                                <Icon type="question-circle"/>
+                                <span className="nav-text">Enquiries</span>
+                            </Link>
+                        </Menu.Item>
+
                         {auth && <Menu.Divider/>}
                         {auth && <Menu.Item key="logout" onClick={onLogout}>
                             <Icon type="logout"/>

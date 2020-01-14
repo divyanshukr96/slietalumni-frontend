@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
 import {makeStyles} from "@material-ui/core";
 import {Card, Col, Divider, Row, Table, Tooltip, Typography} from "antd";
 import Text from "antd/es/typography/Text";
@@ -6,6 +7,7 @@ import ambulance from 'assets/ambulance.svg'
 import healthCare from "assets/healthcare-icon.jpg"
 import saaInfra from "assets/SAA-logo-color.png"
 import DonationForm from "./DonationForm.js";
+import PublicDonation from "./PublicDonation";
 
 const {Title} = Typography;
 
@@ -57,6 +59,24 @@ const data = [
 
 const Index = () => {
     const classes = useStyles();
+
+    const [donations, setDonations] = useState(JSON.parse(sessionStorage.getItem('pub_donation')) || []);
+
+    const fetchDonations = () => {
+        axios.get('/api/public/donation').then(({data}) => {
+            if (data.data) {
+                sessionStorage.setItem('pub_donation', JSON.stringify(data.data));
+                setDonations(data.data)
+            }
+        });
+
+    };
+
+    useEffect(() => {
+        fetchDonations();
+    }, []);
+
+
     return (
         <>
             <div className={classes.main}>
@@ -138,6 +158,8 @@ const Index = () => {
                         </Card>
                     </Col>
                 </Row>
+
+                <PublicDonation donations={donations}/>
 
             </div>
         </>

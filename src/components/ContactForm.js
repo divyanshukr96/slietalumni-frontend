@@ -47,10 +47,7 @@ const ContactForm = Form.create({name: 'contact_form'})(
                 <Form onSubmit={handleSubmit} className={classes.form} noValidate>
                     <Divider/>
                     <FormError form={form} formName="contact_form"/>
-                    <Form.Item
-                        // validateStatus="error"
-                        // help="Should be combination of numbers & alphabets"
-                    >
+                    <Form.Item>
                         {getFieldDecorator('name', {
                             rules: [{required: true, message: 'Please enter your name!'}],
                         })(

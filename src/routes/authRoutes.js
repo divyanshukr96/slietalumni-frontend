@@ -23,6 +23,8 @@ import AccessControl from "../AccessControl/AccessControl";
 import Executive from "components/Member/Executive";
 import Sac from "components/Member/SAC";
 import AlumniMeet from "components/Meet/AlumniMeet";
+import DonationData from "../components/Donation/DonationData";
+import EnquiriesData from "../components/Enquiry/EnquiriesData";
 
 
 const AuthRoutes = (props) => {
@@ -66,6 +68,10 @@ const AuthRoutes = (props) => {
                     <Route exact path="/sac/member/executive" component={Executive}/>
 
                     <Route exact path="/sac/alumni-meet" component={AlumniMeet}/>
+
+                    <Route exact path="/sac/donation" component={DonationData}/>
+
+                    <Route exact path="/sac/enquiries" component={EnquiriesData}/>
 
                     <Route exact path="/sac/hello" component={() => 'component auth'}/>
                     <Route exact path="/sac/test" component={AlumniDataTest}/>

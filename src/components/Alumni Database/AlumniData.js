@@ -21,7 +21,7 @@ class AlumniData extends Component {
         this.columns = [
             {title: 'Name', dataIndex: 'name', sorter: (a, b) => this.shorting(a, b, 'name')},
             {title: 'Email', dataIndex: 'email', sorter: (a, b) => this.shorting(a, b, 'email')},
-            {title: 'Mobile', dataIndex: 'mobile'},
+            // {title: 'Mobile', dataIndex: 'mobile'},
             {
                 title: 'Programme',
                 dataIndex: 'programme',
@@ -42,10 +42,15 @@ class AlumniData extends Component {
                 sorter: (a, b) => a.batch - b.batch,
             },
             {
-                title: 'Passing Year',
-                dataIndex: 'passing',
-                sorter: (a, b) => a.passing - b.passing,
+                title: 'Uploaded By',
+                dataIndex: 'created_by',
+                // sorter: (a, b) => a.batch - b.batch,
             },
+            // {
+            //     title: 'Passing Year',
+            //     dataIndex: 'passing',
+            //     sorter: (a, b) => a.passing - b.passing,
+            // },
             {
                 title: 'Action',
                 dataIndex: 'id',
@@ -85,7 +90,12 @@ class AlumniData extends Component {
                     allowClear
                 />
                 <NewAlumniData onAlumniAdd={onAlumniAdd}/>
-                <AlumniDataView data={_.pickBy(alumni)} onClose={onView} onUpdate={onUpdate} onDelete={onDelete}/>
+                <AlumniDataView
+                    data={_.pickBy(alumni)}
+                    onClose={onView}
+                    onUpdate={onUpdate}
+                    onDelete={onDelete}
+                />
                 <Table
                     style={{overflow: 'overlay'}}
                     size={"middle"}
