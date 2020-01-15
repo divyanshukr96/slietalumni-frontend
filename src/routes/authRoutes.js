@@ -25,6 +25,7 @@ import Sac from "components/Member/SAC";
 import AlumniMeet from "components/Meet/AlumniMeet";
 import DonationData from "../components/Donation/DonationData";
 import EnquiriesData from "../components/Enquiry/EnquiriesData";
+import PublicNoticeData from "../components/PublicNotice/PublicNoticeData";
 
 
 const AuthRoutes = (props) => {
@@ -72,6 +73,8 @@ const AuthRoutes = (props) => {
                     <Route exact path="/sac/donation" component={DonationData}/>
 
                     <Route exact path="/sac/enquiries" component={EnquiriesData}/>
+
+                    <Route exact path="/sac/public-notice" component={PublicNoticeData}/>
 
                     <Route exact path="/sac/hello" component={() => 'component auth'}/>
                     <Route exact path="/sac/test" component={AlumniDataTest}/>

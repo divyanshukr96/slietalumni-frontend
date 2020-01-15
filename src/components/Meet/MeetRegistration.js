@@ -5,7 +5,7 @@ import SAALogo from "../../assets/SAA-logo-color.png";
 import {Divider, Typography} from "antd";
 import MeetRegistrationForm from "./MeetRegistrationForm";
 
-const {Title} = Typography;
+const {Title, Text} = Typography;
 
 const useStyles = makeStyles(theme => ({
     main: {
@@ -33,6 +33,7 @@ const MeetRegistration = () => {
                     <Title level={4} style={{margin: `8px 0`}}>
                         Alumni Meet Registration 2020
                     </Title>
+                    <Text style={{fontWeight: 500, fontSize: 16}}>February 15 - 16, 2020</Text>
                     <Divider style={{margin: `4px 0`}}/>
                 </div>
                 <MeetRegistrationForm/>

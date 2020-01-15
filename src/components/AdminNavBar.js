@@ -99,6 +99,13 @@ class AdminNavBar extends Component {
                             </Link>
                         </Menu.Item>
 
+                        <Menu.Item key="sac/public-notice">
+                            <Link to={'/sac/public-notice'}>
+                                <Icon type="read"/>
+                                <span className="nav-text">Public Notice</span>
+                            </Link>
+                        </Menu.Item>
+
                         <Menu.SubMenu
                             key="news"
                             title={<span><Icon type="calendar"/><span>News</span></span>}

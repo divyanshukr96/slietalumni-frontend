@@ -32,29 +32,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Enquiry/EnquiryView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/DIVYANSHU.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/DIVYANSHU.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AccessControl/AccessControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/donationAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/donationAction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AdminNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Database/AlumniData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Alumni Database/AlumniData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Alumni Database/AlumniDataView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Alumni Database/AlumniDataView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ContactForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContactForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ContactUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContactUs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Donate/DonationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Donation/DonationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Donate/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Donation/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Events/EventDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Events/EventDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FeaturedAlumni.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewsAndStories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewsAndStories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PublicNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UpcomingEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpcomingEvents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/donationReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/donationReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Meet/MeetRegistration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Meet/MeetRegistration.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/authRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/publicRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/publicRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,6 +231,7 @@
       <workItem from="1578324290310" duration="8603000" />
       <workItem from="1578350987581" duration="28048000" />
       <workItem from="1578552837851" duration="109501000" />
+      <workItem from="1578990538783" duration="24178000" />
     </task>
     <servers />
   </component>
@@ -313,22 +297,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1577700609600" />
-    <state width="1899" height="271" key="GridCell.Tab.0.bottom" timestamp="1578990544484">
+    <state width="1899" height="271" key="GridCell.Tab.0.bottom" timestamp="1578991177663">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578990544484" />
-    <state width="1899" height="271" key="GridCell.Tab.0.center" timestamp="1578990544484">
+    <state width="1899" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578991177663" />
+    <state width="1899" height="271" key="GridCell.Tab.0.center" timestamp="1578991177662">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578990544484" />
-    <state width="1899" height="271" key="GridCell.Tab.0.left" timestamp="1578990544484">
+    <state width="1899" height="271" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578991177662" />
+    <state width="1899" height="271" key="GridCell.Tab.0.left" timestamp="1578991177662">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578990544484" />
-    <state width="1899" height="271" key="GridCell.Tab.0.right" timestamp="1578990544484">
+    <state width="1899" height="271" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578991177662" />
+    <state width="1899" height="271" key="GridCell.Tab.0.right" timestamp="1578991177663">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578990544484" />
+    <state width="1899" height="271" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578991177663" />
     <state width="1899" height="326" key="GridCell.Tab.1.bottom" timestamp="1578605779941">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -389,9 +373,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1577629962476" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578855417825">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579080651333">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578855417825" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579080651333" />
   </component>
 </project>
