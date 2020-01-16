@@ -16,7 +16,7 @@ export const getCarousel = () => async dispatch => {
 
 export const contactUs = formData => async dispatch => {
     try {
-        const {data} = await axios.post('/api/contact', formData);
+        const {data} = await axios.post('/api/enquiry', formData);
         return data.id ? data : data.data
     } catch ({response}) {
         response && dispatch({

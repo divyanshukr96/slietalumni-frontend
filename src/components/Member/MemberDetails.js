@@ -81,7 +81,7 @@ class MemberDetails extends Component {
 
     render() {
         const {props, state: {edit}} = this;
-        const {data, form: {getFieldDecorator, isFieldsTouched, getFieldValue}} = props;
+        const {data, form: {getFieldDecorator, getFieldValue}} = props;
 
         const formItemLayout = {
             labelCol: {

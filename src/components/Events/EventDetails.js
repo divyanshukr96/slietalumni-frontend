@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import * as _ from "lodash";
 import {makeStyles} from "@material-ui/core";
 import {Button, Card, Divider, Icon, Typography} from "antd";
 import 'braft-editor/dist/output.css'
@@ -30,29 +31,29 @@ const EventDetails = (props) => {
     const classes = useStyles();
 
     const [event, setEvent] = useState({});
-    const [loading, setLoading] = useState(true);
 
-    async function fetchUrl() {
-        const {history: {action}, match: {params}, location} = props;
-        if (action === "PUSH") return setEvent(location.state);
-        const {data} = await axios.get("/api/public/events");
-        if (data.data) setEvent(data.data.filter(ev => ev.id === params.event)[0])
-    }
 
     useEffect(() => {
-        setLoading(true);
-        fetchUrl().then(r => setLoading(false));
-    }, []);
+        function fetchUrl() {
+            const {history: {action}, match: {params}, location} = props;
+            if (action === "PUSH") return setEvent(location.state);
+            axios.get("/api/public/events").then(({data}) => {
+                if (data.data) setEvent(data.data.filter(ev => ev.id === params.event)[0])
+            });
+        }
+
+        fetchUrl();
+    }, [props]);
 
     return (
         <div className={classes.main}>
             <Card
-                loading={loading}
+                loading={_.isEmpty(event)}
                 hoverable={true}
                 style={{marginBottom: 8}}
                 bodyStyle={{paddingTop: 16, paddingBottom: 16}}
             >
-                {event && <>
+                {!_.isEmpty(event) && <>
                     <Title level={3} style={{marginBottom: 2}}>{event.title}</Title>
                     <IconText type="global" text={event.published_at}/><br/>
                     <Divider style={{margin: `12px 0`}}/>

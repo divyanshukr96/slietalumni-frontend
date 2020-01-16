@@ -46,7 +46,7 @@ export const meetRegister = formData => async dispatch => {
             type: type.ALUMNI_MEET_LOADING,
             payload: true
         });
-        const {data} = await axios.post('/api/meet/register', formData);
+        const {data} = await axios.post('/api/meet/registration', formData);
         dispatch({
             type: type.ALUMNI_MEET_LOADING,
             payload: false

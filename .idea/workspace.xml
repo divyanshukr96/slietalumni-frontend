@@ -32,12 +32,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/DIVYANSHU.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/DIVYANSHU.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generate-build-version.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/meta.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/CheckAppUpdate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Meet/MeetRegistration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Meet/MeetRegistration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/authRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/alumniMeetAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/alumniMeetAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/enquiryAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/enquiryAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/newAlumniAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/newAlumniAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/publicAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/publicAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ContactUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContactUs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Events/EventDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Events/EventDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Executive.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Executive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Meet/MeetRegistrationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Meet/MeetRegistrationForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Member/MemberDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Member/MemberDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Member/NewMember.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Member/NewMember.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/News/NewsDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/News/NewsDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/networkService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/networkService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +64,8 @@
   <component name="FavoritesManager">
     <favorites_list name="Need to Modified">
       <favorite_root url="file://$PROJECT_DIR$/src/components/FeaturedAlumni/FeaturedAlumni.js" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+      <favorite_root url="file://$PROJECT_DIR$/src/components/Images/ImageCarousel.js" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+      <favorite_root url="file://$PROJECT_DIR$/src/components/Meet/MeetRegistrationForm.js" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
     </favorites_list>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -71,7 +90,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/ContactUs" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -89,18 +109,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Alumni_Association\alumni-frontend" />
+      <recent name="E:\Alumni_Association\alumni-frontend\build" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\ContactUs" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\reducers" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\actions" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\Donation" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\components\FeaturedAlumni" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Alumni_Association\alumni-frontend\public" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\ContactUs" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\components\Auth" />
       <recent name="E:\Alumni_Association\alumni-frontend\src\assets\chapter" />
-      <recent name="E:\Alumni_Association\alumni-frontend\src\assets" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -231,7 +251,9 @@
       <workItem from="1578324290310" duration="8603000" />
       <workItem from="1578350987581" duration="28048000" />
       <workItem from="1578552837851" duration="109501000" />
-      <workItem from="1578990538783" duration="24178000" />
+      <workItem from="1578990538783" duration="32967000" />
+      <workItem from="1579098832532" duration="923000" />
+      <workItem from="1579151452438" duration="21004000" />
     </task>
     <servers />
   </component>
@@ -289,30 +311,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578611829350" />
+    <state x="734" y="309" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579175743868">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="734" y="309" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579175743868" />
     <state x="703" y="354" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578611957803">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="703" y="354" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1578611957803" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1579172500191">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579172500191" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1577700609600">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1577700609600" />
-    <state width="1899" height="271" key="GridCell.Tab.0.bottom" timestamp="1578991177663">
+    <state width="1899" height="271" key="GridCell.Tab.0.bottom" timestamp="1579178493564">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578991177663" />
-    <state width="1899" height="271" key="GridCell.Tab.0.center" timestamp="1578991177662">
+    <state width="1899" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579178493564" />
+    <state width="1899" height="271" key="GridCell.Tab.0.center" timestamp="1579178493563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578991177662" />
-    <state width="1899" height="271" key="GridCell.Tab.0.left" timestamp="1578991177662">
+    <state width="1899" height="271" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579178493563" />
+    <state width="1899" height="271" key="GridCell.Tab.0.left" timestamp="1579178493563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578991177662" />
-    <state width="1899" height="271" key="GridCell.Tab.0.right" timestamp="1578991177663">
+    <state width="1899" height="271" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579178493563" />
+    <state width="1899" height="271" key="GridCell.Tab.0.right" timestamp="1579178493563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578991177663" />
+    <state width="1899" height="271" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579178493563" />
     <state width="1899" height="326" key="GridCell.Tab.1.bottom" timestamp="1578605779941">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -365,6 +395,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="770" y="157" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576396324029" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1579172500192">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579172500192" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579166819906">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579166819906" />
     <state x="581" y="49" width="758" height="942" key="find.popup" timestamp="1578735913632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -373,9 +411,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1577629962476" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579080651333">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579178742794">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579080651333" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579178742794" />
   </component>
 </project>

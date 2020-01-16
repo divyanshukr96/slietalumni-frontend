@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const fetchEnquiry = () => async dispatch => {
     try {
-        const {data} = await axios.get('/api/contact');
+        const {data} = await axios.get('/api/enquiry');
         data.data && dispatch({
             type: type.ENQUIRY_LIST,
             payload: data.data

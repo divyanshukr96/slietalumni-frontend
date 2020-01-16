@@ -6,10 +6,10 @@ import FileUploadButton from "../Registration/FileUploadButton";
 import {executiveMemberType, sacMemberType} from "./MemberTypes";
 
 
-
-
 const CollectionCreateForm = Form.create({name: 'new_sac_member'})(
     class extends Component {
+        state = {loading: false};
+
         render() {
             const {visible, onCancel, onCreate, form} = this.props;
             const {getFieldDecorator, getFieldValue} = form;
@@ -33,6 +33,7 @@ const CollectionCreateForm = Form.create({name: 'new_sac_member'})(
                     okText="Add"
                     onCancel={onCancel}
                     onOk={onCreate}
+                    confirmLoading={this.state.loading}
                 >
                     <Form {...formItemLayout}>
                         <FormError form={this.props.form} formName="new_sac_member"/>
@@ -121,9 +122,13 @@ class NewMember extends Component {
 
     handleCreate = () => {
         this.formRef.props.form.validateFields((err, values) => {
-            if (!err) this.props.onMemberAdd(values).then(res => {
-                if (res) this.handleCancel()
-            });
+            if (!err) {
+                this.formRef.setState({loading: true});
+                this.props.onMemberAdd(values).then(res => {
+                    if (res) this.handleCancel();
+                    this.formRef.setState({loading: false});
+                });
+            }
         });
     };
 

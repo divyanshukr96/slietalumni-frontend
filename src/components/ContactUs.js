@@ -10,8 +10,8 @@ const styles = theme => ({
         maxWidth: 1200,
         margin: 'auto',
     },
-    details:{
-        [theme.breakpoints.up('sm')]:{
+    details: {
+        [theme.breakpoints.up('sm')]: {
             padding: '0 16px',
         }
     }
@@ -25,7 +25,7 @@ function ContactUs({classes}) {
                     <Title level={2}>
                         Contact Us
                     </Title>
-                    <Divider/>
+                    <Divider style={{margin: '8px 0'}}/>
                 </Col>
                 <Col md={12} sm={24} className={classes.details}>
                     <Title level={3}>

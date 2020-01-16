@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import * as _ from "lodash";
 import {makeStyles} from "@material-ui/core";
 import {Avatar, Col, Divider, Row, Typography} from "antd";
 
@@ -30,32 +31,29 @@ const Executive = props => {
     const classes = useStyles();
 
     const [members, setMembers] = useState(localStorage.executive ? JSON.parse(localStorage.executive) : []);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchData().then(res => setLoading(false))
+        const fetchData = () => {
+            axios.get('/api/public/members').then(({data}) => {
+                if (data.data) {
+                    const tmpData = data.data.filter(data => !data.sac);
+                    setMembers(tmpData);
+                    localStorage.setItem('executive', JSON.stringify(tmpData));
+                }
+            });
+        };
+        fetchData();
     }, []);
-
-    const fetchData = async () => {
-        const {data} = await axios.get('/api/public/members');
-        if (data.data) {
-            const tmpData = data.data.filter(data => !data.sac);
-            setMembers(tmpData);
-            localStorage.setItem('executive', JSON.stringify(tmpData));
-        }
-    };
 
 
     return (
         <div className={classes.root}>
-            <Row gutter={16}>
-                <Col sm={24}>
-                    <Title level={3}>
-                        Executive Committee
-                    </Title>
-                    <Divider/>
-                </Col>
-                {!loading && members.map(data => (
+            <Title level={3}>
+                Executive Committee
+            </Title>
+            <Divider style={{margin: 0, marginBottom: 16}}/>
+            <Row gutter={16} type="flex" align="center">
+                {!_.isEmpty(members) && members.map(data => (
                     <Col lg={6} md={8} sm={12} style={{textAlign: 'center'}} key={data.id}>
                         <Avatar src={data.image} size={180} className={classes.image}/>
                         <Title level={4} className={classes.name}>{data.name}</Title>
@@ -63,7 +61,6 @@ const Executive = props => {
                     </Col>
                 ))}
             </Row>
-
         </div>
     );
 };

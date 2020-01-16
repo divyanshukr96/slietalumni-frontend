@@ -89,15 +89,16 @@ const MeetRegistrationForm = Form.create({name: 'alumni_meet_registration'})(
         };
 
         useEffect(() => {
-            if (isAuthenticated && registered) if (_.isEmpty(user)) {
-                fetchUser()
-            } else {
-                setRegistered(isAuthenticated);
-            }
-            else if (!authRequiredStatus) {
+            if (isAuthenticated && registered) {
+                if (_.isEmpty(user) || _.isEmpty(user.name)) {
+                    fetchUser()
+                } else {
+                    setRegistered(isAuthenticated);
+                }
+            } else if (!authRequiredStatus) {
                 setRegistered(authRequiredStatus);
             }
-        }, [isAuthenticated, user, registered, authRequiredStatus]);
+        }, [isAuthenticated, user, authRequiredStatus]);
 
 
         const handleChecked = e => {
@@ -116,7 +117,7 @@ const MeetRegistrationForm = Form.create({name: 'alumni_meet_registration'})(
                     <FormError form={form} formName="alumni_meet_registration"/>
                     <Row gutter={16} type="flex">
 
-                        <Col sm={24}>
+                        <Col xs={24}>
                             <Form.Item style={{marginBottom: 0}}>
                                 <Checkbox onChange={handleChecked} checked={registered}
                                 >Are you registered member?</Checkbox>
@@ -125,17 +126,17 @@ const MeetRegistrationForm = Form.create({name: 'alumni_meet_registration'})(
 
                         {registered && isAuthenticated ? <>
 
-                            <Col sm={8} xs={10} style={{padding: 8, textAlign: 'right'}}>Name : </Col>
-                            <Col sm={16} xs={14} style={{padding: 8}}><Text strong>{user.name}</Text></Col>
+                            <Col xs={8} style={{padding: 8, textAlign: 'right'}}>Name : </Col>
+                            <Col xs={16} style={{padding: 8}}><Text strong>{user.name}</Text></Col>
 
-                            <Col sm={8} xs={10} style={{padding: 8, textAlign: 'right'}}>E-mail : </Col>
-                            <Col sm={16} xs={14} style={{padding: 8}}><Text strong>{user.email}</Text></Col>
+                            <Col xs={8} style={{padding: 8, textAlign: 'right'}}>E-mail : </Col>
+                            <Col xs={16} style={{padding: 8}}><Text strong>{user.email}</Text></Col>
 
-                            <Col sm={8} xs={10} style={{padding: 8, textAlign: 'right'}}>Mobile : </Col>
-                            <Col sm={16} xs={14} style={{padding: 8}}><Text strong>{user.mobile}</Text></Col>
+                            <Col xs={8} style={{padding: 8, textAlign: 'right'}}>Mobile : </Col>
+                            <Col xs={16} style={{padding: 8}}><Text strong>{user.mobile}</Text></Col>
 
-                            <Col sm={8} xs={10} style={{padding: 8, textAlign: 'right'}}>Username : </Col>
-                            <Col sm={16} xs={14} style={{padding: 8}}><Text strong>{user.username}</Text></Col>
+                            <Col xs={8} style={{padding: 8, textAlign: 'right'}}>Username : </Col>
+                            <Col xs={16} style={{padding: 8}}><Text strong>{user.username}</Text></Col>
 
 
                             <Col xs={24}>
@@ -146,11 +147,11 @@ const MeetRegistrationForm = Form.create({name: 'alumni_meet_registration'})(
                         </> : <RegisterFormColumn form={form}/>}
 
 
-                        <Col sm={24}>
+                        <Col xs={24}>
                             <Divider orientation={"left"} style={{marginBottom: 0}}>Meet Details</Divider>
                         </Col>
 
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <Form.Item style={{marginBottom: 0}}>
                                 {getFieldDecorator('family', {
                                     valuePropName: 'checked'
@@ -167,7 +168,7 @@ const MeetRegistrationForm = Form.create({name: 'alumni_meet_registration'})(
                             </Paragraph>}
                         </Col>
 
-                        <Col sm={12}>
+                        <Col sm={12} xs={24}>
                             <Form.Item label={'any other requirements ?'} style={{marginBottom: 0}}>
                                 {getFieldDecorator('requirements', {})(
                                     <Input.TextArea placeholder="Write your requirements here!"
@@ -213,7 +214,7 @@ const RegisterFormColumn = ({form}) => {
 
     return (
         <>
-            <Col sm={12}>
+            <Col sm={12} xs={24}>
                 <Form.Item label={'Name'} style={{marginBottom: 0}}>
                     {getFieldDecorator('name', {
                         rules: [{required: true, message: 'Please enter your full name!'}],
@@ -221,7 +222,7 @@ const RegisterFormColumn = ({form}) => {
                 </Form.Item>
             </Col>
 
-            <Col sm={12}>
+            <Col sm={12} xs={24}>
                 <Form.Item label={'Email'} style={{marginBottom: 0}}>
                     {getFieldDecorator('email', {
                         rules: [
@@ -232,7 +233,7 @@ const RegisterFormColumn = ({form}) => {
                 </Form.Item>
             </Col>
 
-            <Col sm={12}>
+            <Col sm={12} xs={24}>
                 <Form.Item label={'Mobile'} style={{marginBottom: 0}}>
                     {getFieldDecorator('mobile', {
                         rules: [{
@@ -243,7 +244,7 @@ const RegisterFormColumn = ({form}) => {
                 </Form.Item>
             </Col>
 
-            <Col sm={12}>
+            <Col sm={12} xs={24}>
                 <Form.Item label={'Programme'} style={{marginBottom: 0}}>
                     {getFieldDecorator('programme', {
                         rules: [{required: true, message: 'Please select your programme!'}],
@@ -256,7 +257,7 @@ const RegisterFormColumn = ({form}) => {
                 </Form.Item>
             </Col>
 
-            <Col sm={12}>
+            <Col sm={12} xs={24}>
                 <Form.Item label={'Branch'} style={{marginBottom: 0}}>
                     {getFieldDecorator('branch', {
                         rules: [{required: true, message: 'Please select your branch!'}],
@@ -269,7 +270,7 @@ const RegisterFormColumn = ({form}) => {
                 </Form.Item>
             </Col>
 
-            <Col sm={12}>
+            <Col sm={12} xs={24}>
                 <Form.Item label={'Passing Year'} style={{marginBottom: 0}}>
                     {getFieldDecorator('passing', {
                         rules: [{required: true, message: 'Select your passing year!'}],
@@ -281,7 +282,7 @@ const RegisterFormColumn = ({form}) => {
                 </Form.Item>
             </Col>
 
-            <Col sm={12}>
+            <Col sm={12} xs={24}>
                 <Form.Item label={'Batch'} style={{marginBottom: 0}}>
                     {getFieldDecorator('batch', {
                         rules: [{required: true, message: 'Select your batch!'}],
@@ -293,7 +294,7 @@ const RegisterFormColumn = ({form}) => {
                 </Form.Item>
             </Col>
 
-            <Col sm={12}>
+            <Col sm={12} xs={24}>
                 <Form.Item label={'Organisation'} style={{marginBottom: 0}}>
                     {getFieldDecorator('organisation', {
                         rules: [{
@@ -304,7 +305,7 @@ const RegisterFormColumn = ({form}) => {
                 </Form.Item>
             </Col>
 
-            <Col sm={12}>
+            <Col sm={12} xs={24}>
                 <Form.Item label={'Designation'} style={{marginBottom: 0}}>
                     {getFieldDecorator('designation', {
                         rules: [{required: true, message: 'Please enter your designation!'}],

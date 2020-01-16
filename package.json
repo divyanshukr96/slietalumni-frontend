@@ -1,6 +1,6 @@
 {
   "name": "alumni-frontend",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.8.3",
@@ -28,6 +28,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "generate-build-version": "node generate-build-version",
+    "prebuild": "npm run generate-build-version",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build && cd build && copy index.html welcome.blade.php",
     "test": "react-app-rewired test",

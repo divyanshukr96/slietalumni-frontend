@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import * as _ from "lodash";
 import {makeStyles} from "@material-ui/core";
 import {Button, Card, Divider, Icon, Typography} from "antd";
 import 'braft-editor/dist/output.css'
@@ -30,29 +31,28 @@ const NewsDetails = (props) => {
     const classes = useStyles();
 
     const [news, setNews] = useState({});
-    const [loading, setLoading] = useState(true);
-
-    async function fetchUrl() {
-        const {history: {action}, match: {params}, location} = props;
-        if (action === "PUSH") return setNews(location.state);
-        const {data} = await axios.get("/api/public/news-stories");
-        if (data.data) setNews(data.data.filter(ev => ev.id === params.news)[0])
-    }
 
     useEffect(() => {
-        setLoading(true);
-        fetchUrl().then(r => setLoading(false));
+        function fetchUrl() {
+            const {history: {action}, match: {params}, location} = props;
+            if (action === "PUSH") return setNews(location.state);
+            axios.get("/api/public/news-stories").then(({data}) => {
+                if (data.data) setNews(data.data.filter(ev => ev.id === params.news)[0])
+            });
+        }
+
+        fetchUrl();
     }, [props]);
 
     return (
         <div className={classes.main}>
             <Card
-                loading={loading}
+                loading={_.isEmpty(news)}
                 hoverable={true}
                 style={{marginBottom: 8}}
                 bodyStyle={{paddingTop: 16, paddingBottom: 16}}
             >
-                {news && <>
+                {!_.isEmpty(news) && <>
                     <Title level={3} style={{marginBottom: 2}}>{news.title}</Title>
                     <IconText type="global" text={news.published_at}/><br/>
                     <Divider style={{margin: `12px 0`}}/>

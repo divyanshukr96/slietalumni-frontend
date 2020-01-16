@@ -20,7 +20,7 @@ export const registration = formData => async dispatch => {
     try {
         let form = new FormData();
         for (const field in formData) form.append(field, formData[field]);
-        const {data} = await axios.post('/api/alumni/register', form);
+        const {data} = await axios.post('/api/alumni/registration', form);
         return data.id ? data : data.data;
     } catch ({response}) {
         response && dispatch({
