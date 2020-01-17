@@ -17,7 +17,7 @@ const Home = () => {
         axios.get("api/public/carousel").then(({data}) => {
             const carouselData = data.data ? data.data : data;
             if (!isCancelled.current) {
-                setCarousel(c => [...carouselData, ...c])
+                setCarousel(c => [...carouselData.filter(d => d), ...c])
             }
         }).catch(err => err);
     }

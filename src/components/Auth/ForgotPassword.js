@@ -57,11 +57,15 @@ const ForgotPassword = Form.create({name: 'forgot_password'})(
                         <FormError form={form} formName="forgot_password"/>
                         <Form.Item label="Registered Email Address">
                             {getFieldDecorator('email', {
-                                rules: [{required: true, message: 'Please input the registered e-mail address!'}],
+                                validateTrigger: "onBlur",
+                                rules: [
+                                    {required: true, message: 'Enter your registered e-mail address!'},
+                                    {type: 'email', message: 'Entered input is not a valid e-mail!'},
+                                ],
                             })(<Input placeholder="Enter Registered Email address"/>)}
                         </Form.Item>
                         <div style={{textAlign: 'right'}}>
-                            <Button loading={loading} type="primary" onClick={handleSubmit}>
+                            <Button loading={loading} type="primary" htmlType="submit" onClick={handleSubmit}>
                                 Send Password Reset Link
                             </Button>
                         </div>

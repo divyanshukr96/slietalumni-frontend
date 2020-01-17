@@ -38,6 +38,11 @@ const styles = theme => ({
     },
 });
 
+const LogoButton = () => (
+    <Link to={'/'}>
+        <img src={Logo} alt="" style={{height: 64}}/>
+    </Link>
+);
 
 class PublicNavBar extends Component {
     constructor(props) {
@@ -121,7 +126,7 @@ class PublicNavBar extends Component {
         const {collapsed, breakPoint, selected} = this.state;
         const {classes, children} = this.props;
         return (
-            <Layout>
+            <Layout hasSider>
                 <Drawer
                     placement="left"
                     closable={false}
@@ -143,9 +148,7 @@ class PublicNavBar extends Component {
                     style={{zIndex: 1000}}
                 >
                     <div className="logo">
-                        <Link to={'/'}>
-                            <img src={Logo} alt="" style={{height: '100%'}}/>
-                        </Link>
+                        <LogoButton/>
                     </div>
 
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={[selected]}
@@ -227,9 +230,7 @@ class PublicNavBar extends Component {
                             >
 
                                 <Menu.Item key={null} className={classes.header}>
-                                    <Link to={'/'}>
-                                        <img src={Logo} alt="" style={{height: 64}}/>
-                                    </Link>
+                                    <LogoButton/>
                                 </Menu.Item>
 
                                 <Menu.Item key="/">
@@ -293,9 +294,7 @@ class PublicNavBar extends Component {
                                 style={{lineHeight: '64px', textAlign: 'right', padding: '0 8px'}}
                             >
                                 <Menu.Item key={'logo'} className={classes.header}>
-                                    <Link to={'/'}>
-                                        <img src={Logo} alt="" style={{height: 64}}/>
-                                    </Link>
+                                    <LogoButton/>
                                 </Menu.Item>
                                 <Menu.Item key={'65'} onClick={this.toggle}>
                                     <Icon type="menu" style={{margin: 0, fontSize: 24, verticalAlign: 'middle'}}/>

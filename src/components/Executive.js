@@ -52,7 +52,7 @@ const Executive = props => {
                 Executive Committee
             </Title>
             <Divider style={{margin: 0, marginBottom: 16}}/>
-            <Row gutter={16} type="flex" align="center">
+            <Row gutter={16} type="flex" justify="center">
                 {!_.isEmpty(members) && members.map(data => (
                     <Col lg={6} md={8} sm={12} style={{textAlign: 'center'}} key={data.id}>
                         <Avatar src={data.image} size={180} className={classes.image}/>

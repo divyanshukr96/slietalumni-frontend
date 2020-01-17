@@ -113,7 +113,7 @@ const MeetRegistrationForm = Form.create({name: 'alumni_meet_registration'})(
             <>
                 <SuccessMessage success={success} data={data}/>
 
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} noValidate="noValidate">
                     <FormError form={form} formName="alumni_meet_registration"/>
                     <Row gutter={16} type="flex">
 
@@ -225,9 +225,10 @@ const RegisterFormColumn = ({form}) => {
             <Col sm={12} xs={24}>
                 <Form.Item label={'Email'} style={{marginBottom: 0}}>
                     {getFieldDecorator('email', {
+                        validateTrigger: "onBlur",
                         rules: [
                             {required: true, message: 'Please enter your email-id!',},
-                            {type: 'email', message: 'The input is not valid e-mail!'},
+                            {type: 'email', message: 'Entered input is not a valid e-mail!'},
                         ],
                     })(<Input placeholder="Enter email-id"/>)}
                 </Form.Item>

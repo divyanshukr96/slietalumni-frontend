@@ -70,7 +70,11 @@ const ResetPasswordForm = Form.create({name: 'reset_password'})(
                     </Form.Item>
                     <Form.Item style={{marginBottom: 12}}>
                         {getFieldDecorator('email', {
-                            rules: [{required: true, message: 'Please enter your registered email!'}],
+                            validateTrigger: "onBlur",
+                            rules: [
+                                {required: true, message: 'Please enter your registered email!'},
+                                {type: 'email', message: 'Entered input is not a valid e-mail!'},
+                            ],
                         })(
                             <Input prefix={<Icon type="mail" style={{color: 'rgba(0,0,0,.25)'}}/>}
                                    placeholder="Registered Email"/>
