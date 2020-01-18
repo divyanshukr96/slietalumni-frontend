@@ -102,6 +102,16 @@ class AlumniData extends Component {
                     rowKey="id"
                     columns={this.columns}
                     dataSource={data}
+                    onRow={(record, rowIndex) => {
+                        return {
+                            onClick: event => {
+                                this.props.onView(record.id)
+                            },
+                            onContextMenu: event => {
+                                event.preventDefault();
+                            },
+                        };
+                    }}
                 />
             </>
         );

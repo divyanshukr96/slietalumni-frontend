@@ -65,7 +65,7 @@ class News extends Component {
     };
 
     render() {
-        const {loading, news} = this.props;
+        const {loading, news, history} = this.props;
         let newsList = news;
         switch (this.state.viewType) {
             case "published":
@@ -98,6 +98,16 @@ class News extends Component {
                     rowKey="id"
                     columns={this.columns}
                     dataSource={newsList}
+                    onRow={(record, rowIndex) => {
+                        return {
+                            onClick: event => {
+                                history.push('/sac/news/' + record.id);
+                            },
+                            onContextMenu: event => {
+                                event.preventDefault();
+                            },
+                        };
+                    }}
                 />
             </>
         );

@@ -23,7 +23,7 @@ const SAAConstitution = ({classes}) => (
                 <Title level={3} style={{textAlign: 'center',}}>
                     CONSTITUTION AND BYE LAWS OF SLIET ALUMNI ASSOCIATION
                 </Title>
-                <Divider/>
+                <Divider style={{margin: '8px 0 16px'}}/>
                 {/*<Title level={4} style={{textAlign: 'center',}}>*/}
                 {/*    CONSTITUTION AND BYE LAWS OF SLIET ALUMNI ASSOCIATION*/}
                 {/*</Title>*/}

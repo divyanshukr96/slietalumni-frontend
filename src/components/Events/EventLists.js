@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import * as _ from "lodash";
 import {makeStyles, Paper} from "@material-ui/core";
 import {Card, Icon, List, Typography} from "antd";
 
@@ -26,39 +27,33 @@ const IconText = ({type, text}) => (
 );
 
 const EventLists = (props) => {
+    const isCancelled = React.useRef(false);
+
     const classes = useStyles();
 
-    // const [events, dispatch] = useReducer((state, action) => {
-    //     switch (action.type) {
-    //         case "LIST":
-    //             return {
-    //                 ...state,
-    //                 list: action.payload
-    //             };
-    //         case 'DETAILS':
-    //             return {
-    //                 ...state,
-    //                 details: state.list.filter(event => event.id === action.payload)[0]
-    //             };
-    //         default:
-    //             return state
-    //     }
-    // }, {list: [], details: null});
+    const eventData = sessionStorage.events;
 
-    const [events, setEvents] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [events, setEvents] = useState(eventData ? JSON.parse(eventData) : []);
+    const [loading, setLoading] = useState(_.isEmpty(events));
 
-    async function fetchUrl() {
-        const {data} = await axios.get("api/public/events");
-        if (data.data) setEvents(data.data)
-        // if (data.data) dispatch({
-        //     type: "LIST",
-        //     payload: data.data
-        // });
-    }
+
 
     useEffect(() => {
-        fetchUrl().then(r => setLoading(false));
+        function fetchUrl() {
+            axios.get("api/public/events").then(({data}) => {
+                if (!isCancelled.current) {
+                    if (data.data) {
+                        sessionStorage.setItem('events', JSON.stringify(data.data));
+                        setEvents(data.data);
+                    }
+                    setLoading(false)
+                }
+            }).catch(() => setLoading(false));
+        }
+        fetchUrl();
+        return () => {
+            isCancelled.current = true;
+        };
     }, []);
 
     return (

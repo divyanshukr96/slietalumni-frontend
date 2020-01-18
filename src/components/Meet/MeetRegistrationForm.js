@@ -1,74 +1,73 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import * as _ from "lodash";
+import {useHistory} from "react-router-dom";
 import {Form, Row, Col, Input, Button, Checkbox, Select, Divider, Typography, Result, Avatar, Modal} from 'antd';
 import {Branch, Programme} from "Constants/ProgrammeAndBranch";
 import FormError from "components/Errors";
 import {meetRegister} from "actions/alumniMeetAction";
 import {authRequired, fetchDetails} from "actions/authAction";
 import logo from "../../assets/SAA-logo-color.png";
-import {withRouter} from "react-router-dom";
 
 const {Text, Title, Paragraph} = Typography;
 
 
-const SuccessMessage = withRouter(
-    ({success, data, history}) => {
-        if (_.isEmpty(data)) return null;
-        return (
-            <Modal visible={success} footer={null} closable={false}>
-                <Result
-                    icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
-                    status="success"
-                    title="SLIET Alumni Meet 2020"
-                    style={{
-                        padding: 0
-                    }}
-                    subTitle={
-                        <>
-                            <Title level={4}>Dear {data.name}</Title>
-                            Thanks a lot for registering yourself for Alumni Meet 2020. <br/>
-                            Kindly Pay your Alumni Meet registration fees on the given Bank Details and send us your
-                            payment receipt on <a href="mailto:alumnicell@sliet.ac.in">alumnicell@sliet.ac.in</a> for
-                            your
-                            payment Confirmation
+const SuccessMessage = ({success, data}) => {
+    const history = useHistory();
+    if (_.isEmpty(data)) return null;
+    return (
+        <Modal visible={success} footer={null} closable={false}>
+            <Result
+                icon={<Avatar size={100} src={logo} shape={"square"} style={{width: 150, height: 'auto'}}/>}
+                status="success"
+                title="SLIET Alumni Meet 2020"
+                style={{
+                    padding: 0
+                }}
+                subTitle={
+                    <>
+                        <Title level={4}>Dear {data.name}</Title>
+                        Thanks a lot for registering yourself for Alumni Meet 2020. <br/>
+                        Kindly Pay your Alumni Meet registration fees on the given Bank Details and send us your
+                        payment receipt on <a href="mailto:alumnicell@sliet.ac.in">alumnicell@sliet.ac.in</a> for
+                        your
+                        payment Confirmation
 
-                            <Paragraph style={{textAlign: 'left', paddingTop: 12}}>
-                                <Text style={{fontWeight: 500}}>Registration charges for Alumni Meet</Text><br/>
-                                <Text>{data.family ? `With Family ` : `Single Person `}: ₹ {data.fees}/-</Text>
-                            </Paragraph>
+                        <Paragraph style={{textAlign: 'left', paddingTop: 12}}>
+                            <Text style={{fontWeight: 500}}>Registration charges for Alumni Meet</Text><br/>
+                            <Text>{data.family ? `With Family ` : `Single Person `}: ₹ {data.fees}/-</Text>
+                        </Paragraph>
 
 
-                            <Divider orientation={"left"} style={{marginBottom: 4}}>Bank Details</Divider>
-                            <Paragraph style={{textAlign: 'left'}}>
-                                Account No - 3652214249<br/>
-                                Name - SLIET Alumni Association<br/>
-                                IFSC Code - CBIN0283105<br/>
-                                Branch - LONGOWAL<br/>
-                                Bank Name - Central Bank of India<br/>
-                            </Paragraph>
+                        <Divider orientation={"left"} style={{marginBottom: 4}}>Bank Details</Divider>
+                        <Paragraph style={{textAlign: 'left'}}>
+                            Account No - 3652214249<br/>
+                            Name - SLIET Alumni Association<br/>
+                            IFSC Code - CBIN0283105<br/>
+                            Branch - LONGOWAL<br/>
+                            Bank Name - Central Bank of India<br/>
+                        </Paragraph>
 
-                            <Divider orientation={"left"} style={{marginBottom: 4}}>Contact Details</Divider>
-                            <Paragraph style={{textAlign: 'left'}}>
-                                Raghav Sharma - <a href="tel:+91-9569468234">+91-9569468234</a><br/>
-                                Yash Verma - <a href="tel:+91-7300633011">+91-7300633011</a><br/>
-                            </Paragraph>
-                            <Paragraph style={{paddingTop: 8}} code>
-                                A confirmation Mail is sent to your email <a
-                                href={`mailto:${data.email}`}>{data.email}</a>
-                            </Paragraph>
-                        </>
-                    }
-                    extra={[
-                        <Button type="primary" key="console" onClick={() => history.push('/')}>
-                            Go Home
-                        </Button>
-                    ]}
-                />
-            </Modal>
-        );
-    }
-);
+                        <Divider orientation={"left"} style={{marginBottom: 4}}>Contact Details</Divider>
+                        <Paragraph style={{textAlign: 'left'}}>
+                            Raghav Sharma - <a href="tel:+91-9569468234">+91-9569468234</a><br/>
+                            Yash Verma - <a href="tel:+91-7300633011">+91-7300633011</a><br/>
+                        </Paragraph>
+                        <Paragraph style={{paddingTop: 8}} code>
+                            A confirmation Mail is sent to your email <a
+                            href={`mailto:${data.email}`}>{data.email}</a>
+                        </Paragraph>
+                    </>
+                }
+                extra={[
+                    <Button type="primary" key="console" onClick={() => history.push('/')}>
+                        Go Home
+                    </Button>
+                ]}
+            />
+        </Modal>
+    );
+};
 
 const MeetRegistrationForm = Form.create({name: 'alumni_meet_registration'})(
     ({form, onRegister, user, loginRequired, isAuthenticated, fetchUser, authRequiredStatus, loading}) => {
@@ -208,111 +207,106 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(MeetRegistrationForm);
 
 
-const RegisterFormColumn = ({form}) => {
+const RegisterFormColumn = ({form: {getFieldDecorator}}) => (
+    <>
+        <Col sm={12} xs={24}>
+            <Form.Item label={'Name'} style={{marginBottom: 0}}>
+                {getFieldDecorator('name', {
+                    rules: [{required: true, message: 'Please enter your full name!'}],
+                })(<Input placeholder="Enter full name"/>)}
+            </Form.Item>
+        </Col>
 
-    const {getFieldDecorator} = form;
+        <Col sm={12} xs={24}>
+            <Form.Item label={'Email'} style={{marginBottom: 0}}>
+                {getFieldDecorator('email', {
+                    validateTrigger: "onBlur",
+                    rules: [
+                        {required: true, message: 'Please enter your email-id!',},
+                        {type: 'email', message: 'Entered input is not a valid e-mail!'},
+                    ],
+                })(<Input placeholder="Enter email-id"/>)}
+            </Form.Item>
+        </Col>
 
-    return (
-        <>
-            <Col sm={12} xs={24}>
-                <Form.Item label={'Name'} style={{marginBottom: 0}}>
-                    {getFieldDecorator('name', {
-                        rules: [{required: true, message: 'Please enter your full name!'}],
-                    })(<Input placeholder="Enter full name"/>)}
-                </Form.Item>
-            </Col>
+        <Col sm={12} xs={24}>
+            <Form.Item label={'Mobile'} style={{marginBottom: 0}}>
+                {getFieldDecorator('mobile', {
+                    rules: [{
+                        required: true,
+                        message: 'Please enter your mobile number!'
+                    }],
+                })(<Input placeholder="Enter mobile number"/>)}
+            </Form.Item>
+        </Col>
 
-            <Col sm={12} xs={24}>
-                <Form.Item label={'Email'} style={{marginBottom: 0}}>
-                    {getFieldDecorator('email', {
-                        validateTrigger: "onBlur",
-                        rules: [
-                            {required: true, message: 'Please enter your email-id!',},
-                            {type: 'email', message: 'Entered input is not a valid e-mail!'},
-                        ],
-                    })(<Input placeholder="Enter email-id"/>)}
-                </Form.Item>
-            </Col>
+        <Col sm={12} xs={24}>
+            <Form.Item label={'Programme'} style={{marginBottom: 0}}>
+                {getFieldDecorator('programme', {
+                    rules: [{required: true, message: 'Please select your programme!'}],
+                })(<Select placeholder="Select programme">
+                    <Select.Option key="programme" value={null}>None</Select.Option>
+                    {Programme.map(row =>
+                        <Select.Option key={row.value}
+                                       value={row.value}>{row.text}</Select.Option>)}
+                </Select>)}
+            </Form.Item>
+        </Col>
 
-            <Col sm={12} xs={24}>
-                <Form.Item label={'Mobile'} style={{marginBottom: 0}}>
-                    {getFieldDecorator('mobile', {
-                        rules: [{
-                            required: true,
-                            message: 'Please enter your mobile number!'
-                        }],
-                    })(<Input placeholder="Enter mobile number"/>)}
-                </Form.Item>
-            </Col>
+        <Col sm={12} xs={24}>
+            <Form.Item label={'Branch'} style={{marginBottom: 0}}>
+                {getFieldDecorator('branch', {
+                    rules: [{required: true, message: 'Please select your branch!'}],
+                })(<Select placeholder="Select branch">
+                    <Select.Option key="branch" value={null}>None</Select.Option>
+                    {Branch.map(row =>
+                        <Select.Option key={row.value}
+                                       value={row.value}>{row.text}</Select.Option>)}
+                </Select>)}
+            </Form.Item>
+        </Col>
 
-            <Col sm={12} xs={24}>
-                <Form.Item label={'Programme'} style={{marginBottom: 0}}>
-                    {getFieldDecorator('programme', {
-                        rules: [{required: true, message: 'Please select your programme!'}],
-                    })(<Select placeholder="Select programme">
-                        <Select.Option key="programme" value={null}>None</Select.Option>
-                        {Programme.map(row =>
-                            <Select.Option key={row.value}
-                                           value={row.value}>{row.text}</Select.Option>)}
-                    </Select>)}
-                </Form.Item>
-            </Col>
+        <Col sm={12} xs={24}>
+            <Form.Item label={'Passing Year'} style={{marginBottom: 0}}>
+                {getFieldDecorator('passing', {
+                    rules: [{required: true, message: 'Select your passing year!'}],
+                })(<Select placeholder="Select passing year" showSearch>
+                    <Select.Option key="passing" value={null}>None</Select.Option>
+                    {_.range(new Date().getFullYear(), 1985).map(row =>
+                        <Select.Option key={row} value={row}>{row}</Select.Option>)}
+                </Select>)}
+            </Form.Item>
+        </Col>
 
-            <Col sm={12} xs={24}>
-                <Form.Item label={'Branch'} style={{marginBottom: 0}}>
-                    {getFieldDecorator('branch', {
-                        rules: [{required: true, message: 'Please select your branch!'}],
-                    })(<Select placeholder="Select branch">
-                        <Select.Option key="branch" value={null}>None</Select.Option>
-                        {Branch.map(row =>
-                            <Select.Option key={row.value}
-                                           value={row.value}>{row.text}</Select.Option>)}
-                    </Select>)}
-                </Form.Item>
-            </Col>
+        <Col sm={12} xs={24}>
+            <Form.Item label={'Batch'} style={{marginBottom: 0}}>
+                {getFieldDecorator('batch', {
+                    rules: [{required: true, message: 'Select your batch!'}],
+                })(<Select placeholder="Select batch" showSearch>
+                    <Select.Option key="batch" value={null}>None</Select.Option>
+                    {_.range(new Date().getFullYear() - 3, 1985).map(row =>
+                        <Select.Option key={row} value={row}>{row}</Select.Option>)}
+                </Select>)}
+            </Form.Item>
+        </Col>
 
-            <Col sm={12} xs={24}>
-                <Form.Item label={'Passing Year'} style={{marginBottom: 0}}>
-                    {getFieldDecorator('passing', {
-                        rules: [{required: true, message: 'Select your passing year!'}],
-                    })(<Select placeholder="Select passing year" showSearch>
-                        <Select.Option key="passing" value={null}>None</Select.Option>
-                        {_.range(new Date().getFullYear(), 1985).map(row =>
-                            <Select.Option key={row} value={row}>{row}</Select.Option>)}
-                    </Select>)}
-                </Form.Item>
-            </Col>
+        <Col sm={12} xs={24}>
+            <Form.Item label={'Organisation'} style={{marginBottom: 0}}>
+                {getFieldDecorator('organisation', {
+                    rules: [{
+                        required: true,
+                        message: 'Please enter your current organisation!'
+                    }],
+                })(<Input placeholder="Enter your current organisation"/>)}
+            </Form.Item>
+        </Col>
 
-            <Col sm={12} xs={24}>
-                <Form.Item label={'Batch'} style={{marginBottom: 0}}>
-                    {getFieldDecorator('batch', {
-                        rules: [{required: true, message: 'Select your batch!'}],
-                    })(<Select placeholder="Select batch" showSearch>
-                        <Select.Option key="batch" value={null}>None</Select.Option>
-                        {_.range(new Date().getFullYear() - 3, 1985).map(row =>
-                            <Select.Option key={row} value={row}>{row}</Select.Option>)}
-                    </Select>)}
-                </Form.Item>
-            </Col>
-
-            <Col sm={12} xs={24}>
-                <Form.Item label={'Organisation'} style={{marginBottom: 0}}>
-                    {getFieldDecorator('organisation', {
-                        rules: [{
-                            required: true,
-                            message: 'Please enter your current organisation!'
-                        }],
-                    })(<Input placeholder="Enter your current organisation"/>)}
-                </Form.Item>
-            </Col>
-
-            <Col sm={12} xs={24}>
-                <Form.Item label={'Designation'} style={{marginBottom: 0}}>
-                    {getFieldDecorator('designation', {
-                        rules: [{required: true, message: 'Please enter your designation!'}],
-                    })(<Input placeholder="Enter your designation"/>)}
-                </Form.Item>
-            </Col>
-        </>
-    )
-};
+        <Col sm={12} xs={24}>
+            <Form.Item label={'Designation'} style={{marginBottom: 0}}>
+                {getFieldDecorator('designation', {
+                    rules: [{required: true, message: 'Please enter your designation!'}],
+                })(<Input placeholder="Enter your designation"/>)}
+            </Form.Item>
+        </Col>
+    </>
+);

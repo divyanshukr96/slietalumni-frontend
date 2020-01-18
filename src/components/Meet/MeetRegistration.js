@@ -16,9 +16,13 @@ const useStyles = makeStyles(theme => ({
             width: 800,
             margin: 'auto',
         },
-        [theme.breakpoints.down('md')]: {
-            boxShadow: theme.shadows[0],
-            padding: 8,
+        [theme.breakpoints.down(768)]: {
+            boxShadow: theme.shadows[1],
+            padding: '8px 8px 24px',
+            marginTop: 4,
+            '& img':{
+                display: 'none',
+            }
         },
     },
 }));

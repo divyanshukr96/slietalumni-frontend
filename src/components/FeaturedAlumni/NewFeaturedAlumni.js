@@ -225,8 +225,8 @@ class NewFeaturedAlumni extends Component {
     render() {
         return (
             <>
-                <Button type="primary" style={{marginBottom: 8}} onClick={this.showModal}>
-                    Add New Data
+                <Button icon="plus" type="primary" style={{marginBottom: 8, float: 'right'}} onClick={this.showModal}>
+                    Add
                 </Button>
                 <CollectionCreateForm
                     wrappedComponentRef={formRef => this.formRef = formRef}

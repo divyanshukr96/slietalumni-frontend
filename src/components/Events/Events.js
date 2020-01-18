@@ -92,6 +92,16 @@ class Events extends Component {
                     columns={this.columns}
                     dataSource={eventList}
                     size={"middle"}
+                    onRow={(record, rowIndex) => {
+                        return {
+                            onClick: event => {
+                                // this.props.onView(record.id)
+                            },
+                            onContextMenu: event => {
+                                event.preventDefault();
+                            },
+                        };
+                    }}
                 />
             </div>
         );

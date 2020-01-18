@@ -37,6 +37,16 @@ class EventTypes extends Component {
                     rowKey="id"
                     columns={this.columns}
                     dataSource={eventTypes}
+                    onRow={(record, rowIndex) => {
+                        return {
+                            onClick: event => {
+                                this.props.onView(record.id)
+                            },
+                            onContextMenu: event => {
+                                event.preventDefault();
+                            },
+                        };
+                    }}
                 />
                 <EventTypeEdit
                     data={_.pickBy(data)}

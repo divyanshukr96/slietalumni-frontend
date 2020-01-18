@@ -116,6 +116,16 @@ class DonationData extends Component {
                     rowKey="id"
                     columns={this.columns}
                     dataSource={donations}
+                    onRow={(record, rowIndex) => {
+                        return {
+                            onClick: event => {
+                                this.props.onView(record.id)
+                            },
+                            onContextMenu: event => {
+                                event.preventDefault();
+                            },
+                        };
+                    }}
                 />
             </>
         );

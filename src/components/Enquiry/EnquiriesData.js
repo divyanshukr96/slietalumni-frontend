@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import * as _ from "lodash";
 import {connect} from "react-redux";
-import {Badge, Button, Input, Table, Typography} from "antd";
+import {Badge, Button, Input, PageHeader, Table, Typography} from "antd";
 import {enquiryDataSearch, fetchEnquiry} from "actions/enquiryAction";
 import EnquiryView from "./EnquiryView";
 
-const {Title, Text} = Typography;
+const {Text} = Typography;
 
 class EnquiriesData extends Component {
     constructor(props) {
@@ -54,10 +54,11 @@ class EnquiriesData extends Component {
         const {data, enquiries, onView, startSearch} = this.props;
 
         return (
-            <>
-                <Title level={4}>Messages / Enquiries</Title>
-
-                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <PageHeader
+                title="Messages / Enquiries"
+                style={{padding: 0}}
+            >
+                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: -6}}>
                     <Input.Search
                         style={{maxWidth: 300, marginBottom: 8}}
                         // onKeyUpCapture={this.props.startSearch}
@@ -84,8 +85,19 @@ class EnquiriesData extends Component {
                     rowKey="id"
                     columns={this.columns}
                     dataSource={enquiries}
+                    onRow={(record, rowIndex) => {
+                        return {
+                            onClick: event => {
+                                this.props.onView(record.id)
+                            },
+                            onContextMenu: event => {
+                                event.preventDefault();
+                            },
+                        };
+                    }}
                 />
-            </>
+
+            </PageHeader>
         );
     }
 }

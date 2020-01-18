@@ -37,8 +37,15 @@ class AdminNavBar extends Component {
 
     static getDerivedStateFromProps(nextProps, prevState) {
         let {pathname} = nextProps.location;
+        let {collapsed, breakPoint} = prevState;
         pathname = pathname === '/' ? '/' : pathname.split('/').filter(x => x).join('/');
-        return {selected: pathname}
+        if (prevState.selected !== pathname && !collapsed && breakPoint) {
+            collapsed = true;
+        }
+        return {
+            selected: pathname,
+            collapsed: collapsed,
+        }
     }
 
     toggle = () => {

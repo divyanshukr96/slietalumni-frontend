@@ -13,8 +13,9 @@ const styles = theme => ({
     image: {
         maxWidth: '100%',
         paddingBottom: 16,
+        width: 200,
         [theme.breakpoints.up(400)]: {
-            float: 'right', width: 220,
+            float: 'right',
             padding: '0 0 16px 16px',
         }
     }
@@ -23,8 +24,10 @@ const styles = theme => ({
 const MessageLayout = ({classes, title, image, children}) => (
     <div className={classes.root}>
         <Title level={4}>{title}</Title>
-        <Divider/>
-        <img src={image} alt="" className={classes.image}/>
+        <Divider style={{margin: '8px 0 16px'}}/>
+        <div style={{textAlign: "center"}}>
+            <img src={image} alt="" className={classes.image}/>
+        </div>
         {children}
     </div>
 );

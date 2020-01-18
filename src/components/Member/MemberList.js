@@ -113,6 +113,16 @@ const MemberList = (props) => {
                 columns={Columns}
                 dataSource={props.members}
                 size={"small"}
+                onRow={(record, rowIndex) => {
+                    return {
+                        onClick: event => {
+                            onView(record.id)
+                        },
+                        onContextMenu: event => {
+                            event.preventDefault();
+                        },
+                    };
+                }}
             />
             <Modal visible={!_.isEmpty(image)} footer={null} onCancel={() => setImage(null)}>
                 <img alt="member_photo" style={{ width: '100%' }} src={image} />

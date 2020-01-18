@@ -33,14 +33,14 @@ const UpcomingEvents = (props) => {
     const isCancelled = React.useRef(false);
     const {card, meta, list} = useStyles();
 
-    const [events, setEvents] = useState(JSON.parse(sessionStorage.getItem('upcoming_event')) || []);
+    const [events, setEvents] = useState(JSON.parse(sessionStorage.getItem('events')) || []);
     const [loading, setLoading] = useState(_.isEmpty(events));
 
     function fetchUrl() {
         axios.get("api/public/events").then(({data}) => {
             if (!isCancelled.current) {
                 if (data.data) {
-                    sessionStorage.setItem('upcoming_event', JSON.stringify(data.data));
+                    sessionStorage.setItem('events', JSON.stringify(data.data));
                     setEvents(data.data);
                 }
                 setLoading(false)

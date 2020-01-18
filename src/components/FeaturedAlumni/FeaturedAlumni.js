@@ -38,9 +38,6 @@ class FeaturedAlumni extends Component {
         const {loading, featured, onAlumniAdd, onSearch, alumni, data, onSelect, featuredAlumni} = this.props;
         return (
             <div>
-                <Title level={4}>Featured Alumni</Title>
-                <Divider style={{margin: `8px 0`}}/>
-                {/*<NewFeaturedAlumni onAlumniAdd={() => true} {...rest}/>*/}
                 <NewFeaturedAlumni
                     alumni={alumni}
                     onSearch={onSearch}
@@ -48,13 +45,27 @@ class FeaturedAlumni extends Component {
                     onAlumniAdd={onAlumniAdd}
                     data={data}
                 />
+                <Title level={4}>Featured Alumni</Title>
+
+                <Divider style={{margin: `8px 0`}}/>
+
                 <Table
                     style={{overflow: 'overlay'}}
                     loading={loading}
                     rowKey="id"
                     columns={this.columns}
                     dataSource={featured}
-                    size={"small"}
+                    size={"middle"}
+                    onRow={(record, rowIndex) => {
+                        return {
+                            onClick: event => {
+                                this.props.onView(record.id)
+                            },
+                            onContextMenu: event => {
+                                event.preventDefault();
+                            },
+                        };
+                    }}
                 />
                 <FeaturedAlumniDetails
                     data={featuredAlumni || {}}

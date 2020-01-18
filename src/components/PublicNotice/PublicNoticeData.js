@@ -97,6 +97,16 @@ const PublicNoticeData = () => {
                     rowKey="id"
                     dataSource={noticeList}
                     columns={Columns}
+                    onRow={(record, rowIndex) => {
+                        return {
+                            onClick: event => {
+                                viewNotice(record.id)
+                            },
+                            onContextMenu: event => {
+                                event.preventDefault();
+                            },
+                        };
+                    }}
                 />
             </div>
 
