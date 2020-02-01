@@ -1,0 +1,3 @@
+.not-selected:hover {
+    outline: 2px solid darkgray;
+}

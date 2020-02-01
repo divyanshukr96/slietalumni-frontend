@@ -96,6 +96,16 @@ class AdminNavBar extends Component {
                                     <span className="nav-text">Home Carousel</span>
                                 </Link>
                             </Menu.Item>
+                            <Menu.Item key="sac/images/album">
+                                <Link to={'/sac/images/album'}>
+                                    <span className="nav-text">Album</span>
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item key="sac/images/gallery">
+                                <Link to={'/sac/images/gallery'}>
+                                    <span className="nav-text">Gallery</span>
+                                </Link>
+                            </Menu.Item>
 
                         </Menu.SubMenu>
 

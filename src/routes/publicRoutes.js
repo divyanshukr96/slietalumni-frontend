@@ -25,7 +25,9 @@ import NewsLists from "../components/News/NewsLists";
 import NewsDetails from "../components/News/NewsDetails";
 import MeetRegistration from "../components/Meet/MeetRegistration";
 import ResetPassword from "../components/Auth/ResetPassword";
-import Executive from "../components/Executive";
+import Executive from "../containers/Executive";
+import PublicGallery from "../components/Images/PublicGallery";
+import StudentCell from "../containers/StudentCell";
 
 const Route = ({component: Component, ...rest}) => (
     <RouteComponent
@@ -52,6 +54,7 @@ const PublicRoutes = () => {
                     <Route exact path={'/about'} component={() => <Redirect to={'/about/alumni-association'}/>}/>
                     <Route exact path={'/about/alumni-association'} component={Association}/>
                     <Route exact path={'/about/saa-constitution'} component={SAAConstitution}/>
+                    <Route exact path={'/about/student-cell'} component={StudentCell}/>
 
                     <Route exact path={'/advisory-committee'} component={Advisory}/>
                     <Route exact path={'/executive-committee'} component={Executive}/>
@@ -74,6 +77,8 @@ const PublicRoutes = () => {
                     <Route exact path="/storied/:news" component={NewsDetails}/>
 
                     <Route exact path="/feeds" component={Feeds}/>
+
+                    <Route exact path="/gallery" component={PublicGallery}/>
 
                     <Route exact path="/profile" component={Profile}/>
 

@@ -4,6 +4,8 @@ const initialState = {
     loading: false,
     images: [],
     image: null,
+    albums: [],
+    gallery: [],
 };
 
 
@@ -27,6 +29,22 @@ export default (state = initialState, action) => {
 
         case type.IMAGE_DELETE:
             return {...state, images: state.images.filter(e => e.id !== action.payload)};
+
+
+        case type.GALLERY_ALBUM_LIST:
+            return {...state, albums: action.payload};
+
+        case type.GALLERY_ALBUM_ADD:
+            return {...state, albums: [action.payload, ...state.albums]};
+
+        case type.GALLERY_IMAGE_LIST:
+            return {...state, gallery: action.payload};
+
+        case type.GALLERY_IMAGE_ADD:
+            return {...state, gallery: [action.payload, ...state.gallery]};
+
+        case type.GALLERY_IMAGE_DELETE:
+            return {...state, gallery: state.gallery.filter(data => data.id !== action.payload)};
 
         //
         // case type.IMAGE_EDIT:

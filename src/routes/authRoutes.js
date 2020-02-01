@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {Button, Result} from "antd";
 import NotFound from "../components/NotFound";
@@ -26,10 +26,15 @@ import AlumniMeet from "components/Meet/AlumniMeet";
 import DonationData from "../components/Donation/DonationData";
 import EnquiriesData from "../components/Enquiry/EnquiriesData";
 import PublicNoticeData from "../components/PublicNotice/PublicNoticeData";
+import GalleryImage from "../components/Images/GalleryImage";
+import GalleryAlbum from "../components/Images/GalleryAlbum";
+import GalleryAlbumDetails from "../components/Images/GalleryAlbumDetails";
 
 
 const AuthRoutes = (props) => {
-    if (!props.auth.isAuthenticated) return <Redirect to={'/login'}/>;
+    const auth = useSelector(state => state.auth);
+
+    if (!auth.isAuthenticated) return <Redirect to={'/login'}/>;
     return (
         <AccessControl
             allowedPermissions={['sac']}
@@ -49,6 +54,9 @@ const AuthRoutes = (props) => {
 
                     <Route exact path="/sac/images" component={Image}/>
                     <Route exact path="/sac/images/carousel" component={ImageCarousel}/>
+                    <Route exact path="/sac/images/gallery" component={GalleryImage}/>
+                    <Route exact path="/sac/images/album" component={GalleryAlbum}/>
+                    <Route exact path="/sac/images/album/:album" component={GalleryAlbumDetails}/>
 
                     <Route exact path="/sac/news" component={News}/>
                     <Route exact path="/sac/news/create" component={NewsCreate}/>
@@ -85,8 +93,4 @@ const AuthRoutes = (props) => {
     );
 };
 
-const mapStateToProps = state => ({
-    auth: state.auth
-});
-
-export default connect(mapStateToProps)(AuthRoutes);
+export default AuthRoutes;

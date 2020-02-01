@@ -14,7 +14,7 @@ export default {
         axios.interceptors.response.use(response => {
             return response;
         }, error => {
-            switch (error.response.status) {
+            if (error.response) switch (error.response.status) {
                 case 401:
                     store.dispatch(unauthorized());
                     history.replace('/login');

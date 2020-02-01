@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import * as _ from "lodash";
 import {useHistory} from "react-router-dom";
-import {Form, Row, Col, Input, Button, Checkbox, Select, Divider, Typography, Result, Avatar, Modal} from 'antd';
+import {Avatar, Button, Checkbox, Col, Divider, Form, Input, Modal, Result, Row, Select, Typography} from 'antd';
 import {Branch, Programme} from "Constants/ProgrammeAndBranch";
 import FormError from "components/Errors";
 import {meetRegister} from "actions/alumniMeetAction";
@@ -46,6 +46,12 @@ const SuccessMessage = ({success, data}) => {
                             IFSC Code - CBIN0283105<br/>
                             Branch - LONGOWAL<br/>
                             Bank Name - Central Bank of India<br/>
+                        </Paragraph>
+
+                        <Divider orientation={"left"} style={{marginBottom: 4}}>PhonePay / GooglePay</Divider>
+                        <Paragraph style={{textAlign: 'left'}}>
+                            Mobile No. - <Text copyable style={{fontWeight: 500}}>7300633011</Text> <br/>
+                            Name - Yash Verma
                         </Paragraph>
 
                         <Divider orientation={"left"} style={{marginBottom: 4}}>Contact Details</Divider>
@@ -116,12 +122,12 @@ const MeetRegistrationForm = Form.create({name: 'alumni_meet_registration'})(
                     <FormError form={form} formName="alumni_meet_registration"/>
                     <Row gutter={16} type="flex">
 
-                        <Col xs={24}>
-                            <Form.Item style={{marginBottom: 0}}>
-                                <Checkbox onChange={handleChecked} checked={registered}
-                                >Are you registered member?</Checkbox>
-                            </Form.Item>
-                        </Col>
+                        {/*<Col xs={24}>*/}
+                        {/*    <Form.Item style={{marginBottom: 0}}>*/}
+                        {/*        <Checkbox onChange={handleChecked} checked={registered}*/}
+                        {/*        >Are you registered member?</Checkbox>*/}
+                        {/*    </Form.Item>*/}
+                        {/*</Col>*/}
 
                         {registered && isAuthenticated ? <>
 

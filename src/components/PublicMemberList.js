@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React from 'react';
 import * as _ from "lodash";
 import {makeStyles} from "@material-ui/core";
 import {Avatar, Col, Divider, Row, Typography} from "antd";
@@ -27,29 +26,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Executive = props => {
+const PublicMemberList = ({title, members = []}) => {
     const classes = useStyles();
-
-    const [members, setMembers] = useState(localStorage.executive ? JSON.parse(localStorage.executive) : []);
-
-    useEffect(() => {
-        const fetchData = () => {
-            axios.get('/api/public/members').then(({data}) => {
-                if (data.data) {
-                    const tmpData = data.data.filter(data => !data.sac);
-                    setMembers(tmpData);
-                    localStorage.setItem('executive', JSON.stringify(tmpData));
-                }
-            });
-        };
-        fetchData();
-    }, []);
-
 
     return (
         <div className={classes.root}>
             <Title level={3}>
-                Executive Committee
+                {title}
             </Title>
             <Divider style={{margin: 0, marginBottom: 16}}/>
             <Row gutter={16} type="flex" justify="center">
@@ -66,4 +49,4 @@ const Executive = props => {
 };
 
 
-export default Executive;
+export default PublicMemberList;

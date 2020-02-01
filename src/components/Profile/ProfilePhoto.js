@@ -77,7 +77,7 @@ class ProfilePhoto extends Component {
         const {file} = this.state;
         return (
             <div className={classes.profilePhoto}>
-                <Avatar style={{height: '-webkit-fill-available', width: 'inherit'}}
+                <Avatar style={{height: 'inherit', width: 'inherit'}}
                         src={file ? URL.createObjectURL(file) : profile ? profile : TmpProfile}/>
                 <Upload
                     style={file && {display: 'none'}}

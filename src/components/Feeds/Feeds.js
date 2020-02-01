@@ -11,7 +11,7 @@ class Feeds extends Component {
     componentWillMount() {
         axios.get('https://jsonplaceholder.typicode.com/posts/1').then(res => {
             // this.setState({posts: res.data})
-        })
+        }).catch(err => err)
     }
 
     render() {
