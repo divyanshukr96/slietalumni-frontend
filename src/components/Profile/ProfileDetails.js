@@ -49,8 +49,12 @@ function ProfileDetails(props) {
     const [profile, setProfile] = useState({});
 
     async function fetchUrl() {
-        const {data} = await axios.get("api/auth/profile");
-        if (data.data) setProfile(data.data);
+        try {
+            const {data} = await axios.get("api/auth/profile");
+            if (data.data) setProfile(data.data);
+        } catch (e) {
+
+        }
     }
 
     useEffect(() => {

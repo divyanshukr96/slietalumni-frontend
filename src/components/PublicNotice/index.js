@@ -13,7 +13,7 @@ const Index = () => {
         function fetchNotice() {
             axios.get('/api/public/notice').then(({data}) => {
                 data.data && setData(data.data)
-            })
+            }).catch(err => err)
         }
 
         setTimeout(() => {

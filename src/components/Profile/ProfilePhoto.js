@@ -32,6 +32,13 @@ const styles = theme => ({
             }
         },
     },
+    avatar: {
+        width: 'fit-content',
+        height: 160,
+        [theme.breakpoints.down(500)]: {
+            height: 120,
+        },
+    },
     image: {
         opacity: 0,
         display: 'flex',
@@ -47,15 +54,21 @@ const styles = theme => ({
             borderRadius: '50% !important',
             margin: '0 auto !important',
             float: 'right',
+            '& > span': {
+                display: 'flex !important',
+            }
         }
     },
     imageAction: {
         position: 'absolute',
         bottom: 0,
 
-        backgroundColor: "rgba(255, 255, 255, .6)",
+        backgroundColor: "rgba(255, 255, 255, .8)",
         width: '100%',
         textAlign: 'center',
+        '& + $image': {
+            display: 'none',
+        }
     },
 });
 
@@ -77,24 +90,10 @@ class ProfilePhoto extends Component {
         const {file} = this.state;
         return (
             <div className={classes.profilePhoto}>
-                <Avatar style={{height: 'inherit', width: 'inherit'}}
-                        src={file ? URL.createObjectURL(file) : profile ? profile : TmpProfile}/>
-                <Upload
-                    style={file && {display: 'none'}}
-                    accept="image/*"
-                    name="cover"
-                    listType="picture-card"
-                    className={classes.image}
-                    showUploadList={false}
-                    beforeUpload={file => {
-                        this.setState({file});
-                        return false
-                    }}
-                >
-                    <Tooltip placement="top" title="Change Profile">
-                        <Icon type={'camera'} style={{fontSize: 20}}/>
-                    </Tooltip>
-                </Upload>
+                <Avatar
+                    className={classes.avatar}
+                    src={file ? URL.createObjectURL(file) : profile || TmpProfile}
+                />
                 {file && <div className={classes.imageAction}>
                     <Tooltip placement="top" title={"Accept"}>
                         <Button type="primary" key="ok" ghost shape="circle" icon="check" size={"small"}
@@ -110,6 +109,21 @@ class ProfilePhoto extends Component {
                         />
                     </Tooltip>
                 </div>}
+                <Upload
+                    accept="image/*"
+                    name="cover"
+                    listType="picture-card"
+                    className={classes.image}
+                    showUploadList={false}
+                    beforeUpload={file => {
+                        this.setState({file});
+                        return false
+                    }}
+                >
+                    <Tooltip placement="top" title="Change Profile">
+                        <Icon type={'camera'} style={{fontSize: 20}}/>
+                    </Tooltip>
+                </Upload>
             </div>
         );
     }

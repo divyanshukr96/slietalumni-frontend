@@ -9,6 +9,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case type.LOG_OUT:
+            return initialState;
+
         case type.NEWS_LOADING:
             return {...state, loading: true, data: null};
         case type.NEWS_LIST:

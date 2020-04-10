@@ -10,6 +10,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case type.LOG_OUT:
+            return initialState;
+
         case type.LOGIN_REQUIRED:
             return {...state, authRequired: action.payload};
         case type.LOGIN_LOADING:

@@ -9,9 +9,10 @@ import routes from "./routes";
 import './index.css';
 import SetAuthorizationToken from "utils/setAuthorizationToken";
 import {setCurrentUser, authCheck} from "actions/authAction";
+import { PersistGate } from 'redux-persist/integration/react'
 
 
-const store = configureStore();
+const {store, persist} = configureStore();
 
 NetworkService.setupInterceptors(store, history);
 
@@ -23,7 +24,9 @@ if (token) {
 }
 
 ReactDOM.render(<Provider store={store}>
-    <ConnectedRouter history={history} children={routes}/>
+    <PersistGate loading={null} persistor={persist}>
+        <ConnectedRouter history={history} children={routes}/>
+    </PersistGate>
 </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

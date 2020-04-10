@@ -51,6 +51,7 @@ const AuthRoutes = (props) => {
                     {/*<Route exact path="/sac" component={AdminNavBar}/>*/}
                     <Route exact path="/sac/alumni-database" component={AlumniData}/>
                     <Route exact path="/sac/new-registration" component={RegistrationData}/>
+                    <Route exact path="/sac/alumni" component={RegistrationData}/>
 
                     <Route exact path="/sac/images" component={Image}/>
                     <Route exact path="/sac/images/carousel" component={ImageCarousel}/>

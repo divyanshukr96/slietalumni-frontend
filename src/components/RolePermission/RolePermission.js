@@ -14,11 +14,6 @@ const expandedRowRender = (data, index) => {
         {title: 'Display Name', dataIndex: 'display_name', key: 'display_name'},
         {title: 'Description', dataIndex: 'description', key: 'description'},
         {title: 'Name', dataIndex: 'name', key: 'name'},
-        {
-            title: 'Guard', dataIndex: 'guard_name',
-            filters: [{text: 'Web', value: 'web'}, {text: 'API', value: 'api'}],
-            onFilter: (value, record) => record.guard_name.indexOf(value) === 0,
-        },
     ];
     const type = data.roles ? 'Roles' : 'Permissions';
     const dataSource = data[toLower(type)];
@@ -49,11 +44,11 @@ class RolePermission extends Component {
         {title: 'Display Name', dataIndex: 'display_name', sorter: (a, b) => this.shorting(a, b, 'display_name')},
         {title: 'Description', dataIndex: 'description'},
         {title: 'Name', dataIndex: 'name'},
-        {
-            title: 'Guard', dataIndex: 'guard_name',
-            filters: [{text: 'Web', value: 'web'}, {text: 'API', value: 'api'}],
-            onFilter: (value, record) => record.guard_name.indexOf(value) === 0,
-        },
+        // {
+        //     title: 'Guard', dataIndex: 'guard_name',
+        //     filters: [{text: 'Web', value: 'web'}, {text: 'API', value: 'api'}],
+        //     onFilter: (value, record) => record.guard_name.indexOf(value) === 0,
+        // },
         {title: 'Created', dataIndex: 'created_at',},
         ...(this.props.type === 'Roles' ? [{
             title: 'Action',

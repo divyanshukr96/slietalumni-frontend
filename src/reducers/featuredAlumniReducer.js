@@ -10,6 +10,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case type.LOG_OUT:
+            return initialState;
+
         case type.FEATURED_ALUMNI:
             return {...state, featured: action.payload};
 

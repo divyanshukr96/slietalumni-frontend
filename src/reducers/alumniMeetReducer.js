@@ -12,6 +12,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case type.LOG_OUT:
+            return initialState;
+
         case type.ALUMNI_MEET_LOADING:
             return {...state, loading: action.payload};
 

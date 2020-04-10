@@ -220,6 +220,13 @@ class AdminNavBar extends Component {
                             </Menu.Item>
                         </Menu.SubMenu>
 
+                        <Menu.Item key="sac/alumni">
+                            <Link to={'/sac/alumni'}>
+                                <Icon type="user"/>
+                                <span className="nav-text">Registered Alumni</span>
+                            </Link>
+                        </Menu.Item>
+
                         <Menu.Item key="sac/new-registration">
                             <Link to={'/sac/new-registration'}>
                                 <Icon type="user-add"/>

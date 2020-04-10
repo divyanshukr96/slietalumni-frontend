@@ -11,7 +11,7 @@ export const unauthorized = () => {
     SetAuthorizationToken(null);
     localStorage.removeItem('token');
     return {
-        type: type.USER_AUTHENTICATED,
+        type: type.LOG_OUT,
         payload: false
     }
 };

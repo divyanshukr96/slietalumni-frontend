@@ -11,6 +11,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case type.LOG_OUT:
+            return initialState;
         case type.ALUMNI_DATA_LIST:
             return {...state, dataList: action.payload, data: action.payload};
         case type.ALUMNI_DATA_ADD:

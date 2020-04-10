@@ -37,7 +37,7 @@ const MeetRegistration = () => {
                     <Title level={4} style={{margin: `8px 0`}}>
                         Alumni Meet Registration 2020
                     </Title>
-                    <Text style={{fontWeight: 500, fontSize: 16}}>February 15 - 16, 2020</Text>
+                    <Text style={{fontWeight: 500, fontSize: 16}}>February 15, 2020</Text>
                     <Divider style={{margin: `4px 0`}}/>
                 </div>
                 <MeetRegistrationForm/>

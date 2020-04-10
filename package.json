@@ -1,6 +1,6 @@
 {
   "name": "alumni-frontend",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.8.3",
@@ -27,6 +27,8 @@
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-persist-transform-encrypt": "^2.0.1",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {

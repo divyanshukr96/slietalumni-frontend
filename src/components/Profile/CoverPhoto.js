@@ -15,6 +15,14 @@ const styles = theme => ({
         right: 8,
         width: 'auto',
     },
+    actionButton: {
+        '& > button':{
+            margin: `8px 4px`
+        },
+        '& + $image': {
+            display: 'none',
+        }
+    },
     image: {
         '& > div': {
             height: 'unset !important',
@@ -22,6 +30,9 @@ const styles = theme => ({
             borderRadius: '50% !important',
             margin: '0 0 0 8px !important',
             float: 'right',
+            '& > span': {
+                display: 'flex !important',
+            }
         }
     }
 });
@@ -55,6 +66,17 @@ class CoverPhoto extends Component {
                          backgroundColor: 'rgba(255, 255, 255, 1)',
                          padding: '2px 8px',
                      }}>
+                    {file && (<div className={classes.actionButton}>
+                        <Tooltip key="ok" placement="top" title={"Accept"}>
+                            <Button type="primary" key="ok" ghost shape="circle" icon="check" size={"small"}
+                                    onClick={this.handleSubmit}/>
+                        </Tooltip>
+                        <Tooltip key="cancel" placement="top" title="Cancel">
+                            <Button type="danger" key="cancel" ghost shape="circle" icon="close" size={"small"}
+                                    onClick={() => this.setState({file: null})}
+                            />
+                        </Tooltip>
+                    </div>)}
                     <Upload
                         accept="image/*"
                         name="cover"
@@ -70,18 +92,6 @@ class CoverPhoto extends Component {
                             <Icon type={'camera'} style={{fontSize: 20}}/>
                         </Tooltip>
                     </Upload>
-                    {file && ([
-                        <Tooltip placement="top" title={"Accept"}>
-                            <Button type="primary" key="ok" ghost shape="circle" icon="check" size={"small"}
-                                    style={{margin: `10px 4px`}} onClick={this.handleSubmit}/>
-                        </Tooltip>,
-                        <Tooltip placement="top" title="Cancel">
-                            <Button type="danger" key="cancel" ghost shape="circle" icon="close" size={"small"}
-                                    style={{margin: `10px 4px`}}
-                                    onClick={() => this.setState({file: null})}
-                            />
-                        </Tooltip>
-                    ])}
                 </div>
             </>
         );
