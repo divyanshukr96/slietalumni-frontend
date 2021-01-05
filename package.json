@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.8.3",
     "antd": "^3.26.7",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-plugin-import": "^1.13.0",
     "braft-editor": "^2.3.8",
     "connected-react-router": "^6.6.1",
