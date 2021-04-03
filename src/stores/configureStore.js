@@ -16,7 +16,7 @@ const initialState = {};
 
 
 const encryptor = createEncryptor({
-    secretKey: 'divyanshu96@slietalumni.com',
+    secretKey: 'divyanshu96@slietalumni.org',
     onError: function(error) {
         localStorage.clear();
     }
