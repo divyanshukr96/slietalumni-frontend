@@ -74,7 +74,7 @@ const ContactUs = ({classes}) => (
                 <Title level={4}>Alumni Online Help</Title>
                 <Paragraph style={{marginBottom: '40px'}}>
                     If you have questions about your alumni account, email, or login-only features, please
-                    contact us by emailing <a href="mailto:enquiry@slietalumni.com">enquiry@slietalumni.com</a>.
+                    contact us by emailing <a href="mailto:enquiry@slietalumni.org">enquiry@slietalumni.org</a>.
                 </Paragraph>
             </Col>
             <Col md={12} xs={24}>

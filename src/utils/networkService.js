@@ -3,7 +3,7 @@ import {unauthorized} from "../actions/authAction";
 
 if (process.env.NODE_ENV !== 'production') {
     // axios.defaults.baseURL = "http://127.0.0.1:8000";
-    // axios.defaults.baseURL = "https://slietalumni.com";
+    // axios.defaults.baseURL = "https://slietalumni.org";
 }
 
 export default {

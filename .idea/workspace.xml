@@ -33,35 +33,10 @@
   <component name="ChangeListManager">
     <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/meta.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/meta.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/authAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/authAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Meet/MeetRegistration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Meet/MeetRegistration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/About.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/CoverPhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/CoverPhoto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfilePhoto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PublicNotice/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicNotice/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RolePermission/RolePermission.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RolePermission/RolePermission.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/alumniDatabaseReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/alumniDatabaseReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/alumniMeetReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/alumniMeetReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/authReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/donationReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/donationReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/enquiryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/enquiryReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/eventReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/eventReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/featuredAlumniReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/featuredAlumniReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/imageReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/imageReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/newAlumniReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/newAlumniReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/newsReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/newsReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/roleReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/roleReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/authRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ContactUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContactUs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stores/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/configureStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/CheckAppUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CheckAppUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/networkService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/networkService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +63,20 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dependabot/npm_and_yarn/acorn-5.7.4" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="hiddenUrls">
@@ -96,6 +84,9 @@
         <option value="https://github.com/divyanshukr96/slietalumni-frontend.git" />
       </set>
     </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="vcs://src/index.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -106,7 +97,6 @@
   <component name="ProjectId" id="1Oh4lJ8Kki8e5LzEOeuyT2TYJpy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -171,6 +161,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -317,9 +308,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -338,119 +327,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580509505929">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580509505929" />
-    <state x="734" y="309" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579175743868">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="734" y="309" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579175743868" />
-    <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579251234142">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579251234142" />
-    <state x="703" y="354" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1579507135818">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="703" y="354" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1579507135818" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1580558310628">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580558310628" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1580914236672">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1580914236672" />
-    <state width="1899" height="271" key="GridCell.Tab.0.bottom" timestamp="1581462913494">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581462913494" />
-    <state width="1899" height="271" key="GridCell.Tab.0.center" timestamp="1581462913494">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581462913494" />
-    <state width="1899" height="271" key="GridCell.Tab.0.left" timestamp="1581462913494">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581462913494" />
-    <state width="1899" height="271" key="GridCell.Tab.0.right" timestamp="1581462913494">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="271" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581462913494" />
-    <state width="1899" height="326" key="GridCell.Tab.1.bottom" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.1.center" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.1.left" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.1.right" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.2.bottom" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.2.center" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.2.left" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.2.right" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.3.bottom" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.3.center" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.3.left" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state width="1899" height="326" key="GridCell.Tab.3.right" timestamp="1580509486651">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="326" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580509486651" />
-    <state x="770" y="157" key="RollbackChangesDialog" timestamp="1576396324029">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="770" y="157" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576396324029" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1579172500192">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579172500192" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1580565197342">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580565197342" />
-    <state x="581" y="49" width="758" height="942" key="find.popup" timestamp="1578735913632">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="581" y="49" width="758" height="942" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578735913632" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1579444896314">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579444896314" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581462888121">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581462888121" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
