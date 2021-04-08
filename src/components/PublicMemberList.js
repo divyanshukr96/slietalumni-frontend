@@ -31,7 +31,7 @@ const PublicMemberList = ({title, members = []}) => {
 
     return (
         <div className={classes.root}>
-            <Title level={3}>
+            <Title level={4}>
                 {title}
             </Title>
             <Divider style={{margin: 0, marginBottom: 16}}/>

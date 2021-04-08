@@ -31,7 +31,13 @@
     </treeState>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="" />
+    <list default="true" id="34cdcadb-4eb8-415f-922a-b97357343254" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PublicMemberList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicMemberList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/StudentCell.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/StudentCell.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stores/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/networkService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/networkService.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,9 +85,6 @@
       </set>
     </option>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="vcs://src/index.js" root0="SKIP_INSPECTION" />
-  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
@@ -94,11 +97,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.15.4" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.37" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -113,7 +118,8 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="E:\Alumni_Association\alumni-frontend\node_modules\prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="D:\Application\JetBrains\WebStorm 2020.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -172,6 +178,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -281,11 +288,16 @@
       <workItem from="1581696249701" duration="599000" />
       <workItem from="1582184715316" duration="8000" />
       <workItem from="1586439463484" duration="534000" />
+      <workItem from="1617644996754" duration="2054000" />
+      <workItem from="1617682421570" duration="52000" />
+      <workItem from="1617728131716" duration="1953000" />
+      <workItem from="1617767517412" duration="27000" />
+      <workItem from="1617901697491" duration="4535000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">

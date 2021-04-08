@@ -16,9 +16,10 @@ const initialState = {};
 
 
 const encryptor = createEncryptor({
-    secretKey: 'divyanshu96@slietalumni.org',
-    onError: function(error) {
+    secretKey: 'PV1gE8XFcTwSJ1C2f1QHtoRvJjvIvcHC',
+    onError: function (error) {
         localStorage.clear();
+        window.location.reload()
     }
 });
 

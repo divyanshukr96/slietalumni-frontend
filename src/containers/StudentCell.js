@@ -8,7 +8,7 @@ const StudentCell = () => {
 
     useEffect(() => {
         const fetchData = () => {
-            axios.get('/api/public/members').then(({data}) => {
+            axios.get('/api/public/members/sac').then(({data}) => {
                 if (data.data) {
                     const tmpData = data.data.filter(data => data.sac);
                     setMembers(tmpData);
