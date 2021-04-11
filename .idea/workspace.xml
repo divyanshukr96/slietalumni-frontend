@@ -35,7 +35,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PublicMemberList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PublicMemberList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/StudentCell.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/StudentCell.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stores/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/stores/configureStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/networkService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/networkService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -293,6 +292,8 @@
       <workItem from="1617728131716" duration="1953000" />
       <workItem from="1617767517412" duration="27000" />
       <workItem from="1617901697491" duration="4535000" />
+      <workItem from="1617940595881" duration="132000" />
+      <workItem from="1618132734255" duration="5588000" />
     </task>
     <servers />
   </component>

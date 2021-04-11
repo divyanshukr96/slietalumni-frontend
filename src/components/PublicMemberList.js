@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const PublicMemberList = ({title, members = []}) => {
+const PublicMemberList = ({title, headerExtra, members = []}) => {
     const classes = useStyles();
 
     return (
@@ -35,6 +35,7 @@ const PublicMemberList = ({title, members = []}) => {
                 {title}
             </Title>
             <Divider style={{margin: 0, marginBottom: 16}}/>
+            {headerExtra}
             <Row gutter={16} type="flex" justify="center">
                 {!_.isEmpty(members) && members.map(data => (
                     <Col lg={6} md={8} sm={12} style={{textAlign: 'center'}} key={data.id}>
